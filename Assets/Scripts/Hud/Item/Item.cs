@@ -11,10 +11,14 @@ public class Item : MonoBehaviour
     public int level;
     public int MaxLevel;
 
+    public itemSlot ItemSlot;
+
     Image icon;
     Text textLevel;
     Text ItemName;
     Text ItemDesc;
+
+
 
     void Awake()
     {
@@ -39,16 +43,9 @@ public class Item : MonoBehaviour
         textLevel.text = "Lv." + (level + 1);
     }
 
-
+    
     public void OnClick()
     {
-        level++;
-        
-        // 테스트용 , 삭제 예정  
-        if(level == MAX_LEVEL)
-        {
-            GetComponent<Button>().interactable = false;
-        }
-
+        ItemSlot.AddActiveItem(data.itemType);
     }
 }
