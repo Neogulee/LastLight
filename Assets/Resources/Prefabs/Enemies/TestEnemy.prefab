@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <move_velocity>k__BackingField: 10
-  <jump_velocity>k__BackingField: 20
+  <jump_velocity>k__BackingField: 10
   <max_jump_cnt>k__BackingField: 2
   <current_jump_cnt>k__BackingField: 2
   gravity: 90

@@ -120,7 +120,7 @@ public class ActorController : MonoBehaviour, IActorController
 
         transform.Translate(vec);
         velocity.y -= gravity * Time.fixedDeltaTime;
-        if (check_on_platform() && velocity.y < 0.0f)
+        if (collision_info.below || collision_info.above)
             velocity.y = 0.0f;
         if (!last_on_ground && check_on_platform()) {
             current_jump_cnt = 0;
@@ -197,9 +197,6 @@ public class ActorController : MonoBehaviour, IActorController
 
             Debug.DrawRay(ray_origin, direction_y * Vector2.down * ray_length, Color.red);
             if (raycast_hit.collider != null) {
-                if (direction_y == -1.0f)
-                    collision_info.below = true;
-
                 velocity.y = direction_y * (raycast_hit.distance - SKIN_WIDTH);
                 ray_length = raycast_hit.distance;
                 is_jumping_down = false;
