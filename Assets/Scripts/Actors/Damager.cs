@@ -26,7 +26,7 @@ public class Damager: MonoBehaviour
     public void disable()
     {
         collider.enabled = false;
-        SendMessage("on_finsh_attack", SendMessageOptions.DontRequireReceiver);
+        SendMessageUpwards("on_finsh_attack", SendMessageOptions.DontRequireReceiver);
     }
 
     void OnTriggerEnter2D(Collider2D target)
