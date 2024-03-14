@@ -117,7 +117,7 @@ public class AdvancedEnemyAI : EnemyAI
         if (path is null || path.Count == 0)
             current_move = Moves.IDLE;
         else {
-            Debug.Log(String.Join(", ", path));
+            // Debug.Log(String.Join(", ", path));
             (Moves move, float jump_speed) = path[0];
             current_move = move;
             if (jump_speed > 0.0f)

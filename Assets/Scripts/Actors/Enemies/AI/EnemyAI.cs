@@ -12,6 +12,5 @@ public class EnemyAI : MonoBehaviour
     {
         enemy = GetComponent<Enemy>();
         actor_controller = GetComponent<IActorController>();
-        actor_controller = GetComponent<Controller2D>();
     }
 }

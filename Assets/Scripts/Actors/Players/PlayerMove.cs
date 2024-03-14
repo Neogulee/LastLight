@@ -82,8 +82,6 @@ public class PlayerMove : MonoBehaviour
 
     public void DownCheck()
     {
-
-
         if(player.GetRigidbody().velocity.y <= 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(player.transform.position, Vector2.down, 1f, LayerMask.GetMask("Ground"));

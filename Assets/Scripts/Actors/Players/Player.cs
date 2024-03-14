@@ -11,7 +11,7 @@ public class Player : Actor
     private Rigidbody2D rigid;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-    private PlayerMove playerMove;
+    private PlayerController playerController;
     private PlayerAttack playerAttack;
     private BoxCollider2D boxCollider;
 
@@ -19,10 +19,10 @@ public class Player : Actor
     {
         Locator.player = this;
         
-        playerMove = GetComponent<PlayerMove>();
+        playerController = GetComponent<PlayerController>();
         playerAttack = GetComponent<PlayerAttack>();
         playerAttack.Init(this);
-        playerMove.Init(this);
+        playerController.Init(this);
 
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -56,10 +56,5 @@ public class Player : Actor
     public float GetJumpPower()
     {
         return jumpPower;
-    }
-
-    private void Update() 
-    {
-        playerMove.DownCheck();
     }
 }

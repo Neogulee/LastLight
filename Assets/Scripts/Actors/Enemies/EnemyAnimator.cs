@@ -13,7 +13,7 @@ public class EnemyAnimator : MonoBehaviour
         sprite_renderer = GetComponent<SpriteRenderer>();
     }
 
-    public void on_jump()
+    public void on_jump(int jump_cnt)
     {
         animator.SetBool("is_jumping", true);
     }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TestSpawnInfo
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 7116446099746527760, guid: b154c2b575eb14e419360a8fb1b4da5b, type: 3}
+  - {fileID: 2025752894283536155, guid: be2fd69c57947a2438f7da4d7a941459, type: 3}
