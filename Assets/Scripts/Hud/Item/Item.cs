@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -46,6 +46,14 @@ public class Item : MonoBehaviour
     
     public void OnClick()
     {
-        ItemSlot.AddActiveItem(data.itemType);
+        if(data.activePassiveType == ItemData.ActivePassiveType.Active)
+        {
+            ItemSlot.AddActiveItem(data.itemType);
+        }
+        else if (data.activePassiveType == ItemData.ActivePassiveType.Passive)
+        {
+            ItemSlot.AddPassiveItem(data.itemType);
+        }
+
     }
 }
