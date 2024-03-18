@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -7,6 +8,7 @@ using UnityEngine;
 public class Follow : MonoBehaviour
 {
     RectTransform rect;
+    public GameObject player;
 
     private void Awake()
     {
@@ -15,6 +17,8 @@ public class Follow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //rect.position = Camera.main.WorldToScreenPoint();        
+        Vector3 playerScreenPos = Camera.main.WorldToScreenPoint(player.transform.position);
+        playerScreenPos.y += 50;
+        rect.position = playerScreenPos;
     }
 }

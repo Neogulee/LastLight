@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
@@ -38,6 +38,7 @@ public class ItemAsset : MonoBehaviour
                 return activeItem5;
             case ItemData.ItemType.activeItem6:
                 return activeItem6;
+<<<<<<< HEAD
             // �̺κ��� ���߿� �и� ���� 
             case ItemData.ItemType.passiveItem1:
                 return passiveItem1;
@@ -52,6 +53,8 @@ public class ItemAsset : MonoBehaviour
             case ItemData.ItemType.passiveItem6:
                 return passiveItem6;
 
+=======
+>>>>>>> 1660cc0abb2c48cb36d3f5518d3b9f30410514d4
         }
     }
 
