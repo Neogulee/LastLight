@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 [CreateAssetMenu(fileName = "Item" , menuName ="ItemData")]
 public class ItemData : ScriptableObject
@@ -45,7 +46,10 @@ public class ItemData : ScriptableObject
     public int[] counts;
     [Header("# Weapon")]
     public GameObject projectile;
-
+    void Awake()
+    {
+        level = 1;
+    }
     public Sprite GetSprite()
     {
         return itemIcon;

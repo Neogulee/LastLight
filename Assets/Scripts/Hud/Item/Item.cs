@@ -31,16 +31,17 @@ public class Item : MonoBehaviour
         ItemDesc = texts[2];
         ItemName.text = data.itemName;
         ItemDesc.text = data.itemDesc;
+        data.level = 0;
     }
     
     void LateUpdate()
     {
-        textLevel.text = "Lv." + (level + 1);
+        //textLevel.text = "Lv." + (data.level);
     }
 
     void OnEnable()
     {
-        textLevel.text = "Lv." + (level + 1);
+        textLevel.text = "Lv." + (data.level+1);
     }
 
     

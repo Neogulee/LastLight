@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class itemSlot : MonoBehaviour
 
     static Dictionary<ItemData.ItemType, int> activeItemData;
     static Dictionary<ItemData.ItemType, int> passiveItemData;
+    // 레벨 여기서 관리 안해서 나중에 수정 예정
     RectTransform[] activeItemSlots = new RectTransform[6];
     RectTransform[] passiveItemSlots = new RectTransform[6];
     const int SLOTCOUNT = 6;
@@ -66,26 +68,7 @@ public class itemSlot : MonoBehaviour
             case ItemData.ItemType.activeItem6:
                 item = itemAsset.GetActiveData(ItemData.ItemType.activeItem6);
                 break;
-            case ItemData.ItemType.passiveItem1:
-                item = itemAsset.GetPassiveData(ItemData.ItemType.passiveItem1);
-                break;
-            case ItemData.ItemType.passiveItem2:
-                item = itemAsset.GetPassiveData(ItemData.ItemType.passiveItem2);
-                break;
-            case ItemData.ItemType.passiveItem3:
-                item = itemAsset.GetPassiveData(ItemData.ItemType.passiveItem3);
-                break;
-            case ItemData.ItemType.passiveItem4:
-                item = itemAsset.GetPassiveData(ItemData.ItemType.passiveItem4);
-                break;
-            case ItemData.ItemType.passiveItem5:
-                item = itemAsset.GetPassiveData(ItemData.ItemType.passiveItem5);
-                break;
-            case ItemData.ItemType.passiveItem6:         
-                item = itemAsset.GetPassiveData(ItemData.ItemType.passiveItem6);
-                break;
         }
-
         if (activeItemData.ContainsKey(itemType))
         {
             item.IncreseLevel();
@@ -94,6 +77,7 @@ public class itemSlot : MonoBehaviour
         else
         {
             activeItemData.Add(itemType, 1);
+            item.IncreseLevel();
         }
         ShowInventory();
     }
@@ -130,6 +114,7 @@ public class itemSlot : MonoBehaviour
         else
         {
            passiveItemData.Add(itemType, 1);
+           item.IncreseLevel();
         }
         ShowInventory();
 
@@ -146,7 +131,6 @@ public class itemSlot : MonoBehaviour
             count++;
         }
         count = 0;
-        Debug.Log("여기까지 체크");
         foreach (ItemData.ItemType itemType in passiveItemData.Keys)
         {
             passiveItemSlots[count].Find("icon").GetComponent<Image>().sprite = itemAsset.GetPassiveData(itemType).GetSprite();
