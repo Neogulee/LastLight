@@ -13,13 +13,17 @@ public class PlayerAnimator : MonoBehaviour
 
     public void on_move_left()
     {
-        player.GetSpriteRenderer().flipX = true;
+        Vector3 scale = transform.localScale;
+        scale.x = -1.0f;
+        transform.localScale = scale;
         player.GetAnimator().SetBool("isLeftRun", true);
     }
 
     public void on_move_right()
     {
-        player.GetSpriteRenderer().flipX = false;
+        Vector3 scale = transform.localScale;
+        scale.x = 1.0f;
+        transform.localScale = scale;
         player.GetAnimator().SetBool("isRightRun", true);
     }
 

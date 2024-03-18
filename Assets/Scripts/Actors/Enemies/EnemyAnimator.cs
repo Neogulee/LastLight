@@ -20,13 +20,17 @@ public class EnemyAnimator : MonoBehaviour
     
     public void on_move_left()
     {
-        sprite_renderer.flipX = true;
+        Vector3 scale = transform.localScale;
+        scale.x = -1.0f;
+        transform.localScale = scale;
         animator.SetBool("is_walking", true);
     }
     
     public void on_move_right()
     {
-        sprite_renderer.flipX = false;
+        Vector3 scale = transform.localScale;
+        scale.x = 1.0f;
+        transform.localScale = scale;
         animator.SetBool("is_walking", true);
     }
 
