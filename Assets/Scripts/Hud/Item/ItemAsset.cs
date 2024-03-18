@@ -38,23 +38,6 @@ public class ItemAsset : MonoBehaviour
                 return activeItem5;
             case ItemData.ItemType.activeItem6:
                 return activeItem6;
-<<<<<<< HEAD
-            // �̺κ��� ���߿� �и� ���� 
-            case ItemData.ItemType.passiveItem1:
-                return passiveItem1;
-            case ItemData.ItemType.passiveItem2:
-                return passiveItem2;
-            case ItemData.ItemType.passiveItem3:
-                return passiveItem3;
-            case ItemData.ItemType.passiveItem4:
-                return passiveItem4;
-            case ItemData.ItemType.passiveItem5:
-                return passiveItem5;
-            case ItemData.ItemType.passiveItem6:
-                return passiveItem6;
-
-=======
->>>>>>> 1660cc0abb2c48cb36d3f5518d3b9f30410514d4
         }
     }
 
