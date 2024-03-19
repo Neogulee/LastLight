@@ -13,6 +13,7 @@ public interface IActorController
     public int max_jump_cnt { get; set; }
     public int current_jump_cnt { get; }
     public Vector2 velocity { get; set; }
+    public void move(Vector2 dir);
     public void move_left(); 
     public void move_right();
     public void stop();
@@ -72,7 +73,16 @@ public class ActorController : MonoBehaviour, IActorController
 
     void FixedUpdate()
     {
-        move();
+        update_pos();
+    }
+
+    public void move(Vector2 dir)
+    {
+        if (knockback_time > 0.0f)
+            return;
+
+        velocity = move_velocity * dir.normalized;
+        SendMessage("on_move_left", SendMessageOptions.DontRequireReceiver);
     }
 
     public void move_left()
@@ -122,7 +132,7 @@ public class ActorController : MonoBehaviour, IActorController
         return collision_info.below;
     }
 
-    public void move()
+    private void update_pos()
     {
         update_raycast_origins();
         bool last_on_ground = check_on_platform();
