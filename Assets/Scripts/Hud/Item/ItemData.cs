@@ -44,12 +44,9 @@ public class ItemData : ScriptableObject
     public int baseCount;
     public float[] damages;
     public int[] counts;
+
     [Header("# Weapon")]
     public GameObject projectile;
-    void Awake()
-    {
-        level = 1;
-    }
     public Sprite GetSprite()
     {
         return itemIcon;

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   activePassiveType: 0
-  itemId: 2
+  itemId: 1
   itemName: "\uC561\uD2F0\uBE0C \uC544\uC774\uD15C2"
   itemDesc: "\uC561\uD2F0\uBE0C \uC544\uC774\uD15C\uC785\uB2C8\uB2E4"
   itemDesc_Plus: 
