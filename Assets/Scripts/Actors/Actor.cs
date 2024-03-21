@@ -38,5 +38,6 @@ public abstract class Actor : MonoBehaviour, IActor
 
     public void destroy()
     {
+        Destroy(gameObject);
     }
 }
