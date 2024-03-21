@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,8 +24,7 @@ public class TempGameManager : MonoBehaviour
             instance = this;
         }
 
-        // ����ġ�ٰ� 1.1 , 1.21 ,1.331 ���� 1.1��� ���� 
-        // ���Ŀ� ���� ����ġ �������� ����� ���� ���� ���� 
+
         float exp = 10;
         for (int i = 0; i < listExp.Length; i++)
         {
@@ -37,8 +36,6 @@ public class TempGameManager : MonoBehaviour
 
     
 
-    // �̰����� �������ÿ� ���� �����ϴ� ���� �߰� ����
-    // ���� ����ϴ� ������ LevelUp.cs�� �߰� ���� 
     public void GetExp(float plusExp)
     {
         curExp += plusExp;
@@ -55,7 +52,7 @@ public class TempGameManager : MonoBehaviour
         curHp -= damage;
         if (curHp <= 0)
         {
-            // ���ӿ��� ���� �߰�
+            
         }
     }
 
@@ -66,7 +63,7 @@ public class TempGameManager : MonoBehaviour
 
 
     //////////////////////////
-    // �׽�Ʈ ������ ���� ���� //
+    // 삭제 예정             //
     /////////////////////////
     private void Update()
     {
@@ -85,6 +82,6 @@ public class TempGameManager : MonoBehaviour
         }
     }
     //////////////////////////
-    // �׽�Ʈ ������ ���� ���� //
+    // 삭제 예정             //
     /////////////////////////
 }
