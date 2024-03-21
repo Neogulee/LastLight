@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 4
   activePassiveType: 0
-  itemId: 0
-  itemName: "\uC774\uADF8\uB2C8\uC2A4"
-  itemDesc: "\uAC00\uB054 \uBD88 \uC3DC\uB2E4"
+  itemId: 4
+  itemName: " \uC561\uD2F0\uBE0C \uC544\uC774\uD15C 5"
+  itemDesc: "\uC561\uD2F0\uBE0C \uC544\uC774\uD15C\uC785\uB2C8\uB2E4"
   itemDesc_Plus: 
   maxLevel: 10
-  level: 2
+  level: 0
   itemIcon: {fileID: 21300000, guid: e977c1562987f7e41b442f92c93f4234, type: 3}
   baseDamage: 0
   baseCount: 0

@@ -10,8 +10,9 @@ public class Item : MonoBehaviour
     public ItemData data;
     public int level;
     public int MaxLevel;
-
     public itemSlot ItemSlot;
+
+    public Weapon weapon;
 
     Image icon;
     Text textLevel;
@@ -49,6 +50,22 @@ public class Item : MonoBehaviour
     {
         if(data.activePassiveType == ItemData.ActivePassiveType.Active)
         {
+            // 레벨이 1일 경우 생성  
+            switch (data.itemType)
+            {
+                case ItemData.ItemType.activeItem1:
+                    if (data.level == 0)
+                    {
+                        GameObject newWeapon = new GameObject();
+                        weapon = newWeapon.AddComponent<Weapon>();
+                        weapon.Init(data);
+                    }
+                    else
+                    {
+
+                    }
+                    break;
+            }
             ItemSlot.AddActiveItem(data.itemType);
         }
         else if (data.activePassiveType == ItemData.ActivePassiveType.Passive)

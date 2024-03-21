@@ -15,14 +15,14 @@ MonoBehaviour:
   itemType: 0
   activePassiveType: 0
   itemId: 0
-  itemName: "\uACE1\uAD81"
-  itemDesc: "\uACF5\uACA9\uC18D\uB3C4\uAC00 \uC99D\uAC00\uD55C\uB2E4."
+  itemName: "\uC561\uD2F0\uBE0C \uC544\uC774\uD15C 1"
+  itemDesc: "\uC561\uD2F0\uBE0C \uC544\uC774\uD15C\uC785\uB2C8\uB2E4"
   itemDesc_Plus: 
   maxLevel: 10
-  level: 4
+  level: 1
   itemIcon: {fileID: 21300000, guid: e30eb9c3272550d49acfb818d86bd67b, type: 3}
   baseDamage: 0
   baseCount: 0
   damages: []
   counts: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 1138144846155309382, guid: 2fd36c1429078384baf75796f5d0afa4, type: 3}
