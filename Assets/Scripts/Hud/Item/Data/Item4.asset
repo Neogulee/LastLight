@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 3
   activePassiveType: 0
-  itemId: 0
-  itemName: "\uAE5D\uBC14 "
-  itemDesc: "\uCCB4\uB825\uC774 \uC99D\uAC00\uD55C\uB2E4."
+  itemId: 4
+  itemName: "\uC561\uD2F0\uBE0C \uC544\uC774\uD15C 4"
+  itemDesc: "\uC561\uD2F0\uBE0C \uC544\uC774\uD15C\uC785\uB2C8\uB2E4"
   itemDesc_Plus: 
   maxLevel: 10
   level: 1
