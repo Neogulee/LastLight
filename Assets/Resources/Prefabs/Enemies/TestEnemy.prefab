@@ -275,6 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _max_hp: 100
+  <hp>k__BackingField: 0
   _power: 0
 --- !u!114 &7779994688543818082
 MonoBehaviour:
@@ -299,7 +300,7 @@ Animator:
   m_GameObject: {fileID: 2025752894283536155}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b028461c41bafc54e816a260b0a59bed, type: 2}
+  m_Controller: {fileID: 22100000, guid: 01f1d001dded4284080be9167e37bc8e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
