@@ -39,9 +39,6 @@ public class Hud : MonoBehaviour
             case InfoType.Time:
                 break;
             case InfoType.Hp:
-                float curHp = TempGameManager.instance.curHp;
-                float maxHp = TempGameManager.instance.maxHp;
-                mySlider.value = curHp/maxHp;
                 break;
 
         }    

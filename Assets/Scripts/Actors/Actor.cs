@@ -24,7 +24,7 @@ public abstract class Actor : MonoBehaviour, IActor
         hp = max_hp;
     }
 
-    public void take_damage(int damage)
+    public virtual void take_damage(int damage)
     {
         hp = Mathf.Max(0, hp - damage);
         if (hp <= 0)
