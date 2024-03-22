@@ -28,7 +28,17 @@ public class Player : Actor
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        
+
+
     }
+
+    public override void take_damage(int damage)
+    {
+        base.take_damage(damage);
+        event_manager.notify(new OnHpChangeEvent{hp = this.hp});
+    }
+
     public Rigidbody2D GetRigidbody()
     {
         return rigid;

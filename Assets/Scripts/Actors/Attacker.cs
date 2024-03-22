@@ -12,6 +12,18 @@ public class Attacker: MonoBehaviour
         Debug.Assert(0 <= idx && idx < damagers.Count);
     }
     
+    public void on_move_left()
+    {
+        foreach (Damager damager in damagers)
+            damager.knockback_dir = KnockbackDir.LEFT;
+    }
+
+    public void on_move_right()
+    {
+        foreach (Damager damager in damagers)
+            damager.knockback_dir = KnockbackDir.RIGHT;
+    }
+
     public void attack(int idx)
     {
         assert_idx(idx);

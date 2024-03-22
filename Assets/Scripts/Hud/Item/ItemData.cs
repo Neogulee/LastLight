@@ -1,5 +1,6 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 [CreateAssetMenu(fileName = "Item" , menuName ="ItemData")]
 public class ItemData : ScriptableObject
@@ -7,11 +8,6 @@ public class ItemData : ScriptableObject
 
     public enum ItemType
     {
-        Melee,
-        Range,
-        Glove,
-        Shoe,
-        Heal,
         activeItem1,
         activeItem2,
         activeItem3,
@@ -25,8 +21,15 @@ public class ItemData : ScriptableObject
         passiveItem5,
         passiveItem6,
     }
+
+    public enum ActivePassiveType
+    {
+        Active,
+        Passive
+    }
     [Header("# Main Info")]
     public ItemType itemType;
+    public ActivePassiveType activePassiveType;
     public int itemId;
     public string itemName;
     public string itemDesc;
@@ -35,15 +38,15 @@ public class ItemData : ScriptableObject
     public int level = 0;
     public Sprite itemIcon;
 
-    // ¾Æ·¡ ³»¿ëÀº ³ªÁß¿¡ ¾È¾µ °æ¿ì »èÁ¦ ¿¹Á¤ 
+    // ì•„ë˜ ë‚´ìš©ì€ ë‚˜ì¤‘ì— ì•ˆì“¸ ê²½ìš° ì‚­ì œ ì˜ˆì • 
     [Header("# Level Data")]
     public float baseDamage;
     public int baseCount;
     public float[] damages;
     public int[] counts;
+
     [Header("# Weapon")]
     public GameObject projectile;
-
     public Sprite GetSprite()
     {
         return itemIcon;

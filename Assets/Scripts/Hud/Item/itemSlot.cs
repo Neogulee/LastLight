@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class itemSlot : MonoBehaviour
 
     static Dictionary<ItemData.ItemType, int> activeItemData;
     static Dictionary<ItemData.ItemType, int> passiveItemData;
+    // 레벨 여기서 관리 안해서 나중에 수정 예정
     RectTransform[] activeItemSlots = new RectTransform[6];
     RectTransform[] passiveItemSlots = new RectTransform[6];
     const int SLOTCOUNT = 6;
@@ -25,6 +27,7 @@ public class itemSlot : MonoBehaviour
     void Start()
     {
         activeItemData = new Dictionary<ItemData.ItemType, int>();
+        passiveItemData = new Dictionary<ItemData.ItemType, int>();
 
         for(int i = 0; i < SLOTCOUNT; i++)
         {
@@ -65,6 +68,26 @@ public class itemSlot : MonoBehaviour
             case ItemData.ItemType.activeItem6:
                 item = itemAsset.GetActiveData(ItemData.ItemType.activeItem6);
                 break;
+        }
+        if (activeItemData.ContainsKey(itemType))
+        {
+            item.IncreseLevel();
+
+        }
+        else
+        {
+            activeItemData.Add(itemType, 1);
+            item.IncreseLevel();
+        }
+        ShowInventory();
+    }
+
+    public void AddPassiveItem(ItemData.ItemType itemType)
+    {
+        ItemData item;
+        switch (itemType)
+        {
+            default:
             case ItemData.ItemType.passiveItem1:
                 item = itemAsset.GetPassiveData(ItemData.ItemType.passiveItem1);
                 break;
@@ -80,25 +103,20 @@ public class itemSlot : MonoBehaviour
             case ItemData.ItemType.passiveItem5:
                 item = itemAsset.GetPassiveData(ItemData.ItemType.passiveItem5);
                 break;
-            case ItemData.ItemType.passiveItem6:         
+            case ItemData.ItemType.passiveItem6:
                 item = itemAsset.GetPassiveData(ItemData.ItemType.passiveItem6);
                 break;
         }
-
-        if (activeItemData.ContainsKey(itemType))
+        if (passiveItemData.ContainsKey(itemType))
         {
             item.IncreseLevel();
-
         }
         else
         {
-            activeItemData.Add(itemType, 1);
+           passiveItemData.Add(itemType, 1);
+           item.IncreseLevel();
         }
         ShowInventory();
-    }
-
-    public void AddPassiveItem(ItemData.ItemType itemType)
-    {
 
     }
     public void ShowInventory()
@@ -108,10 +126,16 @@ public class itemSlot : MonoBehaviour
         //activeItemSlots[0].Find("Icon")
         foreach (ItemData.ItemType itemType in activeItemData.Keys)
         {
-            Debug.Log(count);
             activeItemSlots[count].Find("icon").GetComponent<Image>().sprite = itemAsset.GetActiveData(itemType).GetSprite();
             activeItemSlots[count].Find("level").GetComponent<TMP_Text>().text = itemAsset.GetActiveData(itemType).GetLevel().ToString();
             count++;
-        } 
+        }
+        count = 0;
+        foreach (ItemData.ItemType itemType in passiveItemData.Keys)
+        {
+            passiveItemSlots[count].Find("icon").GetComponent<Image>().sprite = itemAsset.GetPassiveData(itemType).GetSprite();
+            passiveItemSlots[count].Find("level").GetComponent<TMP_Text>().text = itemAsset.GetPassiveData(itemType).GetLevel().ToString();
+            count++;
+        }
     }
 }

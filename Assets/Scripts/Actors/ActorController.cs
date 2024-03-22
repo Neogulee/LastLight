@@ -12,6 +12,8 @@ public interface IActorController
     public float jump_velocity { get; set; }
     public int max_jump_cnt { get; set; }
     public int current_jump_cnt { get; }
+    public Vector2 velocity { get; set; }
+    public void move(Vector2 dir);
     public void move_left(); 
     public void move_right();
     public void stop();
@@ -33,7 +35,11 @@ public class ActorController : MonoBehaviour, IActorController
     [field: SerializeField]
     public int current_jump_cnt { get; private set; } = 2;
     public float gravity = 10.0f;
-    public Vector2 velocity = Vector2.zero;
+    public Vector2 velocity {
+        get { return _velocity; }
+        set { _velocity = value; }
+    }
+    public Vector2 _velocity = Vector2.zero;
 
     public const float SKIN_WIDTH = 0.015f;
 
@@ -45,11 +51,17 @@ public class ActorController : MonoBehaviour, IActorController
     public int vertical_ray_count = 4;
     public int max_climb_angle = 45;
     public int max_descend_angle = 45;
+    
+    private const float KNOCKBACK_TIME = 0.35f;
+    private Vector2 left_knockback_dir = new Vector2(Mathf.Cos(2.0f * Mathf.PI / 3.0f), Mathf.Sin(2.0f * Mathf.PI / 3.0f)).normalized;
+    private Vector2 right_knockback_dir = new Vector2(Mathf.Cos(Mathf.PI / 3.0f), Mathf.Sin(Mathf.PI / 3.0f)).normalized;
+    private float knockback_power = 0.0f;
+    private float knockback_time = 0.0f;
 
     private bool is_jumping_down = false;
 
-    float horizontal_ray_spacing;
-    float vertical_ray_spacing;
+    private float horizontal_ray_spacing;
+    private float vertical_ray_spacing;
 
     private new BoxCollider2D collider;
     private RaycastOrigins raycast_origins;
@@ -61,23 +73,41 @@ public class ActorController : MonoBehaviour, IActorController
 
     void FixedUpdate()
     {
-        move();
+        update_pos();
+    }
+
+    public void move(Vector2 dir)
+    {
+        if (knockback_time > 0.0f)
+            return;
+
+        velocity = move_velocity * dir.normalized;
+        SendMessage("on_move_left", SendMessageOptions.DontRequireReceiver);
     }
 
     public void move_left()
     {
+        if (knockback_time > 0.0f)
+            return;
+
         velocity = new Vector2(-move_velocity, velocity.y);
         SendMessage("on_move_left", SendMessageOptions.DontRequireReceiver);
     }
 
     public void move_right()
     {
+        if (knockback_time > 0.0f)
+            return;
+
         velocity = new Vector2(move_velocity, velocity.y);
         SendMessage("on_move_right", SendMessageOptions.DontRequireReceiver);
     }
 
     public void stop()
     {
+        if (knockback_time > 0.0f)
+            return;
+
         velocity = new Vector2(0.0f, velocity.y);
         SendMessage("on_stop", SendMessageOptions.DontRequireReceiver);
     }
@@ -102,13 +132,13 @@ public class ActorController : MonoBehaviour, IActorController
         return collision_info.below;
     }
 
-    public void move()
+    private void update_pos()
     {
         update_raycast_origins();
         bool last_on_ground = check_on_platform();
         collision_info.reset();
         
-        Vector2 vec = velocity * Time.fixedDeltaTime;
+        Vector2 vec = _velocity * Time.fixedDeltaTime;
         // if (vec.y < 0)
         //     descend_slope(ref vec);
         if (vec.x != 0 && vec.y != 0.0f)
@@ -119,12 +149,18 @@ public class ActorController : MonoBehaviour, IActorController
             climb_stair(ref vec);
 
         transform.Translate(vec);
-        velocity.y -= gravity * Time.fixedDeltaTime;
+        _velocity.y -= gravity * Time.fixedDeltaTime;
         if (collision_info.below || collision_info.above)
-            velocity.y = 0.0f;
+            _velocity.y = 0.0f;
         if (!last_on_ground && check_on_platform()) {
             current_jump_cnt = 0;
             SendMessage("on_ground", SendMessageOptions.DontRequireReceiver);
+        }
+        
+        // TODO: knockback 당한 시점 고려
+        if (knockback_time > 0.0f) {
+            knockback_time = Mathf.Max(0.0f, knockback_time - Time.fixedDeltaTime);
+            _velocity.x = knockback_time / KNOCKBACK_TIME * knockback_power;
         }
     }
 
@@ -363,6 +399,19 @@ public class ActorController : MonoBehaviour, IActorController
         float direction_x = Mathf.Sign(velocity.x);
         Vector2 ray_origin = (direction_x == -1) ? raycast_origins.bottom_left : raycast_origins.bottom_right;
         velocity = sub_climb_stair(ray_origin, velocity) - ray_origin;
+    }
+
+    public void take_knockback(float amount, bool is_right)
+    {
+        knockback_time = KNOCKBACK_TIME;
+        if (is_right) {
+            velocity = right_knockback_dir * amount;
+            knockback_power = amount;
+        }
+        else {
+            velocity = left_knockback_dir * amount;
+            knockback_power = -amount;
+        }
     }
 
     struct RaycastOrigins

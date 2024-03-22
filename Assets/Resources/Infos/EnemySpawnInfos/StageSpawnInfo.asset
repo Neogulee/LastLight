@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73342e33a81fff1488e995f41914eaea, type: 3}
+  m_Name: StageSpawnInfo
+  m_EditorClassIdentifier: 
+  periodic_spawns:
+  - enemy: {fileID: 2025752894283536155, guid: be2fd69c57947a2438f7da4d7a941459, type: 3}
+    start_time: 0
+    end_time: 10
+    spawn_rate: 0.5
+  - enemy: {fileID: 2025752894283536155, guid: b81bd9a202ab4674ca737bb560bcf310, type: 3}
+    start_time: 5
+    end_time: 15
+    spawn_rate: 0.25
+  burst_spawns:
+  - enemy: {fileID: 7962737423844568782, guid: 21b1876a8c44e5a4bad9a97070f1c28b, type: 3}
+    start_time: 10
+    amount: 5
