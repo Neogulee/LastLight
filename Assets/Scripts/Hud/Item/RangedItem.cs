@@ -6,10 +6,10 @@ public class RangedItem : MonoBehaviour
 {
     public float damage;
 
-    Rigidbody rigid;
+    Rigidbody2D rigid;
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody>();
+        rigid = GetComponent<Rigidbody2D>();
     }
     
     public void Init(float dagame , Vector3 dir) 

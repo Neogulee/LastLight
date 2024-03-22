@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6d4bf360fcf6b2a448b778e59e841d5e
+guid: 04e8ff3b36c920c4b965b113adc6aa68
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,18 +103,61 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fan activ 2_0
+      name: elevator 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae021c36a1584464b89cf7d236e030c6
+      internalID: -1668214508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elevator 1_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28342cb320d24f942bf07e55ab2c1e7f
+      internalID: -401130440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elevator 1_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
+        width: 64
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -119,40 +166,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd58efc9af4861242b31b23c4e6f5d0e
-      internalID: 697604661
+      spriteID: de7912a82df3ebf4a981a9bd81da60b6
+      internalID: -1407360679
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fan activ 2_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5857eab91a987a4c84b3e7c7ed016e2
-      internalID: -439535299
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fan activ 2_2
+      name: elevator 1_3
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 32
+        width: 64
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -161,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d893a18dfd8f924a84f016f7bbb5f92
-      internalID: -1010938274
+      spriteID: 5c6591a8d5048da469e6b7c74933dab4
+      internalID: 2097409510
       vertices: []
       indices: 
       edges: []
@@ -178,12 +204,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fan activ 2_0: 697604661
-      fan activ 2_1: -439535299
-      fan activ 2_2: -1010938274
-  spritePackingTag: 
+      elevator 1_0: -1668214508
+      elevator 1_1: -401130440
+      elevator 1_2: -1407360679
+      elevator 1_3: 2097409510
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
