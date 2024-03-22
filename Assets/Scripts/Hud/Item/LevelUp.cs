@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,24 +21,25 @@ public class LevelUp : MonoBehaviour
     public void Hide()
     {
         rect.localScale = Vector3.zero;
-        // Á¤Áö ½ÃÄ×´ø °ÔÀÓ ´Ù½Ã Àç°Ô 
+        // ì •ì§€ ì‹œì¼°ë˜ ê²Œì„ ë‹¤ì‹œ ì¬ê²Œ 
     }
  
     void Next()
     {
-        // ÀüÃ¼ ºñÈ°¼ºÈ­
+        // ì „ì²´ ë¹„í™œì„±í™”
+        Time.timeScale = 0f;
         foreach(Item item in items)
         {
             item.gameObject.SetActive(false);
         }
 
-        // ·£´ıÇÏ°Ô 3°³ È°¼ºÈ­ 
+        // ëœë¤í•˜ê²Œ 3ê°œ í™œì„±í™” 
         int[] ran = new int[3];
         while (true)
         {
 
-            // ¾Ë°í¸®Áò»ó ¹®Á¦°¡ ÀÖ´Âµ¥ ÃßÈÄ¿¡ ¼öÁ¤ ¿¹Á¤
-            // ¹®Á¦ 1. ¸¸·¦ÀÏ °æ¿ì •û°í ´Ù½ÃÇÏ´Â ÄÚµå°¡ ¾øÀ½ 
+            // ì•Œê³ ë¦¬ì¦˜ìƒ ë¬¸ì œê°€ ìˆëŠ”ë° ì¶”í›„ì— ìˆ˜ì • ì˜ˆì •
+            // ë¬¸ì œ 1. ë§Œë©ì¼ ê²½ìš° ëº´ê³  ë‹¤ì‹œí•˜ëŠ” ì½”ë“œê°€ ì—†ìŒ 
             ran[0] = Random.Range(0, items.Length);
             ran[1] = Random.Range(0, items.Length);
             ran[2] = Random.Range(0, items.Length);

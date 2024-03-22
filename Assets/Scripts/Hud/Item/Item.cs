@@ -48,7 +48,8 @@ public class Item : MonoBehaviour
     
     public void OnClick()
     {
-        if(data.activePassiveType == ItemData.ActivePassiveType.Active)
+        Time.timeScale = 1f;
+        if (data.activePassiveType == ItemData.ActivePassiveType.Active)
         {
             // 레벨이 1일 경우 생성  
             switch (data.itemType)
