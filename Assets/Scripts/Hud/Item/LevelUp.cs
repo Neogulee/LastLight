@@ -21,31 +21,31 @@ public class LevelUp : MonoBehaviour
     public void Hide()
     {
         rect.localScale = Vector3.zero;
-        // Á¤Áö ½ÃÄ×´ø °ÔÀÓ ´Ù½Ã Àç°Ô 
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½×´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ 
     }
  
     void Next()
     {
-        // ÀüÃ¼ ºñÈ°¼ºÈ­
+        // ï¿½ï¿½Ã¼ ï¿½ï¿½È°ï¿½ï¿½È­
         foreach(Item item in items)
         {
             item.gameObject.SetActive(false);
         }
 
-        // ·£´ýÇÏ°Ô 3°³ È°¼ºÈ­ 
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ 3ï¿½ï¿½ È°ï¿½ï¿½È­ 
         int[] ran = new int[3];
         while (true)
         {
 
-            // ¾Ë°í¸®Áò»ó ¹®Á¦°¡ ÀÖ´Âµ¥ ÃßÈÄ¿¡ ¼öÁ¤ ¿¹Á¤
-            // ¹®Á¦ 1. ¸¸·¦ÀÏ °æ¿ì •û°í ´Ù½ÃÇÏ´Â ÄÚµå°¡ ¾øÀ½ 
+            // ï¿½Ë°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Âµï¿½ ï¿½ï¿½ï¿½Ä¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            // ï¿½ï¿½ï¿½ï¿½ 1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ï¿½Ï´ï¿½ ï¿½Úµå°¡ ï¿½ï¿½ï¿½ï¿½ 
             ran[0] = Random.Range(0, items.Length);
             ran[1] = Random.Range(0, items.Length);
             ran[2] = Random.Range(0, items.Length);
             if (ran[0] != ran[1] && ran[1] != ran[2] && ran[0] != ran[2])
                 break;
         }
-        for(int index = 0;index < ran.Length; index++)
+        for(int index = 0; index < ran.Length; index++)
         {
             Item ranItem = items[ran[index]];
             ranItem.gameObject.SetActive(true);

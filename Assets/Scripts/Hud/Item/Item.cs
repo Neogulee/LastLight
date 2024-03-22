@@ -4,22 +4,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Item : MonoBehaviour
 {
-    const int MAX_LEVEL = 100;
     public ItemData data;
-    public int level;
-    public int MaxLevel;
-    public itemSlot ItemSlot;
-
+    public int level { get; private set; } = 1;
+    public ItemSlot itemSlot;
     public Weapon weapon;
 
     Image icon;
     Text textLevel;
-    Text ItemName;
-    Text ItemDesc;
-
-
+    Text itemName;
+    Text itemDesc;
 
     void Awake()
     {
@@ -28,50 +24,32 @@ public class Item : MonoBehaviour
 
         Text[] texts = GetComponentsInChildren<Text>();
         textLevel = texts[0];
-        ItemName = texts[1];
-        ItemDesc = texts[2];
-        ItemName.text = data.itemName;
-        ItemDesc.text = data.itemDesc;
-        data.level = 0;
-    }
-    
-    void LateUpdate()
-    {
-        //textLevel.text = "Lv." + (data.level);
+        itemName = texts[1];
+        itemDesc = texts[2];
+        itemName.text = data.itemName;
+        itemDesc.text = data.itemDesc;
+
+        itemSlot = FindObjectOfType<ItemSlot>();
     }
 
     void OnEnable()
     {
-        textLevel.text = "Lv." + (data.level+1);
+        textLevel.text = "Lv." + level.ToString();
     }
-
     
     public void OnClick()
     {
-        if(data.activePassiveType == ItemData.ActivePassiveType.Active)
+        if (level == 1)
         {
-            // 레벨이 1일 경우 생성  
-            switch (data.itemType)
-            {
-                case ItemData.ItemType.activeItem1:
-                    if (data.level == 0)
-                    {
-                        GameObject newWeapon = new GameObject();
-                        weapon = newWeapon.AddComponent<Weapon>();
-                        weapon.Init(data);
-                    }
-                    else
-                    {
-
-                    }
-                    break;
-            }
-            ItemSlot.AddActiveItem(data.itemType);
+            GameObject newWeapon = new GameObject();
+            weapon = newWeapon.AddComponent<Weapon>();
+            weapon.Init(data);
         }
-        else if (data.activePassiveType == ItemData.ActivePassiveType.Passive)
-        {
-            ItemSlot.AddPassiveItem(data.itemType);
-        }
+        itemSlot.AddItem(this);
+    }
 
+    public void IncreaseLevel()
+    {
+        level = Mathf.Min(level + 1, data.maxLevel);
     }
 }

@@ -54,7 +54,6 @@ public class PlatformDetector : MonoBehaviour, IPlatformDetector
 
     public int get_nearest_platform(Vector2 pos)
     {
-        // TODO: 
         float min_dist = 1e8f;
         int min_idx = -1;
         for (int i = 0; i < platforms.Count; i++)
@@ -182,11 +181,8 @@ public class PlatformDetector : MonoBehaviour, IPlatformDetector
 
                 edges[i].Add((j, jump_speed, path));
 
-                // if (jump_speed < 0.0f || jump_speed > 15.0f)
-                //     continue;
                 // if (jump_speed <= Mathf.Sqrt(10.0f))
                 //     jump_speed = 0.0f;
-                // edges[i].Add((j, jump_speed, path));
             }
         }
     }
