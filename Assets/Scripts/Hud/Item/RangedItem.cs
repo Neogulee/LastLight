@@ -12,17 +12,14 @@ public class RangedItem : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
     }
     
-    public void Init(float dagame , Vector3 dir) 
+    public void Init(float damage , Vector3 dir , float size) 
     {
+        this.damage = damage;
         rigid.velocity = dir*15f;
         Invoke("DestroyBullet", 3f);
+        // 나중에 scale 올리는 코드 추가 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // 나중에 몬스터 충돌 함수 추가 
-
-    }
     void DestroyBullet()
     {
         gameObject.SetActive(false);

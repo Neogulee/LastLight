@@ -12,16 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372c6e1020306bb4a8ed93deeba0048f, type: 3}
   m_Name: Item2
   m_EditorClassIdentifier: 
-  itemType: 1
   activePassiveType: 0
   itemId: 1
   itemName: "\uC561\uD2F0\uBE0C \uC544\uC774\uD15C2"
   itemDesc: "\uC561\uD2F0\uBE0C \uC544\uC774\uD15C\uC785\uB2C8\uB2E4"
   itemDesc_Plus: 
   maxLevel: 10
-  level: 1
   itemIcon: {fileID: 21300000, guid: 28a02df1369b7fd4eab040459b0cc450, type: 3}
-  baseDamage: 0
+  baseDamage: 5
   baseCount: 0
   damages: []
   counts: 
