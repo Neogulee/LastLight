@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 
 public class Item : MonoBehaviour
@@ -41,11 +42,15 @@ public class Item : MonoBehaviour
     {
         if (level == 1)
         {
-            GameObject newWeapon = new GameObject();
-            weapon = newWeapon.AddComponent<Weapon>();
+            weapon = WeaponFactory.CreateWeapon(data.itemId);
             weapon.Init(data);
         }
+        else
+        {
+            weapon.IncreaseLevel();
+        }
         itemSlot.AddItem(this);
+        IncreaseLevel();
     }
 
     public void IncreaseLevel()
