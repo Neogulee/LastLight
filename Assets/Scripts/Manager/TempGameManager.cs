@@ -17,8 +17,8 @@ public class TempGameManager : MonoBehaviour
 
     public LevelUp uiLevelUp;
     public Player player;
-
     public PoolManager poolManager;
+    public WeaponManager weaponManager;
 
 
     private void Awake()

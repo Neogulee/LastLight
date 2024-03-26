@@ -13,10 +13,10 @@ public abstract class Weapon : MonoBehaviour
 
     public void Init(ItemData data)
     {
-        Player player = TempGameManager.instance.player;
+        WeaponManager weapon = TempGameManager.instance.weaponManager;
 
         name = "Weapon" + data.itemId;
-        transform.parent = player.transform;
+        transform.parent = weapon.transform;
         transform.localPosition = Vector3.zero;
 
         id = data.itemId;

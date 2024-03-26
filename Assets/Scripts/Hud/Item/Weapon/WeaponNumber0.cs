@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -10,7 +11,8 @@ public class WeaponNumber0 : Weapon
     public int count = 1;
     void Update()
     {
-        transform.Rotate(Vector3.back * speed* Time.deltaTime);
+        transform.Rotate(Vector3.back * speed * Time.deltaTime);
+        transform.position = TempGameManager.instance.player.transform.position;
     }
 
     private void Start()
@@ -18,6 +20,7 @@ public class WeaponNumber0 : Weapon
         Debug.Log("check1");
         Batch();
     }
+
     
     public void Batch()
     {
