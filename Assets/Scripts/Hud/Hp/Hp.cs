@@ -5,10 +5,9 @@ using UnityEngine;
 public class Hp : MonoBehaviour
 {
     [SerializeField] private Transform hp_bar;
-    [SerializeField] EventManager event_manager;
     private void Start()
     {
-       event_manager.register<OnHpChangeEvent>(OnHpChange);
+        Locator.event_manager.register<OnHpChangeEvent>(OnHpChange);
     }
     
     public void OnHpChange(IEventParam event_param)
