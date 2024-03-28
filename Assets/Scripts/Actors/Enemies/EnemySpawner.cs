@@ -27,12 +27,17 @@ public class EnemySpawner : MonoBehaviour
         int platform = platform_detector.get_nearest_platform(Locator.player.transform.position + new Vector3(x, y));
         Vector2 pos = platform_detector.get_pos(platform) + Vector2.down * 0.01f;
 
-        var hit_left = Physics2D.Raycast(pos + 0.25f * Vector2.left, Vector2.up, 1.0f, LayerMask.GetMask("Ground"));
-        var hit_right = Physics2D.Raycast(pos + 0.25f * Vector2.right, Vector2.up, 1.0f, LayerMask.GetMask("Ground"));
-        if (!hit_left && !hit_right)
+        bool is_hit = false;
+        float y_pos = -Mathf.Infinity;
+        for (int i = 0; i < 2; i++)
+        {
+            var hit = Physics2D.Raycast(pos - new Vector2(0.5f * (i - 1), 0.0f), Vector2.up, 1.0f, LayerMask.GetMask("Ground"));
+            is_hit |= hit;
+            y_pos = Mathf.Max(y_pos, hit.point.y + 0.015f);
+        }
+        if (!is_hit)
             return false;
 
-        float y_pos = Mathf.Max(hit_left.point.y, hit_right.point.y) + 0.015f;
         BoxCollider2D collider = enemy.GetComponent<BoxCollider2D>();
         Vector2 spawn_pos = new Vector2(pos.x, y_pos + collider.size.y / 2.0f - collider.offset.y);
         Instantiate(enemy, spawn_pos, Quaternion.identity);
