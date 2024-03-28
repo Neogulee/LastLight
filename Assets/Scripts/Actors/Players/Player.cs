@@ -29,7 +29,7 @@ public class Player : Actor
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         
-
+        
 
     }
 
