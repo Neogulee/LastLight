@@ -41,10 +41,20 @@ public class ItemSlot : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        if (activeItems.Contains(item))
-            item.IncreaseLevel();
+        if(item.data.activePassiveType == ItemData.ActivePassiveType.ACTIVE)
+        {
+            if (!activeItems.Contains(item))
+            {
+                activeItems.Add(item);
+            }
+        }
         else
-            activeItems.Add(item);
+        {
+            if (!passiveItems.Contains(item))
+            {
+                passiveItems.Add(item);
+            }
+        }
         ShowInventory();
     }
 
