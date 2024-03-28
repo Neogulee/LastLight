@@ -5,7 +5,7 @@ using UnityEditor.Rendering;
 using UnityEngine;
 
 
-public class WeaponNumber0 : Weapon
+public class Shield : Weapon
 {
     public float speed = 150f;
     public int count = 1;

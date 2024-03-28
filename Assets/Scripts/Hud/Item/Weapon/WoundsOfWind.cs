@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponNumber1 : Weapon
+public class WoundsOfWind : Weapon
 {
     void Update()
     {
