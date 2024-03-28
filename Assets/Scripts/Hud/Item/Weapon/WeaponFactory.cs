@@ -29,6 +29,7 @@ public class WeaponFactory : MonoBehaviour
                 newWeapon = new GameObject().AddComponent<WeaponNumber5>();
                 break;
             default:
+                newWeapon = new GameObject().AddComponent<DummyWeapon>();
                 Debug.LogError("Invalid itemId!");
                 break;
         }
