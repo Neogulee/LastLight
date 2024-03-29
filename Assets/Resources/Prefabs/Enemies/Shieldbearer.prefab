@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 1767304915387278982}
   - component: {fileID: 5771707746094656877}
   - component: {fileID: 3220058518526255340}
+  - component: {fileID: 6401336255271207590}
   - component: {fileID: 7022919104222109233}
   m_Layer: 8
   m_Name: Shieldbearer
@@ -252,7 +253,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -0.125}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.35, y: 0.35}
     oldSize: {x: 4, y: 3}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -337,6 +338,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagers:
   - {fileID: 6151193084550851127}
+--- !u!114 &6401336255271207590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025752894283536155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b7bc3f0fbb08d478ba044e3be2448f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: 90
+  collision_mask:
+    serializedVersion: 2
+    m_Bits: 8
+  one_way_collision_mask:
+    serializedVersion: 2
+    m_Bits: 0
+  horizontal_ray_count: 4
+  vertical_ray_count: 4
+  max_climb_angle: 45
+  max_descend_angle: 45
 --- !u!114 &7022919104222109233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,15 +377,3 @@ MonoBehaviour:
   <jump_velocity>k__BackingField: 0
   <max_jump_cnt>k__BackingField: 0
   <current_jump_cnt>k__BackingField: 0
-  gravity: 90
-  _velocity: {x: 0, y: 0}
-  collision_mask:
-    serializedVersion: 2
-    m_Bits: 8
-  one_way_collision_mask:
-    serializedVersion: 2
-    m_Bits: 0
-  horizontal_ray_count: 4
-  vertical_ray_count: 4
-  max_climb_angle: 45
-  max_descend_angle: 45

@@ -25,6 +25,9 @@ public class EventManager:  MonoBehaviour, IEventManager
     public void notify(IEventParam event_param)
     {
         Type event_type = event_param.GetType();
+        if (!events.ContainsKey(event_type))
+            return;
+            
         foreach (Action<IEventParam> action in events[event_type])
             action(event_param);
     }
