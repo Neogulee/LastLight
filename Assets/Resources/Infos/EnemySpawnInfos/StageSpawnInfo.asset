@@ -23,5 +23,5 @@ MonoBehaviour:
     spawn_rate: 0.25
   burst_spawns:
   - enemy: {fileID: 7962737423844568782, guid: 21b1876a8c44e5a4bad9a97070f1c28b, type: 3}
-    start_time: 10
+    start_time: 100
     amount: 5

@@ -11,6 +11,9 @@ public interface IActor
     public void destroy();
 }
 
+/// <summary>
+/// Callbacks: on_damaged(int damage)
+/// </summary>
 public abstract class Actor : MonoBehaviour, IActor
 {
     public int _max_hp = 100;
@@ -27,6 +30,7 @@ public abstract class Actor : MonoBehaviour, IActor
     public virtual void take_damage(int damage)
     {
         hp = Mathf.Max(0, hp - damage);
+        SendMessage("on_damaged", damage, SendMessageOptions.DontRequireReceiver);
         if (hp <= 0)
             destroy();
     }
