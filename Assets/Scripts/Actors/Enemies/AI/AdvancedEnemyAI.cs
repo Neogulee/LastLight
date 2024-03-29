@@ -6,7 +6,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Utils;
 
-
+/// <summary>
+/// Callbacks: on_attack()
+/// </summary>
 public class AdvancedEnemyAI : EnemyAI
 {
     public PlatformDetector platform_detector = null;

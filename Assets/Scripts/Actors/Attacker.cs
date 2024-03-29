@@ -7,6 +7,11 @@ using UnityEngine;
 public class Attacker: MonoBehaviour
 {
     public List<Damager> damagers = new();
+    void Awake()
+    {
+        
+    }
+
     public void assert_idx(int idx)
     {
         Debug.Assert(0 <= idx && idx < damagers.Count);

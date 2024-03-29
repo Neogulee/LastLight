@@ -15,7 +15,7 @@ public class Follow : MonoBehaviour
         rect = GetComponent<RectTransform>();
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         Vector3 playerScreenPos = Camera.main.WorldToScreenPoint(player.transform.position);
         playerScreenPos.y += 50;
