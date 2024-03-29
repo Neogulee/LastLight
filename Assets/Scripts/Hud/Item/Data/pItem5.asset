@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activePassiveType: 1
   itemId: 10
-  itemName: "\uD328\uC2DC\uBE0C \uC544\uC774\uD15C 5"
+  itemName: "\uD328\uC2DC\uBE0C \uC544\uC774\uD15C 4"
   itemDesc: "\uD328\uC2DC\uBE0C \uC544\uC774\uD15C\uC785\uB2C8\uB2E4"
   itemDesc_Plus: 
   maxLevel: 20

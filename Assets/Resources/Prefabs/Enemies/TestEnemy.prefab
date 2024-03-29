@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 1767304915387278982}
   - component: {fileID: 5771707746094656877}
   - component: {fileID: 3220058518526255340}
+  - component: {fileID: 6401336255271207590}
   - component: {fileID: 7022919104222109233}
   - component: {fileID: 6814807256917984772}
   m_Layer: 8
@@ -340,7 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagers:
   - {fileID: 6151193084550851127}
---- !u!114 &7022919104222109233
+--- !u!114 &6401336255271207590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -349,15 +350,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2025752894283536155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb9b1429155ea0c4bb563a244107b3c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 34b7bc3f0fbb08d478ba044e3be2448f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <move_velocity>k__BackingField: 10
-  <jump_velocity>k__BackingField: 10
-  <max_jump_cnt>k__BackingField: 2
-  <current_jump_cnt>k__BackingField: 2
   gravity: 90
-  _velocity: {x: 0, y: 0}
   collision_mask:
     serializedVersion: 2
     m_Bits: 8

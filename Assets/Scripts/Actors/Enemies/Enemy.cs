@@ -15,7 +15,7 @@ public class Enemy : Actor, IEnemy
     protected override void Awake()
     {
         base.Awake();
-
+        
         power = _power;
     }
 }
