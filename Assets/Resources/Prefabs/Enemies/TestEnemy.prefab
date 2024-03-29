@@ -115,8 +115,8 @@ GameObject:
   - component: {fileID: 5771707746094656877}
   - component: {fileID: 3220058518526255340}
   - component: {fileID: 6401336255271207590}
-  - component: {fileID: 7022919104222109233}
   - component: {fileID: 6814807256917984772}
+  - component: {fileID: 4102599472297047984}
   m_Layer: 8
   m_Name: TestEnemy
   m_TagString: Untagged
@@ -380,6 +380,22 @@ MonoBehaviour:
   - {fileID: 6033693105611937913}
   - {fileID: 5791295761232776486}
   blink_material: {fileID: -876546973899608171, guid: 99de2d42274e13340ad97ebf5f31a070, type: 3}
+--- !u!114 &4102599472297047984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025752894283536155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb9b1429155ea0c4bb563a244107b3c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <move_velocity>k__BackingField: 10
+  <jump_velocity>k__BackingField: 10
+  <max_jump_cnt>k__BackingField: 1
+  <current_jump_cnt>k__BackingField: 1
 --- !u!1 &5075138655270997335
 GameObject:
   m_ObjectHideFlags: 0
