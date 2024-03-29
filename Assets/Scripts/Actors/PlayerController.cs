@@ -16,8 +16,11 @@ public class PlayerController : MonoBehaviour
         player.EventRegister<OnRightMoveEvent>(OnRightMove);
         player.EventRegister<OffLeftMoveEvent>(OffLeftMove);
         player.EventRegister<OffRightMoveEvent>(OffRightMove);
+        player.EventRegister<PlayerDash>(OnDash);
     }
-    
+    public void OnDash(IEventParam event_param)
+    {
+    }
     public void OnJump(IEventParam event_param)
     {
         controller.jump();

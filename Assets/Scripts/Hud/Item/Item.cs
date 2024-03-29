@@ -9,9 +9,10 @@ using static UnityEditor.Progress;
 public class Item : MonoBehaviour
 {
     public ItemData data;
-    public int level { get; private set; } = 1;
+    public int level{ get; private set; } = 0;
     public ItemSlot itemSlot;
     public Weapon weapon;
+
 
     Image icon;
     Text textLevel;
@@ -40,17 +41,18 @@ public class Item : MonoBehaviour
     
     public void OnClick()
     {
-        if (level == 1)
+        if (level == 0)
         {
             weapon = WeaponFactory.CreateWeapon(data.itemId);
             weapon.Init(data);
+            IncreaseLevel();
         }
         else
         {
             weapon.IncreaseLevel();
+            IncreaseLevel();
         }
         itemSlot.AddItem(this);
-        IncreaseLevel();
     }
 
     public void IncreaseLevel()
