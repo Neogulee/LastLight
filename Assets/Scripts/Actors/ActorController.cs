@@ -49,7 +49,7 @@ public class ActorController : MonoBehaviour, IActorController
     void FixedUpdate()
     {
         bool on_ground = check_on_platform();
-        if (!last_on_ground && on_ground) {
+        if (!last_on_ground && on_ground && physics.velocity.y <= 0.0f) {
             current_jump_cnt = 0;
             SendMessage("on_ground", SendMessageOptions.DontRequireReceiver);
         }
