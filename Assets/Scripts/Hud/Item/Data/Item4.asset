@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activePassiveType: 0
   itemId: 3
-  itemName: "\uC561\uD2F0\uBE0C \uC544\uC774\uD15C 3"
-  itemDesc: "\uC561\uD2F0\uBE0C \uC544\uC774\uD15C\uC785\uB2C8\uB2E4"
-  itemDesc_Plus: 
+  itemName: "\uAC8C\uC774\uD2B8 \uC624\uBE0C \uBC14\uBE4C\uB860 "
+  itemDesc: "\uC218\uB9CE\uC740 \uAC80\uB4E4\uC774 \uB098\uB97C \uBC18\uAE30\uB124"
+  itemDesc_Plus: "\uC77C\uC815 \uC8FC\uAE30\uB9C8\uB2E4 \uACF5\uACA9\uC2DC \uBC1C\uB3D9"
   maxLevel: 10
   itemIcon: {fileID: 21300000, guid: 0010e352a9b1abc4ebab3f3235c95e0b, type: 3}
   baseDamage: 5

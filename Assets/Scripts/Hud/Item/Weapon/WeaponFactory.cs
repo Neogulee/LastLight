@@ -20,7 +20,7 @@ public class WeaponFactory : MonoBehaviour
                 newWeapon = new GameObject().AddComponent<FlyingAx>();
                 break;
             case 3:
-                newWeapon = new GameObject().AddComponent<WeaponNumber3>();
+                newWeapon = new GameObject().AddComponent<GateofBabylon>();
                 break;
             case 4:
                 newWeapon = new GameObject().AddComponent<WeaponNumber4>();
