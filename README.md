@@ -28,6 +28,7 @@
 
 ### 2. 소개 영상
 
+중간 시연 영상: https://drive.google.com/file/d/1HzkLl8NVs1mU8vPgafL4tWj_5FZi9jle/view?usp=sharing
 
 ### 3. 팀 소개
 
