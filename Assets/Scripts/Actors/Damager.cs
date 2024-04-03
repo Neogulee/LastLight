@@ -18,6 +18,8 @@ public class Damager: MonoBehaviour
     public LayerMask target_layer = 0;
     public int damage = 1;
     public float knockback_power = 3.0f;
+
+    public float up_power = 0;
     public KnockbackDir knockback_dir = KnockbackDir.AUTO;
     private HashSet<Collider2D> damaged = new();
     new private Collider2D collider = null;
@@ -55,7 +57,7 @@ public class Damager: MonoBehaviour
             bool is_right = knockback_dir == KnockbackDir.RIGHT;
             if (knockback_dir == KnockbackDir.AUTO)
                 is_right = (target.transform.position - transform.position).x < 0.0f;
-            actor_controller.take_knockback(knockback_power, is_right);
+            actor_controller.take_knockback(knockback_power, is_right,up_power);
         }
     }
 }

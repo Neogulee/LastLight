@@ -16,9 +16,12 @@ public class PlayerAttack : MonoBehaviour
     {
         if(player.GetAnimator().GetBool("isJump") || player.GetAnimator().GetBool("isDoubleJump"))
         {
-            return;
+            player.GetAnimator().SetBool("isAttack", true);
         }
-        player.GetAnimator().SetBool("isAttack", true);
+        else
+        {
+            player.GetAnimator().SetBool("isAttack", true);
+        }
     }
     
     public void OffAttack()

@@ -117,15 +117,17 @@ public class ActorController : MonoBehaviour, IActorController
         return physics.collision_info.below;
     }
 
-    public void take_knockback(float amount, bool is_right)
+    public void take_knockback(float amount, bool is_right, float upPower = 0)
     {
         knockback_time = KNOCKBACK_TIME;
         if (is_right) {
             physics.velocity = right_knockback_dir * amount;
+            physics.velocity += new Vector2(0.0f, upPower);
             knockback_power = amount;
         }
         else {
             physics.velocity = left_knockback_dir * amount;
+            physics.velocity += new Vector2(0.0f, upPower);
             knockback_power = -amount;
         }
     }

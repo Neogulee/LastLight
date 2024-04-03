@@ -16,10 +16,20 @@ public class PlayerController : MonoBehaviour
         player.EventRegister<OnRightMoveEvent>(OnRightMove);
         player.EventRegister<OffLeftMoveEvent>(OffLeftMove);
         player.EventRegister<OffRightMoveEvent>(OffRightMove);
+        player.EventRegister<OnUpEvent>(OnUp);
+        player.EventRegister<OffUpEvent>(OffUp);
         player.EventRegister<PlayerDash>(OnDash);
     }
     public void OnDash(IEventParam event_param)
     {
+    }
+    public void OnUp(IEventParam event_param)
+    {
+        player.GetAnimator().SetBool("isUp", true);
+    }
+    public void OffUp(IEventParam event_param)
+    {
+        player.GetAnimator().SetBool("isUp", false);
     }
     public void OnJump(IEventParam event_param)
     {
