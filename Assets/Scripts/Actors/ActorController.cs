@@ -49,7 +49,7 @@ public class ActorController : MonoBehaviour, IActorController
     void FixedUpdate()
     {
         bool on_ground = check_on_platform();
-        if (!last_on_ground && on_ground) {
+        if (!last_on_ground && on_ground && physics.velocity.y <= 0.0f) {
             current_jump_cnt = 0;
             SendMessage("on_ground", SendMessageOptions.DontRequireReceiver);
         }
@@ -117,15 +117,17 @@ public class ActorController : MonoBehaviour, IActorController
         return physics.collision_info.below;
     }
 
-    public void take_knockback(float amount, bool is_right)
+    public void take_knockback(float amount, bool is_right, float upPower = 0)
     {
         knockback_time = KNOCKBACK_TIME;
         if (is_right) {
             physics.velocity = right_knockback_dir * amount;
+            physics.velocity += new Vector2(0.0f, upPower);
             knockback_power = amount;
         }
         else {
             physics.velocity = left_knockback_dir * amount;
+            physics.velocity += new Vector2(0.0f, upPower);
             knockback_power = -amount;
         }
     }

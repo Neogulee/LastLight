@@ -41,6 +41,11 @@ public class PlayerAnimator : MonoBehaviour
             player.GetAnimator().SetBool("isDoubleJump", true);
     }
 
+    public void off_up()
+    {
+        player.GetAnimator().SetBool("isUp", false);
+    }
+
     public void on_ground()
     {
         player.GetAnimator().SetBool("isJump", false);

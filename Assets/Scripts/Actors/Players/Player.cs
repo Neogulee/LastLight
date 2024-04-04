@@ -7,7 +7,6 @@ public class Player : Actor
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpPower;
-    [SerializeField]private EventManager event_manager;
     private Rigidbody2D rigid;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -36,7 +35,7 @@ public class Player : Actor
     public override void take_damage(int damage)
     {
         base.take_damage(damage);
-        event_manager.notify(new OnHpChangeEvent{hp = this.hp});
+        Locator.event_manager.notify(new OnHpChangeEvent{hp = this.hp});
     }
 
     public Rigidbody2D GetRigidbody()
@@ -57,7 +56,7 @@ public class Player : Actor
     }
     public void EventRegister<T>(Action<IEventParam> action)
     {
-        event_manager.register<T>(action);
+        Locator.event_manager.register<T>(action);
     }
     public float GetMoveSpeed()
     {

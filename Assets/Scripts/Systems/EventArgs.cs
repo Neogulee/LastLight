@@ -16,10 +16,12 @@ public class OnDestroyEvent: IEventParam
 public class OnJumpEvent: IEventParam{}
 
 public class OnLeftMoveEvent: IEventParam{}
+public class OnUpEvent: IEventParam{}
 public class OnRightMoveEvent: IEventParam{}
 
 public class OffLeftMoveEvent: IEventParam{}
 public class OffRightMoveEvent: IEventParam{}
+public class OffUpEvent: IEventParam{}
 
 public class PlayerDash: IEventParam{}
 
