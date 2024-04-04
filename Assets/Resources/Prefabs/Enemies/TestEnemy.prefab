@@ -96,6 +96,7 @@ MonoBehaviour:
     m_Bits: 128
   damage: 1
   knockback_power: 10
+  up_power: 0
   knockback_dir: 0
 --- !u!1 &2025752894283536155
 GameObject:
@@ -378,6 +379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage_effects:
   - {fileID: 6033693105611937913}
+  destroy_effects:
   - {fileID: 5791295761232776486}
   blink_material: {fileID: -876546973899608171, guid: 99de2d42274e13340ad97ebf5f31a070, type: 3}
 --- !u!114 &4102599472297047984
@@ -437,7 +439,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5075138655270997335}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 23cc2d3495dd5fa4298338379c9fc0e2, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 2ef4a3ee31a9f024da46605e7d83f83e, type: 3}
   m_InitialEventName: 
   m_InitialEventNameOverriden: 1
   m_StartSeed: 0

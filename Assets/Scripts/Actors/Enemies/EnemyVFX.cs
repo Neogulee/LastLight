@@ -6,7 +6,7 @@ using UnityEngine.VFX;
 
 public class EnemyVFX : MonoBehaviour
 {
-    public List<VisualEffect> damage_effects;
+    public List<VisualEffect> damage_effects, destroy_effects;
     public Material blink_material;
     private SpriteRenderer sprite_renderer;
     private Material original_material;
@@ -28,11 +28,18 @@ public class EnemyVFX : MonoBehaviour
         sprite_renderer.material = blink_material;
         foreach (var vfx in damage_effects)
         {
-            if (vfx.HasVector2("Velocity"))
-                vfx.SetVector2("Velocity", physics.velocity);
-            vfx.Play();
+            var created = Locator.vfx_factory.create(vfx);
+            if (created.HasVector2("Velocity"))
+                created.SetVector2("Velocity", physics.velocity);
+            created.Play();
         }
         Invoke("stop_blink", 0.15f);
+    }
+
+    public void on_destroyed()
+    {
+        foreach (var vfx in destroy_effects)
+            Locator.vfx_factory.create(vfx);
     }
 
     public void stop_blink()
