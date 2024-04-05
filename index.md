@@ -1,6 +1,24 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+2024-28조 [Last Light](https://kookmin-sw.github.io/capstone-2024-28/)
+=======
+2024-28조 [Last Light](kookmin-sw.github.io/capstone-2024-28/)
+>>>>>>> 85f43ce7 (Update index.md)
+=======
+2024-28조 [Last Light](www.kookmin-sw.github.io/capstone-2024-28/)
+>>>>>>> 56d7404d (Update index.md)
+=======
+2024-28조 [Last Light](https://www.kookmin-sw.github.io/capstone-2024-28/)
+>>>>>>> 3a460227 (Update index.md)
+=======
+2024-28조 [Last Light](https://kookmin-sw.github.io/capstone-2024-28/)
+>>>>>>> 6102fe6b (Update index.md)
+
 ### 1. 프로젝트 소개
 
-횡스크롤 플랫포머 게임으로 기존 서바이벌게임과 차별화 되는 화려한 액션을 추구하는 게임.
+횡스크롤 플랫포머 게임으로 기존 서바이벌게임과 차별화되는 화려한 액션을 추구하는 게임.
 
 - 이 게임의 특징
   
@@ -23,37 +41,76 @@
   이러한 단점을 보완하고 새로운 경험을 통해 유저들에게 게임성을 경쟁하기 위해 기존의 장점들은 유지하면서 게임의 방식을 횡스크롤 방식으로
   생각을 전환하여 보다 전투의 재미를 추구하여 두 마리의 토끼를 잡아 보고자 합니다.
 
+- 플랫폼  
+  PC
+  
+- 개발 환경  
+  Unity 2022.3.17f1
+  
 ### 2. 소개 영상
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+[중간 시연 영상](https://drive.google.com/file/d/1HzkLl8NVs1mU8vPgafL4tWj_5FZi9jle/view?usp=sharing)
+=======
+중간 시연 영상: https://drive.google.com/file/d/1HzkLl8NVs1mU8vPgafL4tWj_5FZi9jle/view?usp=sharing
+>>>>>>> ce5e07dd (Update index.md)
+=======
+(중간 시연 영상)[https://drive.google.com/file/d/1HzkLl8NVs1mU8vPgafL4tWj_5FZi9jle/view?usp=sharing]
+>>>>>>> e9b69568 (Update index.md)
+=======
+[중간 시연 영상](https://drive.google.com/file/d/1HzkLl8NVs1mU8vPgafL4tWj_5FZi9jle/view?usp=sharing)
+>>>>>>> 2d4ba97c (Update index.md)
 
 ### 3. 팀 소개
 
-1. 최성훈(조장)
-- 담당
+최성훈(조장)
   - 적 인공지능 구현
   - 물리 엔진 구현
 
-2. 황태웅
-- 담당
+황태웅
   - 아트 디자인
   - 플레이어 구현
 
-3. 이현
-- 담당
+이현
   - 레벨 디자인
   - 아이템 구현
 
+### 4. 조작법
 
-팀원정보 및 담당이나 사진 및 SNS를 이용하여 소개하세요.
-
-### 4. 사용법
-
-방향키 - 이동
-
-Z키 - 공격
+이동: 방향키  
+공격: Z키  
+아이템 선택: 마우스 클릭  
 
 ### 5. 기타
 
-
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+[중간 보고서](https://drive.google.com/file/d/15QTyr3wMn2XWgsmaqkkyDaAxEzGs2Exx/view?usp=sharing)  
+[중간 발표 자료](https://drive.google.com/file/d/1EfXCdsjQwhhnJWuNya1L9Uvz6dV8Fs6p/view?usp=sharing)
+=======
 2024년 28조 kookmin-sw.github.io/capstone-2024-28/
-
+>>>>>>> ce5e07dd (Update index.md)
+=======
+중간 보고서: https://drive.google.com/file/d/15QTyr3wMn2XWgsmaqkkyDaAxEzGs2Exx/view?usp=sharing
+중간 발표 자료: https://drive.google.com/file/d/1EfXCdsjQwhhnJWuNya1L9Uvz6dV8Fs6p/view?usp=sharing
+>>>>>>> 85f43ce7 (Update index.md)
+=======
+(중간 보고서)[https://drive.google.com/file/d/15QTyr3wMn2XWgsmaqkkyDaAxEzGs2Exx/view?usp=sharing]
+=======
+(중간 보고서)[https://drive.google.com/file/d/15QTyr3wMn2XWgsmaqkkyDaAxEzGs2Exx/view?usp=sharing]  
+>>>>>>> 024b61b7 (Update index.md)
+(중간 발표 자료)[https://drive.google.com/file/d/1EfXCdsjQwhhnJWuNya1L9Uvz6dV8Fs6p/view?usp=sharing]
+>>>>>>> e9b69568 (Update index.md)
+=======
+[중간 보고서](https://drive.google.com/file/d/15QTyr3wMn2XWgsmaqkkyDaAxEzGs2Exx/view?usp=sharing)
+=======
+[중간 보고서](https://drive.google.com/file/d/15QTyr3wMn2XWgsmaqkkyDaAxEzGs2Exx/view?usp=sharing)  
+>>>>>>> 9d10ddd4 (Update index.md)
+[중간 발표 자료](https://drive.google.com/file/d/1EfXCdsjQwhhnJWuNya1L9Uvz6dV8Fs6p/view?usp=sharing)
+>>>>>>> a0fe442a (Update index.md)
