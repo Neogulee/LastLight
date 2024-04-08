@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372c6e1020306bb4a8ed93deeba0048f, type: 3}
   m_Name: WoundsOfWind
   m_EditorClassIdentifier: 
-  activePassiveType: 0
+  activePassiveType: 1
   itemId: 1
   itemName: "\uCDA9\uACA9\uD30C"
   itemDesc: "\uBA3C\uAC00 \uC55E\uC73C\uB85C \uB0A0\uB77C\uAC08\uC9C0\uB3C4 "
