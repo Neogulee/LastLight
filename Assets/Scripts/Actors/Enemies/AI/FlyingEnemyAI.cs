@@ -10,12 +10,16 @@ using Utils;
 public class FlyingEnemyAI : EnemyAI
 {
     public GridDetector grid_detector = null;
+    public GameObject projectile_prefab = null;
+    public LayerMask layer = 0;
+    public float projectile_speed = 8.0f;
     new private BoxCollider2D collider;
+    private const float ATTACK_DELAY = 1.0f;
     private Vector2Int current_move = Vector2Int.zero;
     private float update_time = 0.02f;
     private float current_time = 0.0f;
-    private bool is_attacking = false;
-
+    private float current_attack_delay = 0.0f;
+    private float last_moved_time = 0.0f;
 
     private readonly Vector2Int[] CARDINAL_DIR = {
         new Vector2Int(1, 0),
@@ -23,17 +27,12 @@ public class FlyingEnemyAI : EnemyAI
         new Vector2Int(0, 1),
         new Vector2Int(0, -1)
     };
-    private readonly Vector2Int[] DIAGONAL_DIR = {
-        new Vector2Int(1, 1),
-        new Vector2Int(1, -1),
-        new Vector2Int(-1, 1),
-        new Vector2Int(-1, -1)
-    };
 
     protected override void Awake()
     {
         base.Awake();
         grid_detector = FindObjectOfType<GridDetector>();
+        last_moved_time = Time.time;
     }
 
     private List<Vector2Int> backtrack_path_finding(Dictionary<Vector2Int, Vector2Int> last_pos, Vector2Int dest)
@@ -77,56 +76,113 @@ public class FlyingEnemyAI : EnemyAI
             if (current == player_pos)
                 return backtrack_path_finding(last_pos, current);
 
-            void find_next(Vector2Int[] dirs, float edge_cost)
+            for (int i = 0; i < CARDINAL_DIR.Length; i++)
             {
-                foreach (Vector2Int dir in dirs)
+                Vector2Int dir = CARDINAL_DIR[i];
+                Vector2Int next_dir = CARDINAL_DIR[(i + 1) % CARDINAL_DIR.Length];
+
+                bool enqueue(Vector2Int pos, float weight)
                 {
-                    Vector2Int next = current + dir;
-                    if (grid_detector.is_tile(next))
-                        continue;
-                    
-                    float next_cost = cost + edge_cost;
-                    float h_cost = (next - player_pos).magnitude;
+                    if (grid_detector.is_tile(pos))
+                        return false;
+
+                    float next_cost = cost + weight;
+                    float h_cost = (pos - player_pos).magnitude;
                     pq.Enqueue(
-                        (current, next, next_cost),
+                        (current, pos, next_cost),
                         next_cost + h_cost
                     );
+                    return true;
                 }
-            }
 
-            find_next(CARDINAL_DIR, 1.0f);
-            find_next(DIAGONAL_DIR, Mathf.Sqrt(2.0f));
+                if (!enqueue(current + dir, 1.0f))
+                    continue;
+
+                if (!grid_detector.is_tile(current + next_dir))
+                    enqueue(current + dir + next_dir, Mathf.Sqrt(2.0f));
+            }
         }
         
         return null;
     }
 
+    private Vector2 find_blank_dir()
+    {
+        Vector2Int current = grid_detector.get_cell(transform.position);
+
+        foreach (var dir in CARDINAL_DIR.Concat(new Vector2Int[]{ Vector2Int.zero }))
+        {
+            Vector2Int pos = current + dir;
+            if (!grid_detector.is_tile(pos))
+                return pos - (Vector2)transform.position;
+        }
+        return current;
+    }
+
+    private void move_dir(Vector2 dir)
+    {
+        actor_controller.move(dir);
+        last_moved_time = Time.time;
+    }
+
     private void update_move()
     {
+        if (Time.time - last_moved_time > 1.0f) {
+            move_dir(find_blank_dir());
+            return;
+        }
+
+        Vector3 position = transform.position;
+        float dx = Mathf.Abs(Mathf.Round(position.x) - position.x);
+        float dy = Mathf.Abs(Mathf.Round(position.y) - position.y);
+        if (dx <= 0.35f || dy <= 0.35f)
+            return;
+
         var path = find_path();
         if (path is null || path.Count == 0)
-            current_move = Vector2Int.zero;
+            move_dir(Vector2.zero);
         else
-            current_move = path[0];
-        actor_controller.move(current_move);
+            move_dir(path[0]);
+    }
+
+    private bool check_and_attack()
+    {
+        Vector3 player_pos = Locator.player.transform.position;
+        if ((player_pos - transform.position).magnitude > 8.0f)
+            return false;
+        
+        Vector3 delta = player_pos - transform.position;
+        var hit = Physics2D.Raycast(transform.position, delta, delta.magnitude, layer);
+        if (hit)
+            return false;
+            
+        GameObject laser = Instantiate(
+            projectile_prefab,
+            transform.position,
+            Quaternion.identity,
+            null
+        );
+        laser.GetComponent<SolidProjectile>().init(player_pos - transform.position);
+        last_moved_time = Time.time;
+        return true;
     }
 
     void FixedUpdate()
     {
-        if (is_attacking)
+        current_attack_delay -= Time.deltaTime;
+        if (current_attack_delay > 0.0f)
             return;
 
         current_time += Time.deltaTime;
-        if (current_time >= update_time) {
-            current_time -= update_time;
-            update_move();
-        }
-
-        if ((Locator.player.transform.position - transform.position).magnitude <= 1.5f) {
-            // TODO: check finished
-            // SendMessage("on_attack", SendMessageOptions.DontRequireReceiver);
-            // is_attacking = true;
-            actor_controller.stop();
+        if (current_time < update_time)
+            return;
+        current_time -= update_time;
+        update_move();
+        
+        if (check_and_attack()) {
+            SendMessage("on_attack", SendMessageOptions.DontRequireReceiver);
+            current_attack_delay = ATTACK_DELAY;
+            actor_controller.move(Vector2.zero);
         }
     }
 }
