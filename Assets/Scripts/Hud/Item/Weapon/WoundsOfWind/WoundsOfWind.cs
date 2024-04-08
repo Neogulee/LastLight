@@ -12,6 +12,16 @@ public class WoundsOfWind : Weapon
         {
             timer = 0;
             Fire();
+            // 20퍼센트 확률로 함수 실행
+            if (Random.Range(0, 100) < 30)
+            {
+                for(int i = 1; i < 10; i++)
+                {
+
+                    Invoke("Fire", 0.05f*i);
+                }
+            }
+
         }   
     }
 
@@ -22,7 +32,7 @@ public class WoundsOfWind : Weapon
     }
     public void Fire()
     {
-        float angleOffset = Random.Range(-10f, 10f);
+        float angleOffset = Random.Range(-5f, 5f);
         Player player = Locator.player;
         Vector2 targetDirection = (player.transform.localScale.x == -1) ? Vector2.left : Vector2.right;
         targetDirection = Quaternion.Euler(0, 0, angleOffset) * targetDirection;
