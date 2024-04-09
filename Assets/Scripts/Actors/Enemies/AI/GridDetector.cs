@@ -22,6 +22,7 @@ public class GridDetector: MonoBehaviour
 
     public Vector2Int get_cell(Vector2 pos)
     {
+        // return Vector2Int.RoundToInt(pos);
         var cell = tilemaps[0].WorldToCell(pos);
         return new Vector2Int(cell.x, cell.y);
     }

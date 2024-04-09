@@ -12,6 +12,9 @@ public enum KnockbackDir
 }
 
 [RequireComponent(typeof(Collider2D))]
+/// <summary>
+/// Callbacks: on_hit()
+/// </summary>
 public class Damager: MonoBehaviour
 {
     public GameObject subject = null;
@@ -56,8 +59,9 @@ public class Damager: MonoBehaviour
         if (knockback_power > 0.0f && actor_controller != null) {
             bool is_right = knockback_dir == KnockbackDir.RIGHT;
             if (knockback_dir == KnockbackDir.AUTO)
-                is_right = (target.transform.position - transform.position).x < 0.0f;
-            actor_controller.take_knockback(knockback_power, is_right,up_power);
+                is_right = (target.transform.position - transform.position).x > 0.0f;
+            actor_controller.take_knockback(knockback_power, is_right, up_power);
         }
+        SendMessage("on_hit", SendMessageOptions.DontRequireReceiver);
     }
 }

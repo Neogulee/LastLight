@@ -19,6 +19,7 @@ public class TempGameManager : MonoBehaviour
     public Player player;
     public PoolManager poolManager;
     public WeaponManager weaponManager;
+    public ActorController actorController;
 
 
     private void Awake()

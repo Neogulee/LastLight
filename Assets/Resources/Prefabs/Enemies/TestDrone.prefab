@@ -131,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 0.725, y: 0.725}
   m_EdgeRadius: 0
 --- !u!114 &5682673334484114837
 MonoBehaviour:
@@ -162,6 +162,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid_detector: {fileID: 0}
+  projectile_prefab: {fileID: 549463753915733138, guid: d536b76061e652742a38fc08f719a08f, type: 3}
+  layer:
+    serializedVersion: 2
+    m_Bits: 8
+  projectile_speed: 8
 --- !u!114 &4999889415305232630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,10 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b7bc3f0fbb08d478ba044e3be2448f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 10
+  gravity: 0
   collision_mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   one_way_collision_mask:
     serializedVersion: 2
     m_Bits: 0

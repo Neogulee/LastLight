@@ -11,34 +11,40 @@ public class EnemySpawner : MonoBehaviour
     public PlatformDetector platform_detector = null;
     public Vector2 min_spawn_range = new Vector2(10.0f, 10.0f);
     public Vector2 max_spawn_range = new Vector2(30.0f, 30.0f);
+    public LayerMask layer = 0;
 
+    private const int RAY_NUMS = 3;
+    private const float SKIN_WIDTH = 0.015f;
     private float current_time = 0.0f;
     private LinkedList<(PeriodicSpawnInfo, float)> current_spawns = new();
     private int periodic_idx = 0, burst_idx = 0;
-    void Awake()
-    {
-        
-    }
     
     public bool spawn(GameObject enemy)
     {
+        BoxCollider2D collider = enemy.GetComponent<BoxCollider2D>();
         float x = Random.Range(min_spawn_range.x, max_spawn_range.x) * (Random.Range(0, 2) == 1 ? 1 : -1);
         float y = Random.Range(min_spawn_range.y, max_spawn_range.y) * (Random.Range(0, 2) == 1 ? 1 : -1);
+
         int platform = platform_detector.get_nearest_platform(Locator.player.transform.position + new Vector3(x, y));
         Vector2 pos = platform_detector.get_pos(platform) + Vector2.down * 0.01f;
+        float left_x = pos.x + collider.offset.x - collider.size.x / 2.0f;
 
         bool is_hit = false;
         float y_pos = -Mathf.Infinity;
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < RAY_NUMS; i++)
         {
-            var hit = Physics2D.Raycast(pos - new Vector2(0.5f * (i - 1), 0.0f), Vector2.up, 1.0f, LayerMask.GetMask("Ground"));
+            var hit = Physics2D.Raycast(
+                origin: new Vector2(left_x + i / (RAY_NUMS - 1) * collider.size.x, pos.y),
+                direction: Vector2.up,
+                distance: 1.0f,
+                layerMask: layer
+            );
             is_hit |= hit;
-            y_pos = Mathf.Max(y_pos, hit.point.y + 0.015f);
+            y_pos = Mathf.Max(y_pos, hit.point.y + SKIN_WIDTH);
         }
         if (!is_hit)
             return false;
 
-        BoxCollider2D collider = enemy.GetComponent<BoxCollider2D>();
         Vector2 spawn_pos = new Vector2(pos.x, y_pos + collider.size.y / 2.0f - collider.offset.y);
         Instantiate(enemy, spawn_pos, Quaternion.identity);
         return true;
