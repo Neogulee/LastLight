@@ -12,7 +12,7 @@ public interface IActor
 }
 
 /// <summary>
-/// Callbacks: on_damaged(int damage)
+/// Callbacks: on_damaged(int damage), on_destroyed()
 /// </summary>
 public abstract class Actor : MonoBehaviour, IActor
 {
@@ -42,6 +42,7 @@ public abstract class Actor : MonoBehaviour, IActor
 
     public void destroy()
     {
-        Destroy(gameObject);
+        SendMessage("on_destroyed", SendMessageOptions.DontRequireReceiver);
+        Destroy(gameObject, 0.01f);
     }
 }
