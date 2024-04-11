@@ -19,11 +19,11 @@ public class OnLeftMoveEvent: IEventParam{}
 public class OnUpEvent: IEventParam{}
 public class OnRightMoveEvent: IEventParam{}
 
+public class OnShiftEvent: IEventParam{}
+
 public class OffLeftMoveEvent: IEventParam{}
 public class OffRightMoveEvent: IEventParam{}
 public class OffUpEvent: IEventParam{}
-
-public class PlayerDash: IEventParam{}
 
 public class OnAttackEvent: IEventParam{}
 

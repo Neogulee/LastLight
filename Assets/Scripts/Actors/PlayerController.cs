@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Player player;
-    private IActorController controller;
+    private APlayerController controller;
 
     public void Init(Player player)
     {
         this.player = player;
-        controller = GetComponent<IActorController>();
+        controller = GetComponent<APlayerController>();
         player.EventRegister<OnJumpEvent>(OnJump);
         player.EventRegister<OnLeftMoveEvent>(OnLeftMove);
         player.EventRegister<OnRightMoveEvent>(OnRightMove);
@@ -18,10 +18,11 @@ public class PlayerController : MonoBehaviour
         player.EventRegister<OffRightMoveEvent>(OffRightMove);
         player.EventRegister<OnUpEvent>(OnUp);
         player.EventRegister<OffUpEvent>(OffUp);
-        player.EventRegister<PlayerDash>(OnDash);
+        player.EventRegister<OnShiftEvent>(OnDash);
     }
     public void OnDash(IEventParam event_param)
     {
+        controller.Dash();
     }
     public void OnUp(IEventParam event_param)
     {

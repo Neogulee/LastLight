@@ -17,7 +17,7 @@ MonoBehaviour:
   itemName: "\uBC30\uB9AC\uC5B4"
   itemDesc: "\uC8FC\uBCC0\uC5D0 \uBA3C\uAC00 \uB3CC\uC9C0\uB3C4"
   itemDesc_Plus: 
-  maxLevel: 10
+  maxLevel: 6
   itemIcon: {fileID: 21300000, guid: e30eb9c3272550d49acfb818d86bd67b, type: 3}
   baseDamage: 5
   baseCount: 0

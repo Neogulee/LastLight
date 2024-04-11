@@ -11,10 +11,11 @@ public class ShieldObject : MonoBehaviour
     {
         damager = GetComponent<Damager>();
     }
+
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 0.5f)
+        if (timer >= 0.7f)
         {
             timer = 0.0f;
             damager.disable();

@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "LastLight.sln"
+    "dotnet.defaultSolution": "capstone-2024-28.sln"
 }

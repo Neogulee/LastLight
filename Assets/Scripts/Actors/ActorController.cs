@@ -39,14 +39,14 @@ public class ActorController : MonoBehaviour, IActorController
     private Vector2 right_knockback_dir = new Vector2(Mathf.Cos(Mathf.PI / 3.0f), Mathf.Sin(Mathf.PI / 3.0f)).normalized;
     private float knockback_power = 0.0f;
     private float knockback_time = 0.0f;
-    private PhysicsPlatformer physics = null;
+    protected PhysicsPlatformer physics = null;
     private bool last_on_ground = false;
-    void Awake()
+    protected void Awake()
     {
         physics = GetComponent<PhysicsPlatformer>();
     }
 
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         bool on_ground = check_on_platform();
         if (!last_on_ground && on_ground && physics.velocity.y <= 0.0f) {
@@ -75,6 +75,7 @@ public class ActorController : MonoBehaviour, IActorController
         if (knockback_time > 0.0f)
             return;
 
+        if(physics.velocity.x > -move_velocity)
         physics.velocity = new Vector2(-move_velocity, physics.velocity.y);
         SendMessage("on_move_left", SendMessageOptions.DontRequireReceiver);
     }
@@ -83,7 +84,7 @@ public class ActorController : MonoBehaviour, IActorController
     {
         if (knockback_time > 0.0f)
             return;
-
+        if(physics.velocity.x < move_velocity)
         physics.velocity = new Vector2(move_velocity, physics.velocity.y);
         SendMessage("on_move_right", SendMessageOptions.DontRequireReceiver);
     }

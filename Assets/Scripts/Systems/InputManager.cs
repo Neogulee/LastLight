@@ -38,5 +38,9 @@ public class InputManager : MonoBehaviour
         {
             Locator.event_manager.notify(new OnAttackEvent());
         }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Locator.event_manager.notify(new OnShiftEvent());
+        }
     }
 }
