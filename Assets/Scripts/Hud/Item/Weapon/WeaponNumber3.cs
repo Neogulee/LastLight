@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponNumber3 : Weapon
+public class Thunder : Weapon
 {
     // Start is called before the first frame update
     void Start()
