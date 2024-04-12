@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +25,8 @@ public class OffLeftMoveEvent: IEventParam{}
 public class OffRightMoveEvent: IEventParam{}
 public class OffUpEvent: IEventParam{}
 
-public class OnAttackEvent: IEventParam{}
+public class OnAttackEvent : IEventParam { }
+public class OnSpinAttackEvent : IEventParam { }
 
 public class OnHpChangeEvent: IEventParam
 {
