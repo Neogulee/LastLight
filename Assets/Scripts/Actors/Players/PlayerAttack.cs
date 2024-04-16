@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
     {
         this.player = player;
         player.EventRegister<OnAttackEvent>(OnAttack);
+        player.EventRegister<OnSpinAttackEvent>(OnSpinAttack);
     }
 
     public void OnAttack(IEventParam event_param)
@@ -23,9 +24,15 @@ public class PlayerAttack : MonoBehaviour
             player.GetAnimator().SetBool("isAttack", true);
         }
     }
+    public void OnSpinAttack(IEventParam event_param)
+    {
+        
+        player.GetAnimator().SetBool("isSpinAttack",true);
+    }
     
     public void OffAttack()
     {
         player.GetAnimator().SetBool("isAttack",false);
+        player.GetAnimator().SetBool("isSpinAttack",false);
     }
 }

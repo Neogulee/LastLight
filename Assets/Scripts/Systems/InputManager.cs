@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,6 +37,10 @@ public class InputManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Z))
         {
             Locator.event_manager.notify(new OnAttackEvent());
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Locator.event_manager.notify(new OnSpinAttackEvent());
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
