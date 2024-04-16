@@ -11,7 +11,7 @@ public interface IEventManager
 }
 
 
-public class EventManager:  MonoBehaviour, IEventManager
+public class EventManager: MonoBehaviour, IEventManager
 {
     private Dictionary<Type, List<Action<IEventParam>>> events = new();
     public void register<Param>(Action<IEventParam> action)

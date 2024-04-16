@@ -6,6 +6,6 @@ public class WeaponManager : MonoBehaviour
 {
     void Update()
     {
-        transform.position = TempGameManager.instance.player.transform.position;
+        // transform.position = TempGameManager.instance.player.transform.position;
     }
 }
