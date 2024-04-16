@@ -1,4 +1,4 @@
 name,description,max level,damage,cooldown,is active
-Item0,Protects from attack at certain intervals,5,"1,2,3,4,5","10,9,8,7,6",O
-Item1,Protects from attack at certain intervals,5,"1,2,3,4,5","10,9,8,7,6",O
-Item2,Protects from attack at certain intervals,5,"1,2,3,4,5","10,9,8,7,6",O
+Item0,Protects from attack at certain intervals,5,"1,2,3,4,5","10,9,8,7,6",X
+Item1,Protects from attack at certain intervals,5,"1,2,3,4,5","10,9,8,7,6",X
+Item2,Protects from attack at certain intervals,5,"1,2,3,4,5","10,9,8,7,6",X

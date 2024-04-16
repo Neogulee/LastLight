@@ -28,7 +28,7 @@ public class InventoryUI : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             RectTransform slot_transform = Instantiate(slot_prefab, transform).GetComponent<RectTransform>();
-            slot_transform.anchoredPosition = new Vector2((i + 0.5f) * slot_size, -slot_size * (row + 0.5f));
+            slot_transform.anchoredPosition = new Vector2(i * slot_size, -slot_size * row);
             slots.Add(slot_transform);
         }
     }

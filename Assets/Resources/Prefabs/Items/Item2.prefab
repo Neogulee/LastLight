@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -6817780637717456336}
   - component: {fileID: 6429192636252712439}
   - component: {fileID: 2559963776238121997}
-  - component: {fileID: 2068864586106075538}
+  - component: {fileID: 8102803620917629021}
   m_Layer: 0
   m_Name: Item2
   m_TagString: Untagged
@@ -178,8 +178,9 @@ MonoBehaviour:
     m_Bits: 256
   damage: 25
   knockback_power: 15
+  up_power: 0
   knockback_dir: 0
---- !u!114 &2068864586106075538
+--- !u!114 &8102803620917629021
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,7 +189,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1748703365316957348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a3adf5eeafd1be468fba7cc30729bf3, type: 3}
+  m_Script: {fileID: 11500000, guid: 01f9525e5d25d764b80cc3a47e16242a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0

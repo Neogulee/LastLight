@@ -53,13 +53,19 @@ public class ItemManager: IItemManager
         {
             if (item.info.name == info.name) {
                 item.increase_level();
+                Locator.event_manager.notify(new ItemAddedEvent(item));
                 return true;
             }
         }
-        if (info.is_active && active_num >= max_active_num)
+        if ((info.is_active && active_num >= max_active_num)
+                || (!info.is_active && passive_num >= max_passive_num))
             return false;
 
-        Item new_item = Locator.item_factory.create(info).GetComponent<Item>();        
+        Item new_item = Locator.item_factory.create(info).GetComponent<Item>();
+        if (info.is_active)
+            active_items.Add(new_item.GetComponent<ActiveItem>());
+        else
+            passive_items.Add(new_item.GetComponent<PassiveItem>());
         Locator.event_manager.notify(new ItemAddedEvent(new_item));
         return true;
     }
