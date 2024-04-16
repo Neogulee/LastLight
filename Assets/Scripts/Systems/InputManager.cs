@@ -6,45 +6,52 @@ public class InputManager : MonoBehaviour
 {
     private void Update()
     {
+        IEventManager event_manager = Locator.event_manager;
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Locator.event_manager.notify(new OnJumpEvent());
+            event_manager.notify(new OnJumpEvent());
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            Locator.event_manager.notify(new OnLeftMoveEvent());
+            event_manager.notify(new OnLeftMoveEvent());
         }
         if(Input.GetKey(KeyCode.RightArrow))
         {
-            Locator.event_manager.notify(new OnRightMoveEvent());
+            event_manager.notify(new OnRightMoveEvent());
         }
         if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
-            Locator.event_manager.notify(new OffLeftMoveEvent());
+            event_manager.notify(new OffLeftMoveEvent());
         }
         if (Input.GetKeyUp(KeyCode.RightArrow))
         {
-            Locator.event_manager.notify(new OffRightMoveEvent());
+            event_manager.notify(new OffRightMoveEvent());
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            Locator.event_manager.notify(new OnUpEvent());
+            event_manager.notify(new OnUpEvent());
         }
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
-            Locator.event_manager.notify(new OffUpEvent());
+            event_manager.notify(new OffUpEvent());
         }
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            Locator.event_manager.notify(new OnAttackEvent());
+            event_manager.notify(new OnAttackEvent());
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Locator.event_manager.notify(new OnSpinAttackEvent());
+            event_manager.notify(new OnSpinAttackEvent());
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Locator.event_manager.notify(new OnShiftEvent());
+            event_manager.notify(new OnShiftEvent());
         }
+        if(Input.GetKeyDown(KeyCode.Q))
+            event_manager.notify(new OnItemKeyPressed(0));
+        if(Input.GetKeyDown(KeyCode.W))
+            event_manager.notify(new OnItemKeyPressed(1));
+        if(Input.GetKeyDown(KeyCode.E))
+            event_manager.notify(new OnItemKeyPressed(2));
     }
 }

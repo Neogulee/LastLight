@@ -8,7 +8,7 @@ public class TempGameManager : MonoBehaviour
     public LevelManager level_manager = null;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Minus))
             level_manager.increase_exp(2);
     }
 }

@@ -30,6 +30,11 @@ public class ItemManager: IItemManager
     private List<ActiveItem> active_items = new();
     private List<PassiveItem> passive_items = new();
     
+    public ItemManager()
+    {
+        Locator.event_manager.register<OnItemKeyPressed>(use_item);
+    }
+    
     public List<Item> get_items()
     {
         List<Item> temp_active = active_items.Cast<Item>().ToList();
@@ -76,6 +81,15 @@ public class ItemManager: IItemManager
         if (item is null)
             return 0;
         return item.level;
+    }
+
+    public void use_item(IEventParam param)
+    {
+        int num = ((OnItemKeyPressed)param).num;
+        if (num >= active_num)
+            return;
+        
+        active_items[num].use();
     }
     
     public int active_num { get { return active_items.Count; } }
