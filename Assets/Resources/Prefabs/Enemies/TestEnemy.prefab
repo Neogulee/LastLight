@@ -281,7 +281,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _max_hp: 100
   <hp>k__BackingField: 0
-  _power: 0
+  <power>k__BackingField: 0
+  <exp>k__BackingField: 2
 --- !u!114 &7779994688543818082
 MonoBehaviour:
   m_ObjectHideFlags: 0

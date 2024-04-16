@@ -10,6 +10,11 @@ public class LevelManager : MonoBehaviour
     public int exp { get; private set; } = 0;
     public int exp_to_next_level { get; private set; } = 10;
     public int level { get; private set; } = 1;
+    void Awake()
+    {
+        Locator.level_manager = this;
+    }
+
     public void increase_exp(int value)
     {
         exp += value;

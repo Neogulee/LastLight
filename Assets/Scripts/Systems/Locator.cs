@@ -12,4 +12,5 @@ public static class Locator
     public static IItemPool item_pool = new ItemPool();
     public static IItemFactory item_factory = new ItemFactory(item_pool.get_infos());
     public static IItemManager item_manager = new ItemManager();
+    public static LevelManager level_manager = null;
 }
