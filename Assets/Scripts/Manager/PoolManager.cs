@@ -7,9 +7,18 @@ public class PoolManager : MonoBehaviour
     public GameObject[] prefabs;
 
     List<GameObject>[] pools;
+    public static PoolManager Instance { get; private set; }
 
-    void Awake()
+    private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         pools = new List<GameObject>[prefabs.Length];
         for (int i = 0; i < prefabs.Length; i++)
         {
