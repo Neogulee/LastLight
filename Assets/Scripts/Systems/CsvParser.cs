@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -28,7 +28,7 @@ public class CsvParser
         if (!typeof(CsvInfo).IsAssignableFrom(typeof(info_type)))
             throw new Exception();
         
-        var stream = new StreamReader(DIR + csv_name + ".csv");
+        var stream = new StreamReader(DIR + csv_name + ".csv"); 
         var data = new CsvReader(stream, CultureInfo.InvariantCulture);
 
         data.Read();
