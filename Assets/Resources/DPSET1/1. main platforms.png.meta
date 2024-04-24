@@ -348,15 +348,20 @@ TextureImporter:
       name: 1. main platforms_11
       rect:
         serializedVersion: 2
-        x: 16
-        y: 494
+        x: 88
+        y: 515
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -8}
+        - {x: -8, y: 0}
+        - {x: 0, y: 0}
+        - {x: 8, y: 0}
+        - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: 235f2559c92b3214aa5aa708c79ca9bd
@@ -369,15 +374,19 @@ TextureImporter:
       name: 1. main platforms_12
       rect:
         serializedVersion: 2
-        x: 832
-        y: 384
-        width: 64
-        height: 64
+        x: 16
+        y: 494
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -8}
+        - {x: -8, y: 0}
+        - {x: 8, y: 0}
+        - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: b3ccc33df89b06e4fa3c1c2fc462d492
