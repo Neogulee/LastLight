@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    void Update()
+    public Player player;
+    private void LateUpdate()
     {
-        // transform.position = TempGameManager.instance.player.transform.position;
+        transform.position = player.transform.position;
     }
 }
