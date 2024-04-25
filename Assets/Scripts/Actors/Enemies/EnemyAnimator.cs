@@ -44,7 +44,7 @@ public class EnemyAnimator : MonoBehaviour
         animator.SetBool("is_jumping", false);       
     }
 
-    public void on_attack()
+    public void on_start_attack()
     {
         animator.SetTrigger("attack");
     }

@@ -7,19 +7,19 @@ using UnityEngine;
 using Utils;
 
 
+[RequireComponent(typeof(RangeAttacker))]
 public class FlyingEnemyAI : EnemyAI
 {
-    public GridDetector grid_detector = null;
-    public GameObject projectile_prefab = null;
     public LayerMask layer = 0;
-    public float projectile_speed = 8.0f;
-    new private BoxCollider2D collider;
-    private const float ATTACK_DELAY = 1.0f;
+    public float before_attack_delay = 0.5f, after_attack_delay = 0.5f;
+    private GridDetector grid_detector = null;
     private Vector2Int current_move = Vector2Int.zero;
     private float update_time = 0.02f;
     private float current_time = 0.0f;
-    private float current_attack_delay = 0.0f;
     private float last_moved_time = 0.0f;
+    private readonly object stop_lock = new object();
+    private bool is_stopped = false;
+    private RangeAttacker range_attacker = null;
 
     private readonly Vector2Int[] CARDINAL_DIR = {
         new Vector2Int(1, 0),
@@ -32,6 +32,7 @@ public class FlyingEnemyAI : EnemyAI
     {
         base.Awake();
         grid_detector = FindObjectOfType<GridDetector>();
+        range_attacker = GetComponent<RangeAttacker>();
         last_moved_time = Time.time;
     }
 
@@ -145,7 +146,7 @@ public class FlyingEnemyAI : EnemyAI
             move_dir(path[0]);
     }
 
-    private bool check_and_attack()
+    private bool check_attack()
     {
         Vector3 player_pos = Locator.player.transform.position;
         if ((player_pos - transform.position).magnitude > 8.0f)
@@ -153,25 +154,30 @@ public class FlyingEnemyAI : EnemyAI
         
         Vector3 delta = player_pos - transform.position;
         var hit = Physics2D.Raycast(transform.position, delta, delta.magnitude, layer);
-        if (hit)
-            return false;
-            
-        GameObject laser = Instantiate(
-            projectile_prefab,
-            transform.position,
-            Quaternion.identity,
-            null
-        );
-        laser.GetComponent<SolidProjectile>().init(player_pos - transform.position);
-        last_moved_time = Time.time;
-        return true;
+        return !hit;
     }
 
+    private async void attack()
+    {
+        lock (stop_lock)
+        {
+            if (is_stopped)
+                return;
+            is_stopped = true;
+        }
+        
+        await range_attacker.attack();
+
+        last_moved_time = Time.time;
+        lock (stop_lock)
+            is_stopped = false;
+    }
+    
     void FixedUpdate()
     {
-        current_attack_delay -= Time.deltaTime;
-        if (current_attack_delay > 0.0f)
-            return;
+        lock (stop_lock)
+            if (is_stopped)
+                return;
 
         current_time += Time.deltaTime;
         if (current_time < update_time)
@@ -179,10 +185,9 @@ public class FlyingEnemyAI : EnemyAI
         current_time -= update_time;
         update_move();
         
-        if (check_and_attack()) {
-            SendMessage("on_attack", SendMessageOptions.DontRequireReceiver);
-            current_attack_delay = ATTACK_DELAY;
+        if (check_attack()) {
             actor_controller.move(Vector2.zero);
+            attack();
         }
     }
 }

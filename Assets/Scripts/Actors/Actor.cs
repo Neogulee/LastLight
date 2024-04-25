@@ -16,14 +16,11 @@ public interface IActor
 /// </summary>
 public abstract class Actor : MonoBehaviour, IActor
 {
-    public int _max_hp = 100;
-
-    public int max_hp  { get; protected set; }
     [field: SerializeField]
+    public int max_hp  { get; protected set; } = 100;
     public int hp { get; protected set; }
     protected virtual void Awake()
     {
-        max_hp = _max_hp;
         hp = max_hp;
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.VFX;
 
 public class EnemyVFX : MonoBehaviour
 {
-    public List<VisualEffect> damage_effects, destroy_effects;
+    public List<VisualEffect> damage_effects, destroy_effects, attack_effects;
     public Material blink_material;
     private SpriteRenderer sprite_renderer;
     private Material original_material;
@@ -16,6 +16,12 @@ public class EnemyVFX : MonoBehaviour
         sprite_renderer = GetComponent<SpriteRenderer>();
         original_material = sprite_renderer.material;
         physics = GetComponent<PhysicsPlatformer>();
+    }
+
+    public void on_start_attack()
+    {
+        foreach (var vfx in attack_effects)
+            Locator.vfx_factory.create(vfx);
     }
 
     public void on_damaged()

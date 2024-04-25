@@ -7,7 +7,7 @@ using UnityEngine;
 using Utils;
 
 /// <summary>
-/// Callbacks: on_attack()
+/// Callbacks: on_start_attack()
 /// </summary>
 public class AdvancedEnemyAI : EnemyAI
 {
@@ -127,7 +127,7 @@ public class AdvancedEnemyAI : EnemyAI
         }
     }
 
-    void on_finsh_attack()
+    public void on_finsh_attack()
     {
         is_attacking = false;
     }
@@ -145,7 +145,7 @@ public class AdvancedEnemyAI : EnemyAI
 
         if ((Locator.player.transform.position - transform.position).magnitude <= 1.5f) {
             // TODO: check finished
-            SendMessage("on_attack", SendMessageOptions.DontRequireReceiver);
+            SendMessage("on_start_attack", SendMessageOptions.DontRequireReceiver);
             is_attacking = true;
             actor_controller.stop();
         }
