@@ -171,6 +171,9 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
 
     Vector2 get_slope_velocity(Vector2 ray_origin, Vector2 ray_direction, float move_distance)
     {
+        if (move_distance < 0.01f)
+            return Vector2.zero;
+            
         // TODO: fix error value
         float ray_distance = move_distance;
         float direction_x = Mathf.Sign(ray_direction.x);

@@ -393,8 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9b0552c7ea20543b84b4bea3250a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _max_hp: 100
-  <hp>k__BackingField: 0
+  <max_hp>k__BackingField: 100
   <power>k__BackingField: 0
   <exp>k__BackingField: 2
 --- !u!114 &7779994688543818082
@@ -475,7 +474,7 @@ MonoBehaviour:
     m_Bits: 8
   one_way_collision_mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   horizontal_ray_count: 4
   vertical_ray_count: 4
   max_climb_angle: 45
@@ -512,6 +511,7 @@ MonoBehaviour:
   - {fileID: 1588584089780245401}
   destroy_effects:
   - {fileID: 7410266996571271527}
+  attack_effects: []
   blink_material: {fileID: 2100000, guid: e9492aca396def94dabdc91d96b6a97b, type: 2}
 --- !u!1 &7610461969902792935
 GameObject:

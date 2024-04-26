@@ -7,7 +7,7 @@ public class Swords : PassiveItem
     public LayerMask groundLayer;
     private void Start()
     {
-        groundLayer = LayerMask.GetMask("Ground");
+        groundLayer = LayerMask.GetMask("Platform");
     }
 
     void Update()

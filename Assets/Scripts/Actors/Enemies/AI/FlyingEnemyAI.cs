@@ -58,12 +58,14 @@ public class FlyingEnemyAI : EnemyAI
     public List<Vector2Int> find_path()
     {
         Vector2Int player_pos = grid_detector.get_cell(Locator.player.transform.position);
+        if (grid_detector.is_tile(player_pos))
+            return null;
+
         Vector2Int current_pos = grid_detector.get_cell(transform.position);
 
         Dictionary<Vector2Int, Vector2Int> last_pos = new();
         PriorityQueue<(Vector2Int last, Vector2Int current, float cost), float> pq = new();
         pq.Enqueue((current_pos, current_pos, 0.0f), 0);
-
         while (pq.Count > 0)
         {
             (Vector2Int last, Vector2Int current, float cost) = pq.Dequeue();

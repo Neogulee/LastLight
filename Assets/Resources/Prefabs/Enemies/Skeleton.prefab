@@ -413,7 +413,7 @@ MonoBehaviour:
     m_Bits: 8
   one_way_collision_mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   horizontal_ray_count: 4
   vertical_ray_count: 4
   max_climb_angle: 45
