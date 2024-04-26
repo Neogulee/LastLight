@@ -14,7 +14,13 @@ public class LevelManager : MonoBehaviour
     {
         Locator.level_manager = this;
     }
-
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            increase_exp(10);
+        }
+    }
     public void increase_exp(int value)
     {
         exp += value;
