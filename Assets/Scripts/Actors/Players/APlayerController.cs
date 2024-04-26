@@ -38,6 +38,11 @@ public class APlayerController : ActorController
     {
         shadow = false;
     }
+
+    void on_damaged(int damage)
+    {
+        
+    }
     public void Update()
     {
         if(shadow)

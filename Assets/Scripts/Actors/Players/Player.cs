@@ -14,10 +14,14 @@ public class Player : Actor
     private PlayerAttack playerAttack;
     private BoxCollider2D boxCollider;
 
+    public int defenceAttack;
+
     private void Start() 
     {
         Locator.player = this;
         
+        defenceAttack = 0;
+
         playerController = GetComponent<PlayerController>();
         playerAttack = GetComponent<PlayerAttack>();
         playerAttack.Init(this);
@@ -32,10 +36,17 @@ public class Player : Actor
 
     }
 
-    public override void take_damage(int damage)
+    public override bool take_damage(int damage)
     {
+        if(defenceAttack > 0)
+        {
+            defenceAttack -= 1;
+            Locator.event_manager.notify(new OnGuardDamageEvent{});
+            return false;
+        }
         base.take_damage(damage);
         Locator.event_manager.notify(new OnHpChangeEvent{hp = this.hp});
+        return true;
     }
 
     public Rigidbody2D GetRigidbody()

@@ -6,7 +6,7 @@ using UnityEngine;
 public interface IActor
 {
     public int hp { get; }
-    public void take_damage(int damage);
+    public bool take_damage(int damage);
     public void heal(int amount);
     public void destroy();
 }
@@ -24,12 +24,13 @@ public abstract class Actor : MonoBehaviour, IActor
         hp = max_hp;
     }
 
-    public virtual void take_damage(int damage)
+    public virtual bool take_damage(int damage)
     {
         hp = Mathf.Max(0, hp - damage);
         SendMessage("on_damaged", damage, SendMessageOptions.DontRequireReceiver);
         if (hp <= 0)
             destroy();
+        return true;
     }
 
     public void heal(int amount)

@@ -12,7 +12,6 @@ public class Scanner : MonoBehaviour
     private void Update()
     {
         targets = Physics2D.CircleCastAll(transform.position,scanRange,Vector2.zero,0,targetLayer);
-        Debug.Log(targets.Length);
         nearestTarget = GetNearest();
         
     }
