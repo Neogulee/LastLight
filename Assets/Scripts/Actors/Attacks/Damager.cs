@@ -55,7 +55,11 @@ public class Damager: MonoBehaviour
         Actor actor = target.GetComponent<Actor>();
         ActorController actor_controller = target.GetComponent<ActorController>();
         if (actor != null)
-            actor.take_damage(damage);
+            if (!actor.take_damage(damage)) 
+            {
+                SendMessage("on_hit", SendMessageOptions.DontRequireReceiver);
+                return;
+            }
         if (knockback_power > 0.0f && actor_controller != null) {
             bool is_right = knockback_dir == KnockbackDir.RIGHT;
             if (knockback_dir == KnockbackDir.AUTO)

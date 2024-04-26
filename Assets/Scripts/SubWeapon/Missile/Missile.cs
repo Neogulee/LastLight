@@ -11,14 +11,12 @@ public class Missile : MonoBehaviour
 
     public float spinSpeed = 400;
     public float speed = 5;
-    // Start is called before the first frame update
     void Update()
     {
         target = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 
 				Input.mousePosition.y, -Camera.main.transform.position.z));
         Move();
     }
-    // Update is called once per frame
     void Move()
     {
         if (target == null)
