@@ -23,6 +23,7 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
 
     public LayerMask collision_mask;
     public LayerMask one_way_collision_mask;
+    
     public CollisionInfo collision_info;
 
     public int horizontal_ray_count = 4;
@@ -51,12 +52,14 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
     private void update_pos()
     {
         update_raycast_origins();
-        collision_info.reset();
         
+        collision_info.reset();
+        _velocity.y -= gravity * Time.fixedDeltaTime;
         Vector2 vec = _velocity * Time.fixedDeltaTime;
+
         // if (vec.y < 0)
         //     descend_slope(ref vec);
-        if (vec.x != 0 && vec.y != 0.0f)
+        if (vec.x != 0.0f && vec.y != 0.0f)
             horizontal_collisions(ref vec);
         if (vec.y != 0.0f)
             vertical_collisions(ref vec);
@@ -64,7 +67,6 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
             climb_stair(ref vec);
 
         transform.Translate(vec);
-        _velocity.y -= gravity * Time.fixedDeltaTime;
         if (collision_info.below || collision_info.above)
             _velocity.y = 0.0f;
     }

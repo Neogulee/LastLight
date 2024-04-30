@@ -13,7 +13,7 @@ public class AdvancedEnemyAI : EnemyAI
 {
     public PlatformDetector platform_detector = null;
     new private BoxCollider2D collider;
-    private float update_time = 0.02f;
+    private float update_time = 0.25f;
     private float current_time = 0.0f;
     private float idle_delay = 1.5f;
     private float idle_time = 1.0f;
@@ -86,15 +86,15 @@ public class AdvancedEnemyAI : EnemyAI
             Vector2 pos = platform_detector.get_pos(platform);
             foreach (var edge in edges)
             {
-                if (edge.jump_speed * 15.0f / actor_controller.move_velocity > actor_controller.jump_velocity)
+                if (edge.jump_speed * 16.0f / actor_controller.move_velocity > actor_controller.jump_velocity)
                     continue;
 
                 Vector2 dest_pos = platform_detector.get_pos(edge.dest);
                 float next_cost = cost + Mathf.Abs(dest_pos.x - pos.x);
                 float h_cost = (player_pos - dest_pos).magnitude;
-                float jump_cost = edge.jump_speed > 0.0f ? (1.0f + edge.jump_speed / 15.0f) : 0.0f;
+                float jump_cost = edge.jump_speed > 0.0f ? (1.0f + edge.jump_speed / 16.0f) : 0.0f;
                 pq.Enqueue((
-                    platform, edge.jump_speed * 15.0f / actor_controller.move_velocity, edge.dest, next_cost),
+                    platform, edge.jump_speed * 16.0f / actor_controller.move_velocity, edge.dest, next_cost),
                     next_cost + h_cost + jump_cost
                 );
             }
@@ -130,6 +130,11 @@ public class AdvancedEnemyAI : EnemyAI
     public void on_finsh_attack()
     {
         is_attacking = false;
+    }
+
+    public void on_ground()
+    {
+        current_move = Moves.IDLE;
     }
 
     void FixedUpdate()
