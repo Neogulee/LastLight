@@ -33,7 +33,7 @@ public abstract class Actor : MonoBehaviour, IActor
         return true;
     }
 
-    public void heal(int amount)
+    public virtual void heal(int amount)
     {
         hp = Mathf.Min(max_hp, hp + amount);
     }
