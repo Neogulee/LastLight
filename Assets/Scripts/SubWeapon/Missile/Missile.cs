@@ -5,7 +5,7 @@ using UnityEngine;
 public class Missile : MonoBehaviour
 {
     [HideInInspector]
-    public Vector3 target;
+    public Transform target;
     [HideInInspector]
     public Transform team;
 
@@ -13,8 +13,6 @@ public class Missile : MonoBehaviour
     public float speed = 5;
     void Update()
     {
-        target = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 
-				Input.mousePosition.y, -Camera.main.transform.position.z));
         Move();
     }
     void Move()
@@ -25,10 +23,14 @@ public class Missile : MonoBehaviour
         }
         Vector3 myPos = transform.position;
         Vector3 quaternionToTarget;
-        quaternionToTarget = Quaternion.Euler(0, 0, 1) * (target- myPos);
+        quaternionToTarget = Quaternion.Euler(0, 0, 1) * (target.position - myPos);
         Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: quaternionToTarget);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime*spinSpeed*Random.Range(0.8f, 1.2f));
 
         transform.Translate(Vector3.up * speed * Time.deltaTime);
+    }
+    void on_hit()
+    {
+        Destroy(gameObject);
     }
 }
