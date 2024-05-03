@@ -5,7 +5,7 @@ Item2,Protects from attack at certain intervals,5,"1,2,3,4,5","10,9,8,7,6",X
 TestActiveItem,Protects from attack at certain intervals,5,"1,2,3,4,5","10,9,8,7,6",O
 Thunder,Protects from attack at certain intervals,5,"1,2,3,4,5","10,9,8,7,6",X
 WoundsOfWind,Protects from attack at certain intervals,5,"1,2,3,4,5","5,4,3,2,1",X
-Sheild,Protects from attack at certain intervals,5,"1,2,3,4,5","5,4,3,2,1",X
+Shield,Protects from attack at certain intervals,5,"1,2,3,4,5","5,4,3,2,1",X
 Missile,Protects from attack at certain intervals,5,"1,2,3,4,5","5,4,3,2,1",O
 DoubleDash,Protects from attack at certain intervals,5,"1,2,3,4,5","5,4,3,2,1",X
 HealDrone,Protects from attack at certain intervals,5,"1,2,3,4,5","5,4,3,2,1",X
