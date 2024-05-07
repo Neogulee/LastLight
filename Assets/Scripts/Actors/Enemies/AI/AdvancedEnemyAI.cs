@@ -19,6 +19,7 @@ public class AdvancedEnemyAI : EnemyAI
     private float idle_time = 1.0f;
     private float current_idle_time = 0.0f;
     private Moves current_move = Moves.IDLE;
+    private Attacker attacker = null;
     private bool is_attacking = false;
     private enum Moves 
     {
@@ -31,6 +32,7 @@ public class AdvancedEnemyAI : EnemyAI
     {
         base.Awake();
         collider = GetComponent<BoxCollider2D>();
+        attacker = GetComponent<Attacker>();
         platform_detector = FindObjectOfType<PlatformDetector>();
     }
 
@@ -148,7 +150,7 @@ public class AdvancedEnemyAI : EnemyAI
             update_move();
         }
 
-        if ((Locator.player.transform.position - transform.position).magnitude <= 1.5f) {
+        if (attacker.check()) {
             // TODO: check finished
             SendMessage("on_start_attack", SendMessageOptions.DontRequireReceiver);
             is_attacking = true;
