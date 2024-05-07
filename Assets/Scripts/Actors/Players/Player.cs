@@ -35,7 +35,11 @@ public class Player : Actor
         
 
     }
-
+    public override void heal(int heal)
+    {
+        base.heal(heal);
+        Locator.event_manager.notify(new OnHpChangeEvent{hp = this.hp});
+    }
     public override bool take_damage(int damage)
     {
         if(defenceAttack > 0)

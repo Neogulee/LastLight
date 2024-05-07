@@ -33,6 +33,7 @@ public class ThunderWeapon : PassiveItem
     }
     public void Fire()
     {
+        scanner.FindEnemy();
         Transform enermy = scanner.nearestTarget;
         if (enermy != null)
         {
