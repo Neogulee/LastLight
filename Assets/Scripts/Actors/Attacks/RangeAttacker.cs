@@ -13,6 +13,7 @@ public abstract class RangeAttacker: Attacker
 {
     public LayerMask layer;
     public float attack_distance = 8.0f;
+    public float after_delay = 0.5f;
     [SerializeField]
     protected List<GameObject> projectile_prefabs;
 
@@ -26,7 +27,7 @@ public abstract class RangeAttacker: Attacker
         var hit = Physics2D.Raycast(transform.position, delta, delta.magnitude, layer);
         return !hit;
     }
-
+    
     protected void prepare_attack(int idx)
     {
         SendMessage("on_prepare_attack_range", idx, SendMessageOptions.DontRequireReceiver);
@@ -37,9 +38,10 @@ public abstract class RangeAttacker: Attacker
         SendMessage("on_attack_range", idx, SendMessageOptions.DontRequireReceiver);
     }
 
-    protected void stop_attack(int idx)
+    protected async void stop_attack(int idx)
     {
-        SendMessageUpwards("on_finsh_attack", SendMessageOptions.DontRequireReceiver);
+        await Task.Delay((int)(1000.0f * after_delay));
+        SendMessageUpwards("on_finish_attack", SendMessageOptions.DontRequireReceiver);
         SendMessage("on_stop_attack_range", idx, SendMessageOptions.DontRequireReceiver);
     }
 }

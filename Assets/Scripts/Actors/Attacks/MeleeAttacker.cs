@@ -55,7 +55,7 @@ public class MeleeAttacker: Attacker
         damagers[idx].disable();
 
         await Task.Delay((int)(1000.0f * after_delay));
-        SendMessageUpwards("on_finsh_attack", SendMessageOptions.DontRequireReceiver);
+        SendMessageUpwards("on_finish_attack", SendMessageOptions.DontRequireReceiver);
         SendMessage("on_stop_attack_melee", idx, SendMessageOptions.DontRequireReceiver);
     }
 }

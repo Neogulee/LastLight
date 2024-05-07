@@ -24,11 +24,10 @@ public class GhostEnemyAI : EnemyAI
     private void update_move()
     {
         Vector3 dir = (Locator.player.transform.position - transform.position).normalized;
-        Debug.Log(dir);
         actor_controller.move(dir);
     }
 
-    public void on_finsh_attack()
+    public void on_finish_attack()
     {
         is_attacking = false;
     }

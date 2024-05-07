@@ -454,10 +454,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   attack_distance: 8
+  after_delay: 3
   projectile_prefabs:
   - {fileID: 549463753915733138, guid: afc741e88aaa50a49ac9b63af5615344, type: 3}
-  before_attack_delay: 0.5
-  after_attack_delay: 0.5
 --- !u!1 &5075138655270997335
 GameObject:
   m_ObjectHideFlags: 0

@@ -147,7 +147,7 @@ public class FlyingEnemyAI : EnemyAI
             move_dir(path[0]);
     }
 
-    public void on_finsh_attack()
+    public void on_finish_attack()
     {
         is_attacking = false;
     }
