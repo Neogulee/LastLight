@@ -7,10 +7,9 @@ using UnityEngine;
 using Utils;
 
 
-[RequireComponent(typeof(RangeAttacker))]
+[RequireComponent(typeof(Attacker))]
 public class FlyingEnemyAI : EnemyAI
 {
-    public LayerMask layer = 0;
     public float before_attack_delay = 0.5f, after_attack_delay = 0.5f;
     private GridDetector grid_detector = null;
     private Vector2Int current_move = Vector2Int.zero;
@@ -18,8 +17,8 @@ public class FlyingEnemyAI : EnemyAI
     private float current_time = 0.0f;
     private float last_moved_time = 0.0f;
     private readonly object stop_lock = new object();
-    private bool is_stopped = false;
-    private RangeAttacker range_attacker = null;
+    private bool is_attacking = false;
+    private Attacker attacker = null;
 
     private readonly Vector2Int[] CARDINAL_DIR = {
         new Vector2Int(1, 0),
@@ -32,7 +31,7 @@ public class FlyingEnemyAI : EnemyAI
     {
         base.Awake();
         grid_detector = FindObjectOfType<GridDetector>();
-        range_attacker = GetComponent<RangeAttacker>();
+        attacker = GetComponent<RangeAttacker>();
         last_moved_time = Time.time;
     }
 
@@ -148,38 +147,15 @@ public class FlyingEnemyAI : EnemyAI
             move_dir(path[0]);
     }
 
-    private bool check_attack()
+    public void on_finsh_attack()
     {
-        Vector3 player_pos = Locator.player.transform.position;
-        if ((player_pos - transform.position).magnitude > 8.0f)
-            return false;
-        
-        Vector3 delta = player_pos - transform.position;
-        var hit = Physics2D.Raycast(transform.position, delta, delta.magnitude, layer);
-        return !hit;
-    }
-
-    private async void attack()
-    {
-        lock (stop_lock)
-        {
-            if (is_stopped)
-                return;
-            is_stopped = true;
-        }
-        
-        await range_attacker.attack();
-
-        last_moved_time = Time.time;
-        lock (stop_lock)
-            is_stopped = false;
+        is_attacking = false;
     }
     
     void FixedUpdate()
     {
-        lock (stop_lock)
-            if (is_stopped)
-                return;
+        if (is_attacking)
+            return;
 
         current_time += Time.deltaTime;
         if (current_time < update_time)
@@ -187,9 +163,10 @@ public class FlyingEnemyAI : EnemyAI
         current_time -= update_time;
         update_move();
         
-        if (check_attack()) {
-            actor_controller.move(Vector2.zero);
-            attack();
+        if (attacker.check()) {
+            SendMessage("on_start_attack", SendMessageOptions.DontRequireReceiver);
+            is_attacking = true;
+            actor_controller.stop();
         }
     }
 }

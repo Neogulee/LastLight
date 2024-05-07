@@ -57,7 +57,11 @@ public class ActorController : MonoBehaviour, IActorController
         
         if (knockback_time > 0.0f) {
             knockback_time = Mathf.Max(0.0f, knockback_time - Time.fixedDeltaTime);
-            physics.velocity = new Vector2(knockback_time / KNOCKBACK_TIME * knockback_power, physics.velocity.y);
+            float current_power = knockback_time / KNOCKBACK_TIME * knockback_power;
+            if (physics.gravity == 0.0f)
+                physics.velocity = new Vector2(current_power, current_power);
+            else
+                physics.velocity = new Vector2(current_power, physics.velocity.y);
         }
     }
     
@@ -67,7 +71,8 @@ public class ActorController : MonoBehaviour, IActorController
             return;
 
         physics.velocity = move_velocity * dir.normalized;
-        SendMessage("on_move_left", SendMessageOptions.DontRequireReceiver);
+        if (dir.x != 0.0f)
+            SendMessage(dir.x < 0 ? "on_move_left" : "on_move_right", SendMessageOptions.DontRequireReceiver);
     }
 
     public void move_left()
