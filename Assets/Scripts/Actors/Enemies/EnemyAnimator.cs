@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class EnemyAnimator : MonoBehaviour
 {
-    private Animator animator;
+    protected Animator animator;
     private SpriteRenderer sprite_renderer;
-    protected void Awake()
+    protected virtual void Awake()
     {
         animator = GetComponent<Animator>();
         sprite_renderer = GetComponent<SpriteRenderer>();
@@ -44,7 +44,7 @@ public class EnemyAnimator : MonoBehaviour
         animator.SetBool("is_jumping", false);       
     }
 
-    public void on_start_attack()
+    public virtual void on_start_attack()
     {
         animator.SetTrigger("attack");
     }

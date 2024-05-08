@@ -19,7 +19,9 @@ public class AdvancedEnemyAI : EnemyAI
     private float idle_time = 1.0f;
     private float current_idle_time = 0.0f;
     private Moves current_move = Moves.IDLE;
+    private Attacker attacker = null;
     private bool is_attacking = false;
+    private object is_attacking_lock = new object();
     private enum Moves 
     {
         IDLE = 0,
@@ -31,6 +33,7 @@ public class AdvancedEnemyAI : EnemyAI
     {
         base.Awake();
         collider = GetComponent<BoxCollider2D>();
+        attacker = GetComponent<Attacker>();
         platform_detector = FindObjectOfType<PlatformDetector>();
     }
 
@@ -127,9 +130,10 @@ public class AdvancedEnemyAI : EnemyAI
         }
     }
 
-    public void on_finsh_attack()
+    public void on_finish_attack()
     {
-        is_attacking = false;
+        lock (is_attacking_lock)
+            is_attacking = false;
     }
 
     public void on_ground()
@@ -139,8 +143,9 @@ public class AdvancedEnemyAI : EnemyAI
 
     void FixedUpdate()
     {
-        if (is_attacking)
-            return;
+        lock (is_attacking_lock)
+            if (is_attacking)
+                return;
 
         current_time += Time.deltaTime;
         if (current_time >= update_time) {
@@ -148,10 +153,11 @@ public class AdvancedEnemyAI : EnemyAI
             update_move();
         }
 
-        if ((Locator.player.transform.position - transform.position).magnitude <= 1.5f) {
+        if (attacker.check()) {
             // TODO: check finished
             SendMessage("on_start_attack", SendMessageOptions.DontRequireReceiver);
-            is_attacking = true;
+            lock (is_attacking_lock)
+                is_attacking = true;
             actor_controller.stop();
         }
         else if (current_move == Moves.LEFT)
