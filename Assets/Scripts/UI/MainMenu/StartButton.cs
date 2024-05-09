@@ -7,8 +7,8 @@ public class StartButton : MonoBehaviour
 {
     public void SceneChange()
     {
-        SceneManager.LoadScene("Map_01", LoadSceneMode.Single);
-        // 로딩 시간 체크 후에 Fade In , Fade Out을 넣을지 고려  
+        Debug.Log("Scene Change");
+        StartCoroutine(FadeManager.Instance.LoadDiffScene("Map_01"));
 
     }
 }

@@ -9,7 +9,7 @@ public class LeaderBoardUi : MonoBehaviour
 {
     private const int maxEntries = 10;
     public string filePath = "leaderboard.txt";
-    public TimerUi timerUi;
+    public KillCountUi killCountUi;
     public TMP_Text[] textMeshProEntries;
 
     private void Awake()
@@ -68,9 +68,7 @@ public class LeaderBoardUi : MonoBehaviour
         {
             if (i < textMeshProEntries.Length)
             {
-                int minutes = Mathf.FloorToInt(topScores[i] / 60);
-                int seconds = Mathf.FloorToInt(topScores[i] % 60);
-                textMeshProEntries[i].text = string.Format("{0:00}:{1:00}", minutes, seconds);
+                textMeshProEntries[i].text = topScores[i].ToString();
                 textMeshProEntries[i].gameObject.SetActive(true);
             }
         }
@@ -83,7 +81,7 @@ public class LeaderBoardUi : MonoBehaviour
     
     private void SaveScore()
     {
-        WriteNumberToFile(timerUi.time);
+        WriteNumberToFile(killCountUi.killcount);
     }
     
     private void ShowScore()
@@ -99,4 +97,5 @@ public class LeaderBoardUi : MonoBehaviour
         SaveScore();
         ShowScore();
     }
+    
 }
