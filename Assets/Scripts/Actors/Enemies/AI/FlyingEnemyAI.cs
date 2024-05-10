@@ -10,7 +10,6 @@ using Utils;
 [RequireComponent(typeof(Attacker))]
 public class FlyingEnemyAI : EnemyAI
 {
-    public float before_attack_delay = 0.5f, after_attack_delay = 0.5f;
     private GridDetector grid_detector = null;
     private Vector2Int current_move = Vector2Int.zero;
     private float update_time = 0.02f;
@@ -61,6 +60,8 @@ public class FlyingEnemyAI : EnemyAI
             return null;
 
         Vector2Int current_pos = grid_detector.get_cell(transform.position);
+        if ((player_pos - current_pos).magnitude > 100.0f)
+            return null;
 
         Dictionary<Vector2Int, Vector2Int> last_pos = new();
         PriorityQueue<(Vector2Int last, Vector2Int current, float cost), float> pq = new();
