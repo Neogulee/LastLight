@@ -13,14 +13,15 @@ public class LevelManager : MonoBehaviour
     void Awake()
     {
         Locator.level_manager = this;
+        Locator.event_manager.register<EnemyDestroyedEvent>(on_enemy_destroyed);
     }
-    public void Update()
+    
+    public void on_enemy_destroyed(IEventParam param)
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            increase_exp(10);
-        }
+        EnemyDestroyedEvent args = (EnemyDestroyedEvent)param;
+        increase_exp(args.enemy.exp);
     }
+
     public void increase_exp(int value)
     {
         exp += value;

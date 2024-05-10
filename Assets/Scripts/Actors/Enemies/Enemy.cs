@@ -6,6 +6,7 @@ using UnityEngine;
 public interface IEnemy
 {
     public int power { get; }
+    public int exp { get; }
 }
 
 public class Enemy : Actor, IEnemy
@@ -21,6 +22,6 @@ public class Enemy : Actor, IEnemy
 
     protected virtual void on_destroyed()
     {
-        Locator.level_manager.increase_exp(exp);
+        Locator.event_manager.notify(new EnemyDestroyedEvent(this));
     }
 }
