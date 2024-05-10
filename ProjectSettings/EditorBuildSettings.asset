@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map_01.unity
     guid: adce1363ca044dd44995c7b91544920a
+  - enabled: 1
+    path: Assets/Scenes/PhysicalTestMap.unity
+    guid: 8a2ef7987346e7f45ac4c14585ba976f
   m_configObjects: {}

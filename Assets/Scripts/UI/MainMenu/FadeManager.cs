@@ -32,7 +32,7 @@ public class FadeManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
 
-        if (scene.name == "Map_01")
+        if (scene.name == "PhysicalTestMap")
         {
             StartCoroutine(FadeIn());
         }
