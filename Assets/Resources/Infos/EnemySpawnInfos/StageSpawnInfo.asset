@@ -15,13 +15,28 @@ MonoBehaviour:
   periodic_spawns:
   - enemy: {fileID: 2025752894283536155, guid: be2fd69c57947a2438f7da4d7a941459, type: 3}
     start_time: 0
-    end_time: 10
-    spawn_rate: 0.5
+    end_time: 300
+    spawn_rate: 1
   - enemy: {fileID: 2025752894283536155, guid: b81bd9a202ab4674ca737bb560bcf310, type: 3}
-    start_time: 5
-    end_time: 15
-    spawn_rate: 0.25
+    start_time: 300
+    end_time: 600
+    spawn_rate: 1
+  - enemy: {fileID: 2025752894283536155, guid: 85745c252e1d76348947cf8278739445, type: 3}
+    start_time: 600
+    end_time: 900
+    spawn_rate: 1
+  - enemy: {fileID: 2025752894283536155, guid: d911f06813fc47c48b33d54cc14f78cf, type: 3}
+    start_time: 0
+    end_time: 900
+    spawn_rate: 0.35
+  - enemy: {fileID: 2025752894283536155, guid: 0943dd23d2aafde44a75bf042af07ac1, type: 3}
+    start_time: 300
+    end_time: 900
+    spawn_rate: 0.35
   burst_spawns:
   - enemy: {fileID: 7962737423844568782, guid: 21b1876a8c44e5a4bad9a97070f1c28b, type: 3}
     start_time: 100
     amount: 5
+  - enemy: {fileID: 2025752894283536155, guid: baeb5661d3af6714dbe5dc8833e27269, type: 3}
+    start_time: 840
+    amount: 1
