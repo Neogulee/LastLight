@@ -11,8 +11,7 @@ public class Shield : PassiveItem
     public int count = 1;
     void Update()
     {
-        // transform.Rotate(Vector3.back * speed * Time.deltaTime);
-        // transform.position = TempGameManager.instance.player.transform.position;
+        transform.Rotate(Vector3.back * speed * Time.deltaTime);
     }
 
     private void Start()
