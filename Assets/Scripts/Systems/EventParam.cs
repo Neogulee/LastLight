@@ -47,3 +47,12 @@ public class ItemAddedEvent: IEventParam
         this.item = item;
     }
 }
+
+public class EnemyDestroyedEvent: IEventParam
+{
+    public IEnemy enemy;
+    public EnemyDestroyedEvent(IEnemy enemy)
+    {
+        this.enemy = enemy;
+    }
+}
