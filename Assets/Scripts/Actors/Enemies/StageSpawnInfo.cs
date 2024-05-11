@@ -9,7 +9,7 @@ public class StageSpawnInfo : ScriptableObject
     public List<PeriodicSpawnInfo> periodic_spawns = new();
     public List<BurstSpawnInfo> burst_spawns = new();
 
-    public StageSpawnInfo()
+    public void sort()
     {
         periodic_spawns.Sort((PeriodicSpawnInfo a, PeriodicSpawnInfo b) => {
             if (a.start_time == b.start_time)
