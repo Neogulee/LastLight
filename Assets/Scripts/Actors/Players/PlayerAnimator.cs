@@ -45,9 +45,15 @@ public class PlayerAnimator : MonoBehaviour
     {
         player.GetAnimator().SetBool("isUp", false);
     }
+    public void on_fall(bool a)
+    {
+        player.GetAnimator().SetBool("isFall", a);
 
+    }
+    
     public void on_ground()
     {
+        player.GetAnimator().SetBool("isFall", false);
         player.GetAnimator().SetBool("isJump", false);
         player.GetAnimator().SetBool("isDoubleJump", false);
     }
