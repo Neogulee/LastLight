@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +29,6 @@ public class GuardShield : PassiveItem
     public void Guard(IEventParam event_param)
     {
         GetComponent<SpriteRenderer>().color = new Color(1, 1,1,0);
-        time = 3;
+        time = cooldown;
     }
 }

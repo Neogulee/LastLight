@@ -7,46 +7,40 @@ using UnityEngine;
 
 public class Shield : PassiveItem
 {
-    public float speed = 150f;
-    public int count = 1;
+    public float speed = 50f;
+    private GameObject orb;
+    private void Start()
+    {
+        orb = transform.GetChild(0).gameObject;
+        orbUp();
+    }
     void Update()
     {
         transform.Rotate(Vector3.back * speed * Time.deltaTime);
     }
 
-    private void Start()
+
+    public override bool increase_level()
     {
-        Batch();
+        if (base.increase_level())
+        {
+            orbUp();
+            return true;
+        }
+        return false;
+
     }
-
-    
-    public void Batch()
+    public void orbUp()
     {
-        // Debug.Log("Create Shild");
-        // for (int i = 0; i < count; i++)
-        // {
-        //     Transform bullet;
-
-            
-        //     if (i < transform.childCount)
-        //     {
-        //         bullet = transform.GetChild(i);
-        //     }
-        //     else
-        //     {
-        //         bullet = TempGameManager.instance.poolManager.Get(id).transform;
-        //         bullet.parent = transform;
-        //     }
-            
-
-        //     bullet.localPosition = Vector3.zero;
-        //     bullet.localRotation = Quaternion.identity;
-
-        //     Vector3 rotVec = Vector3.forward * 360 * i/ count ;
-        //     bullet.Rotate(rotVec);
-        //     bullet.Translate(bullet.up*1.5f, Space.World);
-
-        //     bullet.GetComponent<Damager>().damage = (int)damage;
-        // }
+        GameObject G = Instantiate(orb, transform);
+        G.SetActive(true);
+        for (int i = 1; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).localPosition = Vector3.zero;
+            transform.GetChild(i).rotation = Quaternion.Euler(Vector3.back * 360 / (transform.childCount - 1) * (i - 1));
+            transform.GetChild(i).Translate(Vector3.up * 1.5f);
+            transform.GetChild(i).rotation = Quaternion.Euler(0, 0, 0);
+        }
+        speed += 20f;
     }
 }

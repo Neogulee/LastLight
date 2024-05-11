@@ -25,7 +25,7 @@ public abstract class Item : MonoBehaviour, IItem
         this.info = info;
     }
 
-    public bool increase_level()
+    public virtual bool increase_level()
     {
         if (level >= info.max_level)
             return false;

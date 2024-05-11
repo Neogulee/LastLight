@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -50,6 +50,17 @@ public class APlayerController : ActorController
         Invoke("stop", 0.2f);
         //SendMessage("on_jump", current_jump_cnt, SendMessageOptions.DontRequireReceiver);
     }
+    private void DownCheck()
+    {
+        if (physics.velocity.y < 0.0f)
+        {
+            SendMessage("on_fall",true, SendMessageOptions.DontRequireReceiver);
+        }
+        else
+        {
+            SendMessage("on_fall",false, SendMessageOptions.DontRequireReceiver);
+        }
+    }
     public void shadow_off()
     {
         shadow = false;
@@ -65,6 +76,7 @@ public class APlayerController : ActorController
     }
     public void Update()
     {
+        DownCheck();
         if(shadow)
         {
             GameObject G = Instantiate(effect_shadow, transform.position, Quaternion.identity);
