@@ -167,7 +167,7 @@ public class FlyingEnemyAI : EnemyAI
         if (attacker.check()) {
             SendMessage("on_start_attack", SendMessageOptions.DontRequireReceiver);
             is_attacking = true;
-            actor_controller.stop();
+            actor_controller.move(Vector2.zero);
         }
     }
 }

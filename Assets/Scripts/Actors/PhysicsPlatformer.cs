@@ -321,7 +321,6 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
     {
         public bool above, below, left, right;
         public bool is_climbing_sloop;
-        public float old_splope_angle;
         public void reset()
         {
             above = false;
