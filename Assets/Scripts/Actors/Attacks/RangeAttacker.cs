@@ -16,7 +16,7 @@ public abstract class RangeAttacker: Attacker
     public float after_delay = 0.5f;
     [SerializeField]
     protected List<GameObject> projectile_prefabs;
-
+    
     public override bool check()
     {
         Vector3 player_pos = Locator.player.transform.position;
@@ -27,7 +27,7 @@ public abstract class RangeAttacker: Attacker
         var hit = Physics2D.Raycast(transform.position, delta, delta.magnitude, layer);
         return !hit;
     }
-    
+
     protected void prepare_attack(int idx)
     {
         SendMessage("on_prepare_attack_range", idx, SendMessageOptions.DontRequireReceiver);

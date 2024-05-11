@@ -393,6 +393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b594c8429402d4446a72d88827e26489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance_to_attack: 1.5
+  after_delay: 0.5
   damagers:
   - {fileID: 6151193084550851127}
 --- !u!114 &6401336255271207590
@@ -430,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb9b1429155ea0c4bb563a244107b3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <move_velocity>k__BackingField: 10
+  <move_velocity>k__BackingField: 15
   <jump_velocity>k__BackingField: 10
   <max_jump_cnt>k__BackingField: 1
   <current_jump_cnt>k__BackingField: 1

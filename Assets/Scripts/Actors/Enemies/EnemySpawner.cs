@@ -18,7 +18,12 @@ public class EnemySpawner : MonoBehaviour
     private float current_time = 0.0f;
     private LinkedList<(PeriodicSpawnInfo, float)> current_spawns = new();
     private int periodic_idx = 0, burst_idx = 0;
-    
+
+    void Awake()
+    {
+        spawn_info.sort();
+    }
+
     public bool spawn(GameObject enemy)
     {
         BoxCollider2D collider = enemy.GetComponent<BoxCollider2D>();

@@ -324,6 +324,7 @@ GameObject:
   - component: {fileID: 1128766233181561165}
   - component: {fileID: -5418796852398612841}
   - component: {fileID: 6905891081743714519}
+  - component: {fileID: 5006732726247671417}
   - component: {fileID: 5682673334484114837}
   - component: {fileID: 5657675840989129412}
   - component: {fileID: 4999889415305232630}
@@ -398,7 +399,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 2018752200, guid: 7e7e7568cae87bf498ad0f080b3649c4, type: 3}
+  m_Sprite: {fileID: 1864944240, guid: d01e07fa9efb8424c8f31c17463cda4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -481,6 +482,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.725, y: 0.725}
   m_EdgeRadius: 0
+--- !u!95 &5006732726247671417
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962737423844568782}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6a40870f07be89d4c96314bc2284c772, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5682673334484114837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,8 +531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49fdb97bf8934948b0dbd54f6920503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  before_attack_delay: 0.5
-  after_attack_delay: 0.5
 --- !u!114 &4999889415305232630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,6 +585,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   attack_distance: 8
+  after_delay: 0.5
   projectile_prefabs:
   - {fileID: 549463753915733138, guid: d536b76061e652742a38fc08f719a08f, type: 3}
   before_attack_delay: 0.5

@@ -9,21 +9,17 @@ using UnityEngine;
 
 public class KillCountUi : MonoBehaviour
 {
-    public int killcount  = 0;
+    public int killcount { get; private set; } = 0;
     TMP_Text killCountUiText;
-    private void Start()
+    private void Awake()
     {
         killCountUiText = GetComponent<TMP_Text>();
+        Locator.event_manager.register<EnemyDestroyedEvent>(increase_kill_count);
     }
-    public void AddKillCount(int num)
+    
+    public void increase_kill_count(IEventParam param)
     {
-        killcount+=num;
-    }
-
-    private void LateUpdate()
-    {
+        killcount++;
         killCountUiText.text = killcount.ToString();
     }
-
-
 }
