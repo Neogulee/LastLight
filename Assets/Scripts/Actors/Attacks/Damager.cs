@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -24,6 +24,7 @@ public class Damager: MonoBehaviour
 
     public float up_power = 0;
     public KnockbackDir knockback_dir = KnockbackDir.AUTO;
+    public bool multiple_hit = false;
     private HashSet<Collider2D> damaged = new();
     new private Collider2D collider = null;
     void Awake()
@@ -44,7 +45,7 @@ public class Damager: MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D target)
     {
-        if (damaged.Contains(target))
+        if (damaged.Contains(target) && !multiple_hit)
             return;
 
         if (((1 << target.gameObject.layer) & target_layer) == 0)
