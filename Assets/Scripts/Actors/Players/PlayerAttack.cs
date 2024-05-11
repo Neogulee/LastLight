@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     {
         this.player = player;
         player.EventRegister<OnAttackEvent>(OnAttack);
-        player.EventRegister<OnSpinAttackEvent>(OnSpinAttack);
+        //player.EventRegister<OnSpinAttackEvent>(OnSpinAttack);
     }
 
     public void OnAttack(IEventParam event_param)
