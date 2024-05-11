@@ -26,7 +26,8 @@ public class ItemInfo: CsvInfo
     [BooleanFalseValues("X", "")]
     public bool is_active { get; set; }
     public Sprite sprite;
-    public List<int> damage, cooldown;
+    public List<int> damage;
+    public List<float> cooldown;
 }
 
 public interface IItemPool
@@ -50,16 +51,25 @@ public class ItemPool: IItemPool
         item_infos = Locator.csv_parser.read<ItemInfo>("items");
         foreach (string name in item_infos.Keys)
         {
-            item_infos[name].damage = parse_list(item_infos[name].damage_str);
-            item_infos[name].cooldown = parse_list(item_infos[name].cooldown_str);
+            item_infos[name].damage = parse_list_int(item_infos[name].damage_str);
+            item_infos[name].cooldown = parse_list_float(item_infos[name].cooldown_str);
             item_infos[name].sprite = Resources.Load<Sprite>("Sprites/Items/" + name);
         }
     }
 
-    private List<int> parse_list(string str)
+    string pre_process_string(string str)
     {
-        string temp = Regex.Replace(str, @"\s+", "");
-        return temp.Split(",")?.Select(int.Parse)?.ToList();
+        return Regex.Replace(str, @"\s+", "");
+    }
+
+    private List<float> parse_list_float(string str)
+    {
+        return pre_process_string(str).Split(",")?.Select(float.Parse)?.ToList();
+    }
+    
+    private List<int> parse_list_int(string str)
+    {
+        return pre_process_string(str).Split(",")?.Select(int.Parse)?.ToList();
     }
 
     public List<string> get_names()
