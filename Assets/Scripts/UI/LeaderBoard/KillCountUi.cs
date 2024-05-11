@@ -20,10 +20,6 @@ public class KillCountUi : MonoBehaviour
     public void increase_kill_count(IEventParam param)
     {
         killcount++;
-    }
-
-    private void LateUpdate()
-    {
         killCountUiText.text = killcount.ToString();
     }
 }

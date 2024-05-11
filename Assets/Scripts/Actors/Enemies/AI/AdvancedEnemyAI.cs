@@ -13,10 +13,10 @@ public class AdvancedEnemyAI : EnemyAI
 {
     public PlatformDetector platform_detector = null;
     new private BoxCollider2D collider;
-    private float update_time = 0.25f;
+    private float update_time = 0.125f;
     private float current_time = 0.0f;
-    private float idle_delay = 1.5f;
-    private float idle_time = 1.0f;
+    private float idle_delay = 3.0f;
+    private float idle_time = 0.5f;
     private float current_idle_time = 0.0f;
     private Moves current_move = Moves.IDLE;
     private Attacker attacker = null;
