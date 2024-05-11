@@ -33,10 +33,23 @@ MonoBehaviour:
     start_time: 600
     end_time: 900
     spawn_rate: 0.5
-  burst_spawns:
   - enemy: {fileID: 7962737423844568782, guid: 21b1876a8c44e5a4bad9a97070f1c28b, type: 3}
-    start_time: 100
+    start_time: 0
+    end_time: 900
+    spawn_rate: 0.1
+  burst_spawns:
+  - enemy: {fileID: 7962737423844568782, guid: cab792a411a0a5549826c6bd2b3b76af, type: 3}
+    start_time: 180
     amount: 5
+  - enemy: {fileID: 7962737423844568782, guid: cab792a411a0a5549826c6bd2b3b76af, type: 3}
+    start_time: 360
+    amount: 8
+  - enemy: {fileID: 7962737423844568782, guid: cab792a411a0a5549826c6bd2b3b76af, type: 3}
+    start_time: 540
+    amount: 10
+  - enemy: {fileID: 7962737423844568782, guid: cab792a411a0a5549826c6bd2b3b76af, type: 3}
+    start_time: 720
+    amount: 10
   - enemy: {fileID: 2025752894283536155, guid: baeb5661d3af6714dbe5dc8833e27269, type: 3}
     start_time: 840
     amount: 1

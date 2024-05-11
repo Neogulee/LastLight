@@ -11,20 +11,22 @@ public class EnemySpawner : MonoBehaviour
     public PlatformDetector platform_detector = null;
     public Vector2 min_spawn_range = new Vector2(10.0f, 10.0f);
     public Vector2 max_spawn_range = new Vector2(30.0f, 30.0f);
+    public float relocate_time = 10.0f;
     public LayerMask layer = 0;
 
     private const int RAY_NUMS = 3;
     private const float SKIN_WIDTH = 0.015f;
-    private float current_time = 0.0f;
-    private LinkedList<(PeriodicSpawnInfo, float)> current_spawns = new();
+    private float current_time = 0.0f, update_time = 0.0f;
     private int periodic_idx = 0, burst_idx = 0;
+    private LinkedList<(PeriodicSpawnInfo, float)> current_spawns = new();
+    private LinkedList<(GameObject enemy, float time)> enemies = new();
 
     void Awake()
     {
         spawn_info.sort();
     }
 
-    public bool spawn(GameObject enemy)
+    public Vector2 get_random_position(GameObject enemy)
     {
         BoxCollider2D collider = enemy.GetComponent<BoxCollider2D>();
         float x = Random.Range(min_spawn_range.x, max_spawn_range.x) * (Random.Range(0, 2) == 1 ? 1 : -1);
@@ -48,10 +50,28 @@ public class EnemySpawner : MonoBehaviour
             y_pos = Mathf.Max(y_pos, hit.point.y + SKIN_WIDTH);
         }
         if (!is_hit)
-            return false;
+            return new Vector2(Mathf.Infinity, Mathf.Infinity);
 
         Vector2 spawn_pos = new Vector2(pos.x, y_pos + collider.size.y / 2.0f - collider.offset.y);
-        Instantiate(enemy, spawn_pos, Quaternion.identity);
+        return spawn_pos;
+    }
+
+    public bool spawn(GameObject enemy)
+    {
+        Vector2 spawn_pos = get_random_position(enemy);
+        if (float.IsInfinity(spawn_pos.x))
+            return false;
+        GameObject new_enemy = Instantiate(enemy, spawn_pos, Quaternion.identity);
+        enemies.AddLast((new_enemy, 0.0f));
+        return true;
+    }
+
+    public bool relocate(GameObject enemy)
+    {
+        Vector2 spawn_pos = get_random_position(enemy);
+        if (spawn_pos.x == Mathf.Infinity)
+            return false;
+        enemy.transform.position = spawn_pos;
         return true;
     }
 
@@ -71,7 +91,7 @@ public class EnemySpawner : MonoBehaviour
         while (node != null)
         {
             (PeriodicSpawnInfo current, float time) = node.Value;
-            time += Time.deltaTime;
+            time += Time.fixedDeltaTime;
             float spawn_time = 1.0f / current.spawn_rate;
             if (time >= spawn_time) {
                 time -= spawn_time;
@@ -100,9 +120,40 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    private void relocate_enemies()
+    {
+        var node = enemies.First;
+        while (node != null)
+        {
+            (GameObject enemy, float time) = node.Value;
+            var next = node.Next;
+            if (enemy == null) {
+                enemies.Remove(node);
+                node = next;
+                continue;
+            }
+
+            Vector2 delta_pos = enemy.transform.position - transform.position;
+                time += Time.fixedDeltaTime;
+            if (Mathf.Abs(delta_pos.x) <= min_spawn_range.x && Mathf.Abs(delta_pos.y) <= min_spawn_range.y)
+                time = 0.0f;
+            if (time >= relocate_time) {
+                relocate(enemy);
+                time = 0.0f;
+            }
+            node.Value = (enemy, time);
+            node = next;
+        }
+    }
+
     void FixedUpdate()
     {
         current_time += Time.deltaTime;
+        update_time += Time.deltaTime;
+        if (update_time > 1.0f) {
+            update_time -= 1.0f;
+            relocate_enemies();
+        }
         spawn_periodic();
         spawn_burst();
     }

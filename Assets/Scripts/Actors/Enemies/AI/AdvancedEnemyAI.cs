@@ -74,7 +74,7 @@ public class AdvancedEnemyAI : EnemyAI
         while (pq.Count > 0)
         {
             (int last, float jump_speed, int platform, float cost) = pq.Dequeue();
-            if (cost > 100.0f)
+            if (cost > 100.0f || pq.Count > 100.0f)
                 break;
                 
             if (cost >= min_cost[platform])

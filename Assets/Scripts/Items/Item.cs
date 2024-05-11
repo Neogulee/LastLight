@@ -9,7 +9,7 @@ using static UnityEditor.Progress;
 public interface IItem
 {
     public int damage { get; }
-    public int cooldown { get; }
+    public float cooldown { get; }
     public void init(ItemInfo info);
     public ItemInfo info { get; }
     public bool increase_level();
@@ -34,5 +34,5 @@ public abstract class Item : MonoBehaviour, IItem
     }
 
     public int damage { get { return info.damage[level]; } }
-    public int cooldown { get { return info.cooldown[level]; } }
+    public float cooldown { get { return info.cooldown[level]; } }
 }
