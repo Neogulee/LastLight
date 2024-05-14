@@ -25,8 +25,10 @@ public class OffLeftMoveEvent: IEventParam{}
 public class OffRightMoveEvent: IEventParam{}
 public class OffUpEvent: IEventParam{}
 
-public class OnAttackEvent : IEventParam { }
-public class OnSpinAttackEvent : IEventParam { }
+public class OnAttackEvent : IEventParam { public int idx; public OnAttackEvent(int idx) { this.idx = idx; } }
+public class OnAttackerEvent : IEventParam { public int idx; public OnAttackerEvent(int idx) { this.idx = idx; } }
+public class OffAttackerEvent : IEventParam { public int idx; public OffAttackerEvent(int idx) { this.idx = idx; } }
+
 
 public class OnItemKeyPressed : IEventParam
 {
@@ -38,6 +40,7 @@ public class OnHpChangeEvent: IEventParam
 {
     public int hp = 0;
 }
+
 
 public class ItemAddedEvent: IEventParam
 {

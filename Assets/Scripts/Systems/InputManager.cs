@@ -37,11 +37,11 @@ public class InputManager : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            event_manager.notify(new OnAttackEvent());
+            event_manager.notify(new OnAttackEvent(0));
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            event_manager.notify(new OnSpinAttackEvent());
+            event_manager.notify(new OnAttackEvent(1));
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
