@@ -9,6 +9,5 @@ public class StartButton : MonoBehaviour
     {
         // Debug.Log("Scene Change");
         StartCoroutine(FadeManager.Instance.LoadDiffScene("PhysicalTestMap"));
-
     }
 }
