@@ -43,11 +43,13 @@ public class ItemSelector : MonoBehaviour, IItemSelector
             options[i].init(this, selected[i], level);
         }
         set_active(true);
+        Locator.pause_controller.pause();
     }
 
     public void on_selected(ItemInfo info)
     {
         set_active(false);
+        Locator.pause_controller.unpause();
 
         Locator.item_manager.add_item(info);
     }

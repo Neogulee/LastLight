@@ -14,4 +14,5 @@ public static class Locator
     public static IItemManager item_manager = new ItemManager();
     public static LevelManager level_manager = null;
     public static ProjectileFactory projectile_factory = null;
+    public static IPauseController pause_controller = new PauseController();
 }
