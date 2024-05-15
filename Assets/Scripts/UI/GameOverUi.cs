@@ -9,6 +9,7 @@ public class GameOverUi : MonoBehaviour
     public UnityEngine.UI.Image image1;
     public UnityEngine.UI.Image image2;
     public TextMeshProUGUI textMeshPro;
+    public SoundFade bgm;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
@@ -19,7 +20,7 @@ public class GameOverUi : MonoBehaviour
 
     IEnumerator ChangeAlphaOverTime()
     {
-        
+        bgm.FadeOut();
         float elapsedTime = 0f;
         while (elapsedTime < 2f)
         {
