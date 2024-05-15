@@ -20,8 +20,12 @@ public class GameOverUi : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            StartCoroutine(ChangeAlphaOverTime());
+            GameOverStart();
         }
+    }
+    public void GameOverStart()
+    {
+        StartCoroutine(ChangeAlphaOverTime());
     }
 
     private void on_game_over(IEventParam param)

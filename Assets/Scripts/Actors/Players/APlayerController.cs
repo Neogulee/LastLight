@@ -42,6 +42,11 @@ public class APlayerController : ActorController
         {
             dashCount--;
         }
+        else
+        {
+            return;
+        }
+        Locator.event_manager.notify(new OnDashEvent());
         float speed = 40;
         Vector2 vec = getAimDir();
         physics.velocity = vec.normalized * speed;
