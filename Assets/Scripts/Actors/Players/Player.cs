@@ -31,15 +31,19 @@ public class Player : Actor
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
-        
-        
-
     }
+
+    public override void destroy()
+    {
+        Locator.event_manager.notify(new GameOverEvent());
+    }
+
     public override void heal(int heal)
     {
         base.heal(heal);
         Locator.event_manager.notify(new OnHpChangeEvent{hp = this.hp});
     }
+
     public override bool take_damage(int damage)
     {
         if(defenceAttack > 0)
