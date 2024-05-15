@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +35,15 @@ public class Player : Actor
         
 
     }
+
+
+    public void MaxHpUp(int amount)
+    {
+        max_hp += amount;
+        hp += amount;
+        Locator.event_manager.notify(new OnHpChangeEvent { hp = this.hp });
+    }
+
     public override void heal(int heal)
     {
         base.heal(heal);
