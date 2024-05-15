@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +19,7 @@ public class HealDrone : PassiveItem
         if(timer > 1)
         {
             timer = 0;
-        Locator.player.heal(1);
+        Locator.player.heal(level);
         }
     }
 }
