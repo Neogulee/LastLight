@@ -32,10 +32,10 @@ public class FadeManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
 
-        if (scene.name == "PhysicalTestMap")
-        {
+        //if (scene.name == "PhysicalTestMap")
+        //{
             StartCoroutine(FadeIn());
-        }
+        //}
     }
     private IEnumerator FadeIn()
     {

@@ -35,4 +35,12 @@ public class PlayerAttack : MonoBehaviour
         player.GetAnimator().SetBool("isAttack",false);
         player.GetAnimator().SetBool("isSpinAttack",false);
     }
+    void on_attack_melee(int idx)
+    {
+        Locator.event_manager.notify(new OnAttackerEvent(idx));
+    }
+    void on_stop_attack_melee(int idx)
+    {
+        Locator.event_manager.notify(new OffAttackerEvent(idx));
+    }
 }
