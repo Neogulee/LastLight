@@ -196,3 +196,4 @@ MonoBehaviour:
   knockback_power: 15
   up_power: 0
   knockback_dir: 0
+  multiple_hit: 0

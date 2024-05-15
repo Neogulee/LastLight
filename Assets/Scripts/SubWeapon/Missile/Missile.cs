@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +19,7 @@ public class Missile : MonoBehaviour
     {
         if (target == null)
         {
-            return;
+            Destroy(gameObject);
         }
         Vector3 myPos = transform.position;
         Vector3 quaternionToTarget;

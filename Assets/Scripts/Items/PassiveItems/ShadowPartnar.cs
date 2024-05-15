@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,12 +28,22 @@ public class ShadowPartnar : PassiveItem
     void Start()
     {
         playerActions = new Queue<PlayerAction>();
-        SetupDamager();
+        SetupDamager(damage);
         StartCoroutine(IUpdate());
         Locator.event_manager.register<OnAttackerEvent>(SummonAttacker);
         Locator.event_manager.register<OffAttackerEvent>(StopSummonAttacker);
     }
-    void SetupDamager()
+    public override bool increase_level()
+    {
+        if (base.increase_level())
+        {
+            SetupDamager(damage);
+            return true;
+        }
+        else return false;
+
+    }
+    void SetupDamager(int damage)
     {
         damager = new List<Damager>();
         foreach(Damager d in transform.parent.GetComponent<MeleeAttacker>().damagers)
@@ -44,6 +54,8 @@ public class ShadowPartnar : PassiveItem
         for(int i=0;i<damager.Count;i++)
         {
             damager[i] = transform.GetChild(0).Find(damager[i].gameObject.name).GetComponent<Damager>();
+            damager[i].damage /= 5;
+            damager[i].damage *= damage;
         }
     }
     void SummonAttacker(IEventParam param)
