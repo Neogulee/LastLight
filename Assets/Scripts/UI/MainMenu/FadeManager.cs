@@ -17,7 +17,6 @@ public class FadeManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
-
         }
         else
         {
