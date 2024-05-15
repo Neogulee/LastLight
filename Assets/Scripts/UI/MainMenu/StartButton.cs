@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour
 {
+    public SoundFade soundFade;
+    private void Start()
+    {
+        soundFade = GameObject.Find("BackGroundmusic").GetComponent<SoundFade>();
+    }
     public void SceneChange()
     {
-        // Debug.Log("Scene Change");
+        soundFade.FadeOut();
         StartCoroutine(FadeManager.Instance.LoadDiffScene("PhysicalTestMap"));
     }
 }
