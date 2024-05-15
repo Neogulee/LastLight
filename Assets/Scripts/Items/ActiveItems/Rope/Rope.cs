@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,8 +29,12 @@ public class Rope : MonoBehaviour
     {
         if(!grap)
         {
-        target+= dir * Time.deltaTime * 30;
+        target+= dir * Time.deltaTime * 60;
         transform.position = target;
+        if(Vector2.Distance(transform.position, Locator.player.transform.position) * 0.5f > 20)
+            {
+                Destroy(gameObject);
+            }
         transform.GetComponent<SpriteRenderer>().size =  new Vector3(Vector2.Distance(transform.position, Locator.player.transform.position)*0.5f, 0.5f, 1);
         //target위치에서 player위치를 바라보게 회전
         Vector2 dir2 = Locator.player.transform.position - transform.position;
@@ -39,11 +43,14 @@ public class Rope : MonoBehaviour
     }
     else
     {
-        Locator.player.transform.position = transform.position +( (Vector3)grapPos -  transform.position) * ing; 
+        //Locator.player.transform.position = transform.position +( (Vector3)grapPos -  transform.position) * ing; 
+        Locator.player.GetComponent<PhysicsPlatformer>().velocity = transform.position + ((Vector3)grapPos - transform.position) * ing - Locator.player.transform.position;
+        Locator.player.GetComponent<PhysicsPlatformer>().velocity *= 5;
         transform.GetComponent<SpriteRenderer>().size =  new Vector3(Vector2.Distance(transform.position, Locator.player.transform.position)*0.5f, 0.5f, 1);
         ing -= Time.deltaTime * 2;
         if(ing < 0)
         {
+            Locator.player.GetRigidbody().velocity = Vector2.zero;
             Destroy(gameObject);
         }
     }

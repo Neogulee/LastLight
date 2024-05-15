@@ -33,6 +33,6 @@ public abstract class Item : MonoBehaviour, IItem
         return true;
     }
 
-    public int damage { get { return info.damage[level]; } }
-    public float cooldown { get { return info.cooldown[level]; } }
+    public int damage { get { return info.damage[level - 1]; } }
+    public float cooldown { get { return info.cooldown[level - 1]; } }
 }

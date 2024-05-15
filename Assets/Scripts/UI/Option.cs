@@ -24,10 +24,12 @@ public class Option : MonoBehaviour
     {
         if (transform.localScale == Vector3.zero)
         {
+            Locator.pause_controller.pause();
             SetScale(originalScale); 
         }
         else
         {
+            Locator.pause_controller.unpause();
             SetScale(Vector3.zero); 
         }
     }
