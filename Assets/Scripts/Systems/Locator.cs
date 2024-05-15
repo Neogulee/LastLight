@@ -15,4 +15,13 @@ public static class Locator
     public static LevelManager level_manager = null;
     public static ProjectileFactory projectile_factory = null;
     public static IPauseController pause_controller = new PauseController();
+    public static void reset()
+    {
+        event_manager = new EventManager();
+        item_manager = new ItemManager();
+        vfx_factory = null;
+        player = null;
+        level_manager = null;
+        projectile_factory = null;
+    }
 }
