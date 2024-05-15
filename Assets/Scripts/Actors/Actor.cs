@@ -38,7 +38,7 @@ public abstract class Actor : MonoBehaviour, IActor
         hp = Mathf.Min(max_hp, hp + amount);
     }
 
-    public void destroy()
+    public virtual void destroy()
     {
         SendMessage("on_destroyed", SendMessageOptions.DontRequireReceiver);
         Destroy(gameObject, 0.01f);

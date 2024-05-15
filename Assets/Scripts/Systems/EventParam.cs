@@ -62,3 +62,5 @@ public class EnemyDestroyedEvent: IEventParam
         this.enemy = enemy;
     }
 }
+
+public class GameOverEvent: IEventParam { }

@@ -10,12 +10,27 @@ public class GameOverUi : MonoBehaviour
     public UnityEngine.UI.Image image2;
     public TextMeshProUGUI textMeshPro;
     public SoundFade bgm;
+
+    void Awake()
+    {
+        Locator.event_manager.register<GameOverEvent>(on_game_over);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            StartCoroutine(ChangeAlphaOverTime());
+            GameOverStart();
         }
+    }
+    public void GameOverStart()
+    {
+        StartCoroutine(ChangeAlphaOverTime());
+    }
+
+    private void on_game_over(IEventParam param)
+    {
+        StartCoroutine(ChangeAlphaOverTime());
     }
 
     IEnumerator ChangeAlphaOverTime()
