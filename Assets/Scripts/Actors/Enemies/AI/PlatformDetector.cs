@@ -1,10 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 
@@ -16,12 +20,25 @@ public interface IPlatformDetector
     public List<(int dest, float jump_speed, List<Vector2> path)> get_edges(int platform);
 }
 
+[Serializable]
+public class SVector2
+{
+    [SerializeField]
+    public float x, y;
+    public SVector2(float x, float y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+}
 
 public class PlatformDetector : MonoBehaviour, IPlatformDetector
 {
     const float EPSILON = 1e-4f;
     public Grid grid;
+    [SerializeField]
     private List<Vector2> platforms = new();
+    [SerializeField]
     private List<List<(int dest, float jump_speed, List<Vector2> path)>> edges = new();
     private UnionFind platform_groups = new(0);
     private class Vector2Comparer : IEqualityComparer<Vector2>
@@ -39,7 +56,92 @@ public class PlatformDetector : MonoBehaviour, IPlatformDetector
 
     protected virtual void Awake()
     {
+        if (load_graph())
+            return;
         build();
+        save_graph();
+    }
+
+    private (Stream nodes_stream, Stream edges_stream) get_streams(bool is_write)
+    {
+        string path = "Assets/Resources/Datas/" + SceneManager.GetActiveScene().name;
+        string nodes_name = path + "_nodes.bin";
+        string edges_name = path + "_edges.bin";
+
+        FileMode file_mode = FileMode.Create;
+        FileAccess file_access = FileAccess.Write;
+        if (!is_write) {
+            if (!new FileInfo(nodes_name).Exists || !new FileInfo(edges_name).Exists)
+                return (null, null);
+            file_mode = FileMode.Open;
+            file_access = FileAccess.Read;
+        }
+
+        Stream nodes_stream = new FileStream(nodes_name, file_mode, file_access);
+        Stream edges_stream = new FileStream(edges_name, file_mode, file_access);
+        nodes_stream.Position = 0;
+        edges_stream.Position = 0;
+        return (nodes_stream, edges_stream);
+    }
+
+    private List<SVector2> convert_ser(List<Vector2> list)
+    {
+        List<SVector2> ret = new();
+        foreach (var vec in list)
+            ret.Add(new SVector2(vec.x, vec.y));
+        return ret;
+    }
+
+    private List<Vector2> deconvert_ser(List<SVector2> list)
+    {
+        List<Vector2> ret = new();
+        foreach (var vec in list)
+            ret.Add(new Vector2(vec.x, vec.y));
+        return ret;
+    }
+
+    private void save_graph()
+    {
+        IFormatter formatter = new BinaryFormatter();
+        (var nodes_stream, var edges_stream) = get_streams(true);
+        List<SVector2> serialize_platforms = convert_ser(platforms);
+        List<List<(int dest, float jump_speed, List<SVector2> path)>> serialize_edges = new();
+        foreach (var row in edges)
+        {
+            List<(int dest, float jump_speed, List<SVector2> path)> temp = new();
+            foreach (var edge in row)
+                temp.Add((edge.dest, edge.jump_speed, convert_ser(edge.path)));
+            serialize_edges.Add(temp);
+        }
+
+        formatter.Serialize(nodes_stream, serialize_platforms);
+        formatter.Serialize(edges_stream, serialize_edges);
+
+        nodes_stream.Close();
+        edges_stream.Close();
+    }
+    
+    private bool load_graph()
+    {
+        IFormatter formatter = new BinaryFormatter();
+        (var nodes_stream, var edges_stream) = get_streams(false);
+        if (nodes_stream is null)
+            return false;
+
+        platforms = deconvert_ser((List<SVector2>)formatter.Deserialize(nodes_stream));
+        var ser_edges = (List<List<(int dest, float jump_speed, List<SVector2> path)>>)formatter.Deserialize(edges_stream);
+        edges = new();
+        foreach (var row in ser_edges)
+        {
+            List<(int dest, float jump_speed, List<Vector2> path)> temp = new();
+            foreach (var edge in row)
+                temp.Add((edge.dest, edge.jump_speed, deconvert_ser(edge.path)));
+            edges.Add(temp);
+        }
+
+        nodes_stream.Close();
+        edges_stream.Close();
+        return true;
     }
     
     public int get_platforms_count()
