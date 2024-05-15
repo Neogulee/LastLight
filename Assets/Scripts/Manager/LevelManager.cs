@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,6 +32,14 @@ public class LevelManager : MonoBehaviour
             exp_to_next_level = (int)(exp_to_next_level * exp_multiplier);
             item_selector?.show_selection();
             // TODO: Pause
+        }
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            increase_exp(20);
         }
     }
 }

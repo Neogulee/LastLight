@@ -14,6 +14,8 @@ public class APlayerController : ActorController
     private int dashCount = 1;
     private bool shadow;
 
+    private float velocityY = 0.0f;
+
     public Vector2 getAimDir()
     {
         Vector2 vec = Vector2.zero;
@@ -78,11 +80,13 @@ public class APlayerController : ActorController
     void on_ground()
     {
         dashCount = dashMax;
+        Locator.event_manager.notify(new OnGroundEvent(velocityY));
     }
     public void Update()
     {
         DownCheck();
-        if(shadow)
+        velocityY = GetComponent<PhysicsPlatformer>().velocity.y;
+        if (shadow)
         {
             GameObject G = Instantiate(effect_shadow, transform.position, Quaternion.identity);
             G.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;

@@ -26,6 +26,7 @@ public class OffRightMoveEvent: IEventParam{}
 public class OffUpEvent: IEventParam{}
 
 public class OnDashEvent: IEventParam { }
+public class OnGroundEvent: IEventParam { public float power; public OnGroundEvent(float power) { this.power = power; } }
 
 public class OnAttackEvent : IEventParam { public int idx; public OnAttackEvent(int idx) { this.idx = idx; } }
 public class OnAttackerEvent : IEventParam { public int idx; public OnAttackerEvent(int idx) { this.idx = idx; } }

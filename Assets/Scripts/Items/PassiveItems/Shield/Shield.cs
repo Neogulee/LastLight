@@ -40,6 +40,7 @@ public class Shield : PassiveItem
             transform.GetChild(i).rotation = Quaternion.Euler(Vector3.back * 360 / (transform.childCount - 1) * (i - 1));
             transform.GetChild(i).Translate(Vector3.up * 1.5f);
             transform.GetChild(i).rotation = Quaternion.Euler(0, 0, 0);
+            transform.GetChild(i).GetComponent<Damager>().damage = damage;
         }
         speed += 20f;
     }

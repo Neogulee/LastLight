@@ -37,6 +37,7 @@ public class MissileSummon : ActiveItem
                 GameObject missile = Instantiate(missilePrefab, transform.position, Quaternion.identity);
                 missile.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
                 missile.GetComponent<Missile>().target = target.transform;
+                missile.GetComponent<Damager>().damage = damage;
             }
         }
     }

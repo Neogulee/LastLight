@@ -14,21 +14,12 @@ public class DashExplode : PassiveItem
     {
         StartCoroutine(Explode());
     }
-    public override bool increase_level()
-    {
-        if (base.increase_level())
-        {
-            Locator.player.MaxHpUp(10);
-            if (level >= 3) Locator.player.GetComponent<APlayerController>().DashMax = 3;
-            return true;
-        }
-        return false;
-    }
     IEnumerator Explode()
     {
         for(int i=0;i<4;i++)
         {
-            Instantiate(explosion, Locator.player.transform.position, Quaternion.identity);
+            GameObject G = Instantiate(explosion, Locator.player.transform.position, Quaternion.identity);
+            G.GetComponent<Damager>().damage = damage;
             yield return new WaitForSeconds(0.05f);
         }
     }
