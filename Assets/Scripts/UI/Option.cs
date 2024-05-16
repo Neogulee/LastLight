@@ -6,22 +6,22 @@ public class Option : MonoBehaviour
 {
     public Vector3 originalScale;
 
+    private void Awake()
+    {
+
+        Locator.event_manager.register<OptionEvent>(ToggleScale);
+        
+    }
     void Start()
     {
-        originalScale = transform.localScale; 
+        originalScale = new Vector3(0.3950352f, 0.56656f, 1f);
         SetScale(Vector3.zero); 
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ToggleScale(); 
-        }
-    }
 
-    void ToggleScale()
+    void ToggleScale(IEventParam param)
     {
+        Debug.Log("ToggleScale");
         if (transform.localScale == Vector3.zero)
         {
             Locator.pause_controller.pause();
@@ -31,6 +31,19 @@ public class Option : MonoBehaviour
         {
             Locator.pause_controller.unpause();
             SetScale(Vector3.zero); 
+        }
+    }
+    void ToggleScale()
+    {
+        if (transform.localScale == Vector3.zero)
+        {
+            Locator.pause_controller.pause();
+            SetScale(originalScale);
+        }
+        else
+        {
+            Locator.pause_controller.unpause();
+            SetScale(Vector3.zero);
         }
     }
 

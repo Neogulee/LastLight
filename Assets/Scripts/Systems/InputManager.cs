@@ -53,5 +53,9 @@ public class InputManager : MonoBehaviour
             event_manager.notify(new OnItemKeyPressed(1));
         if(Input.GetKeyDown(KeyCode.E))
             event_manager.notify(new OnItemKeyPressed(2));
+        if (Input.GetKeyDown(KeyCode.Escape))
+            event_manager.notify(new OptionEvent());
+
+
     }
 }
