@@ -9,14 +9,12 @@ public class GameClear : MonoBehaviour
     public UnityEngine.UI.Image image2;
     public TextMeshProUGUI textMeshPro;
     public SoundFade bgm;
-    private void Update()
+
+    void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            GameClearStart();
-        }
+        Locator.event_manager.register<GameClearEvent>(GameClearStart);
     }
-    public void GameClearStart()
+    private void GameClearStart(IEventParam param)
     {
         StartCoroutine(ChangeAlphaOverTime());
     }

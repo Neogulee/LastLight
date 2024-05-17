@@ -151,6 +151,7 @@ MonoBehaviour:
   knockback_power: 10
   up_power: 0
   knockback_dir: 0
+  multiple_hit: 0
 --- !u!1 &2025752894283536155
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +164,6 @@ GameObject:
   - component: {fileID: 7805182785424774013}
   - component: {fileID: 469498612274147454}
   - component: {fileID: 625061838428124989}
-  - component: {fileID: 3422117515998710166}
   - component: {fileID: 1767304915387278982}
   - component: {fileID: 6401336255271207590}
   - component: {fileID: 4102599472297047984}
@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 4278208926626152884}
   - component: {fileID: 7721977843332472339}
   - component: {fileID: 668875275559915504}
+  - component: {fileID: -6453485757489384617}
   m_Layer: 8
   m_Name: Boss
   m_TagString: Untagged
@@ -321,21 +322,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1.6875}
   m_EdgeRadius: 0
---- !u!114 &3422117515998710166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2025752894283536155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef9b0552c7ea20543b84b4bea3250a8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <max_hp>k__BackingField: 100
-  <power>k__BackingField: 0
-  <exp>k__BackingField: 2
 --- !u!95 &1767304915387278982
 Animator:
   serializedVersion: 5
@@ -456,6 +442,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!114 &-6453485757489384617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025752894283536155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0a21363cb13b5418fbccecf90ce784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <max_hp>k__BackingField: 100
+  <power>k__BackingField: 0
+  <exp>k__BackingField: 2
 --- !u!1 &2332900561266085689
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,6 +608,7 @@ MonoBehaviour:
   knockback_power: 10
   up_power: 0
   knockback_dir: 0
+  multiple_hit: 0
 --- !u!1 &5075138655270997335
 GameObject:
   m_ObjectHideFlags: 0
