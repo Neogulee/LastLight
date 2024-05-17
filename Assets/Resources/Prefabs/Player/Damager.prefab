@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 3176814454061063405}
   - component: {fileID: 1929951743842604637}
   - component: {fileID: 2564016053963047471}
+  - component: {fileID: 6337155784185528296}
   m_Layer: 0
   m_Name: MeleeDamagerAir
   m_TagString: Untagged
@@ -161,6 +162,18 @@ MonoBehaviour:
   up_power: 0
   knockback_dir: 0
   multiple_hit: 0
+--- !u!114 &6337155784185528296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210284633807099280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32503450c5a7fb34c81707b279009173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8091852072413263996
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +186,7 @@ GameObject:
   - component: {fileID: 360454216582754167}
   - component: {fileID: 3934807804975175921}
   - component: {fileID: 7188433928865933002}
+  - component: {fileID: 3390405407908859925}
   m_Layer: 0
   m_Name: UpDamager
   m_TagString: Untagged
@@ -288,6 +302,18 @@ MonoBehaviour:
   up_power: 25
   knockback_dir: 0
   multiple_hit: 0
+--- !u!114 &3390405407908859925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8091852072413263996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32503450c5a7fb34c81707b279009173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9134648763443400417
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +326,7 @@ GameObject:
   - component: {fileID: 4395214652664436552}
   - component: {fileID: 4302584018444419868}
   - component: {fileID: 2923120281073585573}
+  - component: {fileID: 4529152536592069248}
   m_Layer: 0
   m_Name: MeleeDamager
   m_TagString: Untagged
@@ -415,3 +442,15 @@ MonoBehaviour:
   up_power: 0
   knockback_dir: 0
   multiple_hit: 0
+--- !u!114 &4529152536592069248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9134648763443400417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32503450c5a7fb34c81707b279009173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
