@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class HpDrain : PassiveItem
 {
-    [SerializeField]
-    private float drainRate = 0.1f;
-    void Start()
+    private void Start()
     {
-        Locator.event_manager.register<OnGroundEvent>(OnDrain);
+        Locator.event_manager.register<OnPlayerAttackMelee>(on_hit);
     }
-    public void OnDrain(IEventParam param)
+    public void on_hit(IEventParam param)
     {
-
+        OnPlayerAttackMelee temp = param as OnPlayerAttackMelee;
+        Locator.player.heal((int)(temp.damage * (level/10f + 1) / 10));
     }
 }

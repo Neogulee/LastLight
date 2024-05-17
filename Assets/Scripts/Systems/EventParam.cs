@@ -32,6 +32,8 @@ public class OnAttackEvent : IEventParam { public int idx; public OnAttackEvent(
 public class OnAttackerEvent : IEventParam { public int idx; public OnAttackerEvent(int idx) { this.idx = idx; } }
 public class OffAttackerEvent : IEventParam { public int idx; public OffAttackerEvent(int idx) { this.idx = idx; } }
 
+public class OnPlayerAttackMelee : IEventParam { public int damage; public OnPlayerAttackMelee(int damage) { this.damage = damage; } }
+
 
 public class OnItemKeyPressed : IEventParam
 {
