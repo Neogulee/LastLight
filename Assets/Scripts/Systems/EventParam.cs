@@ -64,5 +64,6 @@ public class EnemyDestroyedEvent: IEventParam
 }
 
 public class GameOverEvent: IEventParam { }
+public class GameClearEvent: IEventParam { }
 
 public class  OptionEvent: IEventParam { }
