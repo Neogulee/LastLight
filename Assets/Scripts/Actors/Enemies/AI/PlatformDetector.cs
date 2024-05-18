@@ -35,7 +35,7 @@ public class SVector2
 public class PlatformDetector : MonoBehaviour, IPlatformDetector
 {
     const float EPSILON = 1e-4f;
-    public Grid grid;
+    public List<TilemapCollider2D> colliders = new();
     [SerializeField]
     private List<Vector2> platforms = new();
     [SerializeField]
@@ -177,7 +177,7 @@ public class PlatformDetector : MonoBehaviour, IPlatformDetector
 
     public void build()
     {
-        foreach (var tilemap_collider in grid.GetComponentsInChildren<TilemapCollider2D>())
+        foreach (var tilemap_collider in colliders)
         {
             CompositeCollider2D collider = tilemap_collider.composite;
             for (int idx = 0; idx < collider.pathCount; idx++)
