@@ -57,7 +57,7 @@ public class Damager: MonoBehaviour
         if (actor != null)
             if (!actor.take_damage(damage)) 
             {
-                SendMessage("on_hit", damage, SendMessageOptions.DontRequireReceiver);
+                SendMessage("on_hit", (damage, target), SendMessageOptions.DontRequireReceiver);
                 return;
             }
         if (knockback_power > 0.0f && actor_controller != null) {
@@ -66,6 +66,6 @@ public class Damager: MonoBehaviour
                 is_right = (target.transform.position - transform.position).x > 0.0f;
             actor_controller.take_knockback(knockback_power, is_right, up_power);
         }
-        SendMessage("on_hit", damage, SendMessageOptions.DontRequireReceiver);
+        SendMessage("on_hit", (damage, target), SendMessageOptions.DontRequireReceiver);
     }
 }

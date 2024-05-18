@@ -32,7 +32,16 @@ public class OnAttackEvent : IEventParam { public int idx; public OnAttackEvent(
 public class OnAttackerEvent : IEventParam { public int idx; public OnAttackerEvent(int idx) { this.idx = idx; } }
 public class OffAttackerEvent : IEventParam { public int idx; public OffAttackerEvent(int idx) { this.idx = idx; } }
 
-public class OnPlayerAttackMelee : IEventParam { public int damage; public OnPlayerAttackMelee(int damage) { this.damage = damage; } }
+public class OnPlayerAttackMelee : IEventParam
+{
+    public int damage;
+    public Collider2D target;
+    public OnPlayerAttackMelee(int damage, Collider2D target)
+    {
+        this.damage = damage; 
+        this.target = target;
+    } 
+}
 
 
 public class OnItemKeyPressed : IEventParam

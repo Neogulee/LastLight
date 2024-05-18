@@ -29,7 +29,7 @@ public class Missile : MonoBehaviour
 
         transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
-    void on_hit()
+    void on_hit((int damage, Collider2D target) args)
     {
         Destroy(gameObject);
     }

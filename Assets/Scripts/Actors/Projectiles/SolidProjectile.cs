@@ -7,7 +7,7 @@ public class SolidProjectile : Projectile
 {
     public LayerMask target_layer = 0;
     
-    public void on_hit()
+    public void on_hit((int damage, Collider2D target) args)
     {
         Destroy(gameObject, 0.01f);    
     }

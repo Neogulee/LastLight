@@ -5,9 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Damager))]
 public class PlayerDamager : MonoBehaviour
 {
-    public void on_hit(int damage)
+    public void on_hit((int damage, Collider2D target) args)
     {
-        Locator.event_manager.notify(new OnPlayerAttackMelee(damage));
+        Locator.event_manager.notify(new OnPlayerAttackMelee(args.damage, args.target));
 
     }
 }
