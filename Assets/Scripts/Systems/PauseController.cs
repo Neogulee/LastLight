@@ -29,6 +29,7 @@ public class PauseController: IPauseController
         lock (pause_lock)
         {
             pause_cnt = Mathf.Max(0, pause_cnt - 1);
+            pause_cnt = 0; // 
             if (pause_cnt == 0)
                 Time.timeScale = 1.0f;
         }

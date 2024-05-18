@@ -4,26 +4,32 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
+    [SerializeField]
+    private Transform damager;
     private Player player;
+    private Vector3 original_scale;
+    private new SpriteRenderer renderer = null;
 
     void Awake()
     {
         player = GetComponent<Player>();
+        renderer = GetComponent<SpriteRenderer>();
+        original_scale = transform.localScale;
     }
 
     public void on_move_left()
     {
-        Vector3 scale = transform.localScale;
-        scale.x = -1.0f;
-        transform.localScale = scale;
+        renderer.flipX = true;
+        Vector3 scale = original_scale;
+        scale.x *= -1.0f;
+        damager.transform.localScale = scale;
         player.GetAnimator().SetBool("isLeftRun", true);
     }
 
     public void on_move_right()
     {
-        Vector3 scale = transform.localScale;
-        scale.x = 1.0f;
-        transform.localScale = scale;
+        renderer.flipX = false;
+        damager.transform.localScale = original_scale;
         player.GetAnimator().SetBool("isRightRun", true);
     }
 
