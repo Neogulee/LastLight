@@ -52,4 +52,21 @@ public class EnemyVFX : MonoBehaviour
     {
         sprite_renderer.material = original_material;
     }
+
+    public void show_damage()
+    {
+        // GameObject parent_object = Instantiate(empty_object, hp_object.transform.parent);
+        // parent_object.transform.localScale = new Vector3(1.875f, 1.875f, 1.0f);
+        
+        // GameObject vfx_object = Instantiate(hp_object, parent_object.transform);
+        // vfx_object.transform.SetParent(parent_object.transform, true);
+        // vfx_object.name = "VFXText";
+        // vfx_object.GetComponent<TextMeshPro>().text = info.amount.ToString();
+        // vfx_object.AddComponent<Animation>();
+        // vfx_object.AddComponent<Destroyer>();
+        
+        // Animation animation = vfx_object.GetComponent<Animation>();
+        // animation.AddClip(damage_animation, "DamageAnimation");
+        // animation.Play("DamageAnimation");
+    }
 }

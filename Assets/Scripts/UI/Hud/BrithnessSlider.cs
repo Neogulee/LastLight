@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
+
 
 public class BrithnessSlinder : MonoBehaviour
 {
     public Slider slider;
-    // Light2D light2D
-    public Light2D _light;
-    // Start is called before the first frame update
+    public Volume volume;
     void Start()
     {
         slider = GetComponentInChildren<Slider>();
-        _light = GetComponentInChildren<Light2D>();
         slider.onValueChanged.AddListener(ChangeIntensity);
     }
+
     void ChangeIntensity(float value)
     {
-
-        _light.intensity = value;
+        ColorAdjustments adjustments;
+        volume.profile.TryGet(out adjustments);
+        adjustments.postExposure.value = value;
     }
-
 }

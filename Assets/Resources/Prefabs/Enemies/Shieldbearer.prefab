@@ -208,10 +208,11 @@ MonoBehaviour:
   target_layer:
     serializedVersion: 2
     m_Bits: 128
-  damage: 1
+  damage: 50
   knockback_power: 10
   up_power: 0
   knockback_dir: 0
+  multiple_hit: 0
 --- !u!1 &2025752894283536155
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,9 +394,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9b0552c7ea20543b84b4bea3250a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <max_hp>k__BackingField: 100
-  <power>k__BackingField: 0
-  <exp>k__BackingField: 2
+  <max_hp>k__BackingField: 350
+  <power>k__BackingField: 50
+  <exp>k__BackingField: 3
 --- !u!114 &7779994688543818082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,6 +455,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b594c8429402d4446a72d88827e26489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance_to_attack: 1.5
+  after_delay: 0.5
   damagers:
   - {fileID: 6151193084550851127}
 --- !u!114 &6401336255271207590
@@ -596,7 +599,7 @@ VFXRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7610461969902792935}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
