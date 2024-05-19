@@ -67,5 +67,17 @@ public class Damager: MonoBehaviour
             actor_controller.take_knockback(knockback_power, is_right, up_power);
         }
         SendMessage("on_hit", (damage, target), SendMessageOptions.DontRequireReceiver);
+        ShowDamage(target.transform,damage, target_layer);
+    }
+    void ShowDamage(Transform targetT,int damage,LayerMask target)
+    {
+        if((target & 1<<7)>0)
+        {
+            Locator.damageManager.ShowDamage(targetT,damage,Team.Player);
+        }
+        else
+        {
+            Locator.damageManager.ShowDamage(targetT,damage,Team.Enemy);
+        }
     }
 }

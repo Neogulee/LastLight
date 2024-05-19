@@ -49,6 +49,7 @@ public class Player : Actor
     {
         base.heal(heal);
         Locator.event_manager.notify(new OnHpChangeEvent{hp = this.hp});
+        Locator.damageManager.ShowHeal(transform, heal, Team.Player);
     }
 
     public override bool take_damage(int damage)
