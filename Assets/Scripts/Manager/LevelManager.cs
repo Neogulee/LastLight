@@ -39,7 +39,7 @@ public class LevelManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Minus))
         {
-            increase_exp(20);
+            increase_exp(exp_to_next_level);
         }
     }
 }
