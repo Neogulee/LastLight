@@ -72,5 +72,6 @@
 
 ### 5. 기타
 
-![poster](https://github.com/kookmin-sw/capstone-2024-28/assets/42773970/02192bb5-597e-4112-880a-f7c017d0d553)
+[poster.pdf](https://github.com/kookmin-sw/capstone-2024-28/files/15375762/poster.pdf)
+
 
