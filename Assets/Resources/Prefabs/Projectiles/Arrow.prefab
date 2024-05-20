@@ -192,7 +192,8 @@ MonoBehaviour:
   target_layer:
     serializedVersion: 2
     m_Bits: 128
-  damage: 10
+  damage: 30
   knockback_power: 10
   up_power: 0
   knockback_dir: 0
+  multiple_hit: 0

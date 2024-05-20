@@ -17,9 +17,11 @@ public interface IItemSelector
 public class ItemSelector : MonoBehaviour, IItemSelector
 {
     public List<ItemSelectionOption> options = new();
+    private int current_cnt = 0;
     
     void Awake()
     {
+        current_cnt = options.Count;
         set_active(false);
     }
 
@@ -29,14 +31,30 @@ public class ItemSelector : MonoBehaviour, IItemSelector
         IItemPool item_pool = Locator.item_pool;
         
         List<Item> items = item_manager.get_items();        
-        List<ItemInfo> infos = item_pool.get_infos();
-        foreach (Item item in items)
-            if (item.level == item.info.max_level)
-                infos.Remove(item.info);
+        List<ItemInfo> infos_pool = item_pool.get_infos();
+
+        HashSet<ItemInfo> infos = new();
+        if (item_manager.active_num < item_manager.max_active_num)
+            foreach (ItemInfo info in infos_pool)
+                if (info.is_active)
+                    infos.Add(info);
         
+        if (item_manager.passive_num < item_manager.max_passive_num)
+            foreach (ItemInfo info in infos_pool)
+                if (!info.is_active)
+                    infos.Add(info);
+                    
+        foreach (Item item in items)
+            if (item.level < item.info.max_level)
+                infos.Add(item.info);
+
         var random = new System.Random();
         List<ItemInfo> selected = infos.OrderBy(x => random.Next()).Take(options.Count).ToList();
-        for (int i = 0; i < options.Count; i++)
+        current_cnt = Mathf.Min(options.Count, selected.Count);
+        if (current_cnt == 0)
+            return;
+            
+        for (int i = 0; i < current_cnt; i++)
         {
             ItemInfo info = selected[i];
             int level = item_manager.get_level(info) + 1;
@@ -56,7 +74,10 @@ public class ItemSelector : MonoBehaviour, IItemSelector
 
     public void set_active(bool value)
     {
-        foreach (var option in options)
+        for (int i = 0; i < current_cnt; i++)
+        {
+            var option = options[i];
             option.gameObject.SetActive(value);
+        }
     }
 }

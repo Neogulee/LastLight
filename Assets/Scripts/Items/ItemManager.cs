@@ -93,5 +93,5 @@ public class ItemManager: IItemManager
     }
     
     public int active_num { get { return active_items.Count; } }
-    public int passive_num { get { return active_items.Count; } }
+    public int passive_num { get { return passive_items.Count; } }
 }

@@ -14,6 +14,6 @@ public class HpBar : MonoBehaviour
     public void OnHpChange(IEventParam event_param)
     {
         OnHpChangeEvent hp_change_event = (OnHpChangeEvent)event_param;
-        hp_bar.localScale = new Vector3(hp_change_event.hp / 100f, 1, 1);
+        hp_bar.localScale = new Vector3((float)hp_change_event.hp / Locator.player.max_hp, 1, 1);
     }
 }
