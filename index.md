@@ -1,20 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-2024-28조 [Last Light](https://kookmin-sw.github.io/capstone-2024-28/)
-=======
-2024-28조 [Last Light](kookmin-sw.github.io/capstone-2024-28/)
->>>>>>> 85f43ce7 (Update index.md)
-=======
-2024-28조 [Last Light](www.kookmin-sw.github.io/capstone-2024-28/)
->>>>>>> 56d7404d (Update index.md)
-=======
-2024-28조 [Last Light](https://www.kookmin-sw.github.io/capstone-2024-28/)
->>>>>>> 3a460227 (Update index.md)
-=======
-2024-28조 [Last Light](https://kookmin-sw.github.io/capstone-2024-28/)
->>>>>>> 6102fe6b (Update index.md)
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/omXkVCQu)
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=14049899&assignment_repo_type=AssignmentRepo)
 
 ### 1. 프로젝트 소개
 
@@ -41,27 +26,29 @@
   이러한 단점을 보완하고 새로운 경험을 통해 유저들에게 게임성을 경쟁하기 위해 기존의 장점들은 유지하면서 게임의 방식을 횡스크롤 방식으로
   생각을 전환하여 보다 전투의 재미를 추구하여 두 마리의 토끼를 잡아 보고자 합니다.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 - 플랫폼  
   PC
   
 - 개발 환경  
+=======
+- 플랫폼
+  PC
+  
+- 개발 환경
+>>>>>>> fe93df80 (Update README.md)
+=======
+- 플랫폼  
+  PC
+  
+- 개발 환경  
+>>>>>>> ff7dbf66 (Update README.md)
   Unity 2022.3.17f1
   
 ### 2. 소개 영상
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-[중간 시연 영상](https://drive.google.com/file/d/1HzkLl8NVs1mU8vPgafL4tWj_5FZi9jle/view?usp=sharing)
-=======
 중간 시연 영상: https://drive.google.com/file/d/1HzkLl8NVs1mU8vPgafL4tWj_5FZi9jle/view?usp=sharing
->>>>>>> ce5e07dd (Update index.md)
-=======
-(중간 시연 영상)[https://drive.google.com/file/d/1HzkLl8NVs1mU8vPgafL4tWj_5FZi9jle/view?usp=sharing]
->>>>>>> e9b69568 (Update index.md)
-=======
-[중간 시연 영상](https://drive.google.com/file/d/1HzkLl8NVs1mU8vPgafL4tWj_5FZi9jle/view?usp=sharing)
->>>>>>> 2d4ba97c (Update index.md)
 
 ### 3. 팀 소개
 
@@ -85,32 +72,5 @@
 
 ### 5. 기타
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-[중간 보고서](https://drive.google.com/file/d/15QTyr3wMn2XWgsmaqkkyDaAxEzGs2Exx/view?usp=sharing)  
-[중간 발표 자료](https://drive.google.com/file/d/1EfXCdsjQwhhnJWuNya1L9Uvz6dV8Fs6p/view?usp=sharing)
-=======
-2024년 28조 kookmin-sw.github.io/capstone-2024-28/
->>>>>>> ce5e07dd (Update index.md)
-=======
-중간 보고서: https://drive.google.com/file/d/15QTyr3wMn2XWgsmaqkkyDaAxEzGs2Exx/view?usp=sharing
-중간 발표 자료: https://drive.google.com/file/d/1EfXCdsjQwhhnJWuNya1L9Uvz6dV8Fs6p/view?usp=sharing
->>>>>>> 85f43ce7 (Update index.md)
-=======
-(중간 보고서)[https://drive.google.com/file/d/15QTyr3wMn2XWgsmaqkkyDaAxEzGs2Exx/view?usp=sharing]
-=======
-(중간 보고서)[https://drive.google.com/file/d/15QTyr3wMn2XWgsmaqkkyDaAxEzGs2Exx/view?usp=sharing]  
->>>>>>> 024b61b7 (Update index.md)
-(중간 발표 자료)[https://drive.google.com/file/d/1EfXCdsjQwhhnJWuNya1L9Uvz6dV8Fs6p/view?usp=sharing]
->>>>>>> e9b69568 (Update index.md)
-=======
-[중간 보고서](https://drive.google.com/file/d/15QTyr3wMn2XWgsmaqkkyDaAxEzGs2Exx/view?usp=sharing)
-=======
-[중간 보고서](https://drive.google.com/file/d/15QTyr3wMn2XWgsmaqkkyDaAxEzGs2Exx/view?usp=sharing)  
->>>>>>> 9d10ddd4 (Update index.md)
-[중간 발표 자료](https://drive.google.com/file/d/1EfXCdsjQwhhnJWuNya1L9Uvz6dV8Fs6p/view?usp=sharing)
->>>>>>> a0fe442a (Update index.md)
+[poster.pdf](https://github.com/kookmin-sw/capstone-2024-28/files/15375762/poster.pdf)
+

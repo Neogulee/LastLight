@@ -10,6 +10,8 @@ public class DamageEffect : MonoBehaviour
     private float xspeed;
     private float yspeed;
 
+    private float alpha = 0.5f;
+
     private float speed = 6;
     [SerializeField]
     private float friction;
@@ -23,9 +25,9 @@ public class DamageEffect : MonoBehaviour
         transform.position = t.position;
         text.text = damage.ToString();
         if(team == Team.Enemy)
-        text.color = new Color(1, 0.5971026f, 0.1568627f, 1);
+        text.color = new Color(1, 0.5971026f, 0.1568627f, alpha);
         else
-        text.color = new Color(0.1568627f, 0.5971026f, 1, 1);
+        text.color = new Color(0.1568627f, 0.5971026f, 1, alpha);
         xspeed = Random.Range(-0.3f, 0.3f);
         yspeed = Random.Range(0.7f, 1f);
         SpeedSet();
@@ -36,9 +38,9 @@ public class DamageEffect : MonoBehaviour
         transform.position = t.position;
         text.text =damage.ToString();
         if(team == Team.Enemy)
-        text.color = new Color(1, 0, 0, 1);
+        text.color = new Color(1, 0, 0, alpha);
         else
-        text.color = new Color(0, 0, 1, 1);
+        text.color = new Color(0, 0, 1, alpha);
         xspeed = Random.Range(-0.3f, 0.3f);
         yspeed = Random.Range(0.7f, 1f);
         SpeedSet();
@@ -49,9 +51,9 @@ public class DamageEffect : MonoBehaviour
         transform.position = t.position;
         text.text = heal.ToString();
         if(team == Team.Enemy)
-        text.color = new Color(0.3002342f, 1, 0.2688679f, 1);
+        text.color = new Color(0.3002342f, 1, 0.2688679f, alpha);
         else
-        text.color = new Color(0.2688679f, 1, 0.3002342f, 1);
+        text.color = new Color(0.2688679f, 1, 0.3002342f, alpha);
         xspeed = Random.Range(-0.3f, 0.3f);
         yspeed = Random.Range(0.7f, 1f);
         SpeedSet();
