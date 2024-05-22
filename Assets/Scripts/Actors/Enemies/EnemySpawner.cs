@@ -52,7 +52,7 @@ public class EnemySpawner : MonoBehaviour
         if (!is_hit)
             return new Vector2(Mathf.Infinity, Mathf.Infinity);
 
-        Vector2 spawn_pos = new Vector2(pos.x, y_pos + collider.size.y / 2.0f - collider.offset.y);
+        Vector2 spawn_pos = new Vector2(pos.x, y_pos + collider.size.y / 2.0f - collider.offset.y + 1.0f);
         return spawn_pos;
     }
 
@@ -69,7 +69,7 @@ public class EnemySpawner : MonoBehaviour
     public bool relocate(GameObject enemy)
     {
         Vector2 spawn_pos = get_random_position(enemy);
-        if (spawn_pos.x == Mathf.Infinity)
+        if (float.IsInfinity(spawn_pos.x))
             return false;
         enemy.transform.position = spawn_pos;
         return true;
@@ -134,7 +134,7 @@ public class EnemySpawner : MonoBehaviour
             }
 
             Vector2 delta_pos = enemy.transform.position - transform.position;
-                time += Time.fixedDeltaTime;
+            time += 1.0f;
             if (Mathf.Abs(delta_pos.x) <= min_spawn_range.x && Mathf.Abs(delta_pos.y) <= min_spawn_range.y)
                 time = 0.0f;
             if (time >= relocate_time) {

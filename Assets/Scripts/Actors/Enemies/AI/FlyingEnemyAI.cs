@@ -69,7 +69,7 @@ public class FlyingEnemyAI : EnemyAI
         while (pq.Count > 0)
         {
             (Vector2Int last, Vector2Int current, float cost) = pq.Dequeue();
-            if (cost > 100.0f || pq.Count > 200.0f)
+            if (cost > 300.0f || pq.Count > 300.0f)
                 break;
                 
             if (last_pos.ContainsKey(current))
