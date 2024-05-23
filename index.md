@@ -2,6 +2,9 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=14049899&assignment_repo_type=AssignmentRepo)
 
 [팀페이지 주소](https://kookmin-sw.github.io/capstone-2024-28/)
+[수행결과보고서](https://drive.google.com/file/d/1Qm1GVavpDiPuvJvN1jAcx4156yJgFFbn/view?usp=drive_link)
+[발표자료](https://drive.google.com/file/d/1U1BJ1qAE7VI6GpArz_mycJavGvqYSwKq/view?usp=drive_link)
+[실행파일](https://drive.google.com/drive/folders/1epyekYWOleSp-XDdvxnCkv8IYzHf5poM?usp=drive_link)
 
 ## 1. 프로젝트 소개
 
