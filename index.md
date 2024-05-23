@@ -16,7 +16,7 @@
   탑뷰를 통해 진행되는 최근 많이 만들어진 **서바이벌류 게임**들의 **조합 및 화려한 스킬**등의 장점을 합쳐서
   **횡스크롤 서바이벌 액션 게임**을 지향합니다.
   
-![GIF 2024-03-24 오후 7-23-19](https://github.com/kookmin-sw/capstone-2024-28/assets/42773970/79ba304d-ab8a-437d-965d-c0816ab559e0)
+![gif-ezgif com-optimize](https://github.com/kookmin-sw/capstone-2024-28/assets/55117761/5c8f99e5-1d15-4ca0-955a-949be059ff82)
 
 - 목표
   
