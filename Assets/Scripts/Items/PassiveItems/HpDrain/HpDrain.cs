@@ -15,7 +15,7 @@ public class HpDrain : PassiveItem
     public void on_hit(IEventParam param)
     {
         OnPlayerAttackMelee temp = param as OnPlayerAttackMelee;
-        Locator.player.heal((int)(temp.damage * (level / 10f + 1) / 10));
+        Locator.player.heal((int)(temp.damage * (level / 5f + 1) / 20));
 
         var vfx = Locator.vfx_factory.create(drain_vfx, Locator.player.transform);
         vfx.SetVector2("TargetPosition", temp.target.transform.position);
