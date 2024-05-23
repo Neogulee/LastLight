@@ -4,8 +4,8 @@
 [팀페이지 주소](https://kookmin-sw.github.io/capstone-2024-28/)  
 [수행결과보고서](https://drive.google.com/file/d/1Qm1GVavpDiPuvJvN1jAcx4156yJgFFbn/view?usp=drive_link)  
 [발표자료](https://drive.google.com/file/d/1U1BJ1qAE7VI6GpArz_mycJavGvqYSwKq/view?usp=drive_link)  
-[실행파일](https://drive.google.com/drive/folders/1epyekYWOleSp-XDdvxnCkv8IYzHf5poM?usp=drive_link)
-[시연영상](https://drive.google.com/file/d/1iCCO7DcAOSjqq6mxTh1NtFD85zh3PBS-/view?usp=drive_link)
+[실행파일](https://drive.google.com/drive/folders/1epyekYWOleSp-XDdvxnCkv8IYzHf5poM?usp=drive_link)  
+[시연영상](https://drive.google.com/file/d/1iCCO7DcAOSjqq6mxTh1NtFD85zh3PBS-/view?usp=drive_link)  
 
 ## 1. 프로젝트 소개
 
@@ -53,9 +53,7 @@
 - 개발 환경  
   Unity 2022.3.17f1
   
-### 2. 소개 영상
-
-### 3. 팀 소개
+### 2. 팀 소개
 
 최성훈(조장)
   - 적 및 적 인공지능 구현
@@ -71,7 +69,7 @@
   - 레벨 디자인
   - UI 디자인
 
-### 4. 조작법
+### 3. 조작법
 
 이동: 방향키  
 대시: Shift키  
@@ -80,7 +78,7 @@
 액티브 키 : Q,W,E키  
 아이템 선택: 마우스 클릭    
 
-### 5. 기타
+### 4. 기타
 
 [poster.pdf](https://github.com/kookmin-sw/capstone-2024-28/files/15375762/poster.pdf)
 ![poster](https://github.com/kookmin-sw/capstone-2024-28/assets/42773970/07dd869f-9a65-4ddf-ba09-a03b029b983f)
