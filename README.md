@@ -4,7 +4,8 @@
 [팀페이지 주소](https://kookmin-sw.github.io/capstone-2024-28/)  
 [수행결과보고서](https://drive.google.com/file/d/1Qm1GVavpDiPuvJvN1jAcx4156yJgFFbn/view?usp=drive_link)  
 [발표자료](https://drive.google.com/file/d/1U1BJ1qAE7VI6GpArz_mycJavGvqYSwKq/view?usp=drive_link)  
-[실행파일](https://drive.google.com/drive/folders/1epyekYWOleSp-XDdvxnCkv8IYzHf5poM?usp=drive_link)  
+[실행파일](https://drive.google.com/drive/folders/1epyekYWOleSp-XDdvxnCkv8IYzHf5poM?usp=drive_link)
+[시연영상](https://drive.google.com/file/d/1iCCO7DcAOSjqq6mxTh1NtFD85zh3PBS-/view?usp=drive_link)
 
 ## 1. 프로젝트 소개
 
@@ -53,8 +54,6 @@
   Unity 2022.3.17f1
   
 ### 2. 소개 영상
-
-중간 시연 영상: https://drive.google.com/file/d/1HzkLl8NVs1mU8vPgafL4tWj_5FZi9jle/view?usp=sharing
 
 ### 3. 팀 소개
 
