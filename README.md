@@ -1,7 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/omXkVCQu)
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=14049899&assignment_repo_type=AssignmentRepo)
 
-### 1. 프로젝트 소개
+## 1. 프로젝트 소개
 
 횡스크롤 플랫포머 게임으로 기존 서바이벌게임과 차별화되는 화려한 액션을 추구하는 게임.
 
@@ -25,25 +25,26 @@
 
   이러한 단점을 보완하고 새로운 경험을 통해 유저들에게 게임성을 경쟁하기 위해 기존의 장점들은 유지하면서 게임의 방식을 횡스크롤 방식으로
   생각을 전환하여 보다 전투의 재미를 추구하여 두 마리의 토끼를 잡아 보고자 합니다.
+***
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+### 1.1) 적
+![enemy](https://github.com/kookmin-sw/capstone-2024-28/assets/42773970/15bd355f-299c-4b7a-b8fe-941e6776a4ae)
+### 1.2) 다양한 아이템
+![-_ pptx](https://github.com/kookmin-sw/capstone-2024-28/assets/42773970/c22a86ee-f067-42e4-b54d-8bf9ded0aab7)
+![-_ pptx (2)](https://github.com/kookmin-sw/capstone-2024-28/assets/42773970/99f4be58-44a2-4003-8322-865f72168007)
+![-_ pptx (3)](https://github.com/kookmin-sw/capstone-2024-28/assets/42773970/0bdf6421-f339-45cc-95a3-88c24712b02b)
+![-_ pptx (1)](https://github.com/kookmin-sw/capstone-2024-28/assets/42773970/445c0dbe-4281-43f4-8ab7-5279fdc8f4d5)
+### 1.3) AI
+![-_ pptx (4)](https://github.com/kookmin-sw/capstone-2024-28/assets/42773970/06388ac6-ef05-459c-90dd-9f35f9de9ac9)
+### 1.4) 맵 및 UI
+![-_ pptx (5)](https://github.com/kookmin-sw/capstone-2024-28/assets/42773970/fcbaa151-5d56-4aab-bd77-fac7aa450444)
+![-_ pptx (6)](https://github.com/kookmin-sw/capstone-2024-28/assets/42773970/e76d9d78-a534-407e-9274-6ffac7145422)
+***
+
 - 플랫폼  
   PC
   
 - 개발 환경  
-=======
-- 플랫폼
-  PC
-  
-- 개발 환경
->>>>>>> fe93df80 (Update README.md)
-=======
-- 플랫폼  
-  PC
-  
-- 개발 환경  
->>>>>>> ff7dbf66 (Update README.md)
   Unity 2022.3.17f1
   
 ### 2. 소개 영상
@@ -53,25 +54,31 @@
 ### 3. 팀 소개
 
 최성훈(조장)
-  - 적 인공지능 구현
+  - 적 및 적 인공지능 구현
   - 물리 엔진 구현
+  - 시각 효과 제작
 
 황태웅
   - 아트 디자인
   - 플레이어 구현
+  - 아이템 구현
 
 이현
   - 레벨 디자인
-  - 아이템 구현
+  - UI 디자인
 
 ### 4. 조작법
 
 이동: 방향키  
+대시: Shift키  
 공격: Z키  
-아이템 선택: 마우스 클릭  
+설정: ESC키  
+액티브 키 : Q,W,E키  
+아이템 선택: 마우스 클릭    
 
 ### 5. 기타
 
 [poster.pdf](https://github.com/kookmin-sw/capstone-2024-28/files/15375762/poster.pdf)
+![poster](https://github.com/kookmin-sw/capstone-2024-28/assets/42773970/07dd869f-9a65-4ddf-ba09-a03b029b983f)
 
 
