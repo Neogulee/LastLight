@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <move_velocity>k__BackingField: 15
-  <jump_velocity>k__BackingField: 10
+  <jump_velocity>k__BackingField: 15
   <max_jump_cnt>k__BackingField: 1
   <current_jump_cnt>k__BackingField: 1
 --- !u!114 &6814807256917984772

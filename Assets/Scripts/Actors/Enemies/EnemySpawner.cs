@@ -9,8 +9,8 @@ public class EnemySpawner : MonoBehaviour
 {
     public StageSpawnInfo spawn_info = null;
     public PlatformDetector platform_detector = null;
-    public Vector2 min_spawn_range = new Vector2(10.0f, 10.0f);
-    public Vector2 max_spawn_range = new Vector2(30.0f, 30.0f);
+    public Vector2 min_spawn_range = new Vector2(14.22f, 8.0f);
+    public Vector2 max_spawn_range = new Vector2(42.66f, 24.0f);
     public float relocate_time = 10.0f;
     public LayerMask layer = 0;
 
