@@ -6,13 +6,15 @@ class PlayerAction
 {
     public Vector2 pos;
     public Sprite sprite;
+    public float dir;
 
     public int on_idx;
     public int off_idx;
-    public PlayerAction(Vector2 pos, Sprite sprite, int on_idx = -1, int off_idx = -1)
+    public PlayerAction(Vector2 pos, Sprite sprite, float dir, int on_idx = -1, int off_idx = -1)
     {
         this.pos = pos;
         this.sprite = sprite;
+        this.dir = dir;
         this.on_idx = on_idx;
         this.off_idx = off_idx;
     }
@@ -21,8 +23,7 @@ public class ShadowPartnar : PassiveItem
 {
     private Queue<PlayerAction> playerActions;
     public List<Damager> damager;
-
-
+    
     private int onIdx = -1;
     private int offIdx = -1;
     void Start()
@@ -73,7 +74,10 @@ public class ShadowPartnar : PassiveItem
         while (true)
         {
             yield return new WaitForSeconds(0.01f);
-            playerActions.Enqueue(new PlayerAction(transform.parent.position, transform.parent.GetComponent<SpriteRenderer>().sprite, onIdx, offIdx));
+            SpriteRenderer parent_renderer = transform.parent.GetComponent<SpriteRenderer>();
+            playerActions.Enqueue(new PlayerAction(
+                transform.parent.position, parent_renderer.sprite, parent_renderer.flipX ? -1 : 1, onIdx, offIdx)
+            );
             onIdx = -1;
             offIdx = -1;
 
@@ -82,6 +86,7 @@ public class ShadowPartnar : PassiveItem
                 PlayerAction action = playerActions.Dequeue();
                 transform.position = action.pos;
                 GetComponent<SpriteRenderer>().sprite = action.sprite;
+                transform.localScale = new Vector3(action.dir, 1.0f, 1.0f);
                 if(action.on_idx != -1)
                 {
                     damager[action.on_idx].enable();
