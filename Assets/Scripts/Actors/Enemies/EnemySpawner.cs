@@ -9,8 +9,8 @@ public class EnemySpawner : MonoBehaviour
 {
     public StageSpawnInfo spawn_info = null;
     public PlatformDetector platform_detector = null;
-    public Vector2 min_spawn_range = new Vector2(14.22f, 8.0f);
-    public Vector2 max_spawn_range = new Vector2(42.66f, 24.0f);
+    public Vector2 min_spawn_range = new Vector2(7.11f, 4.0f);
+    public Vector2 max_spawn_range = new Vector2(21.33f, 12.0f);
     public float relocate_time = 10.0f;
     public LayerMask layer = 0;
 
@@ -133,7 +133,7 @@ public class EnemySpawner : MonoBehaviour
                 continue;
             }
 
-            Vector2 delta_pos = enemy.transform.position - transform.position;
+            Vector2 delta_pos = enemy.transform.position - Locator.player.transform.position;
             time += 1.0f;
             if (Mathf.Abs(delta_pos.x) <= min_spawn_range.x && Mathf.Abs(delta_pos.y) <= min_spawn_range.y)
                 time = 0.0f;
