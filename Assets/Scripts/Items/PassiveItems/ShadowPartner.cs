@@ -19,7 +19,7 @@ class PlayerAction
         this.off_idx = off_idx;
     }
 }
-public class ShadowPartnar : PassiveItem
+public class ShadowPartner : PassiveItem
 {
     private Queue<PlayerAction> playerActions;
     public List<Damager> damager;
