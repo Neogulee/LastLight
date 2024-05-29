@@ -24,6 +24,7 @@ public class InputManager : MonoBehaviour
         try_notify(new OnLeftMoveEvent(),       KeyType.KEY,      KeyCode.LeftArrow);
         try_notify(new OnRightMoveEvent(),      KeyType.KEY,      KeyCode.RightArrow);
         try_notify(new OffLeftMoveEvent(),      KeyType.KEY_UP,   KeyCode.LeftArrow);
+        try_notify(new OffRightMoveEvent(),     KeyType.KEY_UP,   KeyCode.RightArrow);
         try_notify(new OnUpEvent(),             KeyType.KEY,      KeyCode.UpArrow);
         try_notify(new OffUpEvent(),            KeyType.KEY_UP,   KeyCode.UpArrow);
         try_notify(new OnShiftEvent(),          KeyType.KEY_DOWN, KeyCode.LeftShift);

@@ -19,7 +19,7 @@ public class HealDrone : PassiveItem
         if(timer > 1)
         {
             timer = 0;
-        Locator.player.heal(level);
+            Locator.player.heal(2 * level);
         }
     }
 }

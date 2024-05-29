@@ -21,13 +21,12 @@ public class MissileSummon : ActiveItem
             return;
         }
     }
+    
     public override void use()
     {
-        if (cooldown_timer > 0)
-        {
+        if (!check_cooldown())
             return;
-        }
-        Debug.Log("Test Item Use");
+
         scanner.FindEnemy();
         for (int i = 0; i < scanner.targets.Length; i++)
         {

@@ -13,6 +13,7 @@ public class Player : Actor
     private PlayerController playerController;
     private PlayerAttack playerAttack;
     private BoxCollider2D boxCollider;
+    private float regen_time = 0.0f;
 
     public int defenceAttack;
 
@@ -63,6 +64,16 @@ public class Player : Actor
         base.take_damage(damage);
         Locator.event_manager.notify(new OnHpChangeEvent{hp = this.hp});
         return true;
+    }
+
+    void FixedUpdate()
+    {
+        regen_time += Time.deltaTime;
+        if (regen_time > 1) {
+            regen_time -= 1.0f;
+            base.heal(5);
+            Locator.event_manager.notify(new OnHpChangeEvent{hp = this.hp});
+        }
     }
 
     public Rigidbody2D GetRigidbody()
