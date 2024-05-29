@@ -1,61 +1,55 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class InputManager : MonoBehaviour
 {
+    private enum KeyType
+    {
+        KEY,
+        KEY_DOWN,
+        KEY_UP
+    };
+
     private void Update()
     {
-        IEventManager event_manager = Locator.event_manager;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            event_manager.notify(new OnJumpEvent());
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            event_manager.notify(new OnLeftMoveEvent());
-        }
-        if(Input.GetKey(KeyCode.RightArrow))
-        {
-            event_manager.notify(new OnRightMoveEvent());
-        }
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            event_manager.notify(new OffLeftMoveEvent());
-        }
-        if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            event_manager.notify(new OffRightMoveEvent());
-        }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            event_manager.notify(new OnUpEvent());
-        }
-        if (Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            event_manager.notify(new OffUpEvent());
-        }
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            event_manager.notify(new OnAttackEvent(0));
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            event_manager.notify(new OnAttackEvent(1));
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            event_manager.notify(new OnShiftEvent());
-        }
-        if(Input.GetKeyDown(KeyCode.Q))
-            event_manager.notify(new OnItemKeyPressed(0));
-        if(Input.GetKeyDown(KeyCode.W))
-            event_manager.notify(new OnItemKeyPressed(1));
-        if(Input.GetKeyDown(KeyCode.E))
-            event_manager.notify(new OnItemKeyPressed(2));
-        if (Input.GetKeyDown(KeyCode.Escape))
-            event_manager.notify(new OptionEvent());
+        if (Locator.pause_controller.is_paused)
+            return;
 
+        try_notify(new OnJumpEvent(),           KeyType.KEY_DOWN, KeyCode.Space, KeyCode.C);
+        try_notify(new OnAttackEvent(0),        KeyType.KEY_DOWN, KeyCode.Z);
+        try_notify(new OnAttackEvent(1),        KeyType.KEY_DOWN, KeyCode.X);
+        try_notify(new OnLeftMoveEvent(),       KeyType.KEY,      KeyCode.LeftArrow);
+        try_notify(new OnRightMoveEvent(),      KeyType.KEY,      KeyCode.RightArrow);
+        try_notify(new OffLeftMoveEvent(),      KeyType.KEY_UP,   KeyCode.LeftArrow);
+        try_notify(new OnUpEvent(),             KeyType.KEY,      KeyCode.UpArrow);
+        try_notify(new OffUpEvent(),            KeyType.KEY_UP,   KeyCode.UpArrow);
+        try_notify(new OnShiftEvent(),          KeyType.KEY_DOWN, KeyCode.LeftShift);
+        try_notify(new OnItemKeyPressed(0),     KeyType.KEY_DOWN, KeyCode.Q, KeyCode.A);
+        try_notify(new OnItemKeyPressed(1),     KeyType.KEY_DOWN, KeyCode.W, KeyCode.S);
+        try_notify(new OnItemKeyPressed(2),     KeyType.KEY_DOWN, KeyCode.E, KeyCode.D);
+        try_notify(new OptionEvent(),           KeyType.KEY_DOWN, KeyCode.Escape);
+        try_notify(new OnInputItemSelection(0), KeyType.KEY_DOWN, KeyCode.Alpha1);
+        try_notify(new OnInputItemSelection(1), KeyType.KEY_DOWN, KeyCode.Alpha2);
+        try_notify(new OnInputItemSelection(2), KeyType.KEY_DOWN, KeyCode.Alpha3);
+    }
 
+    private void try_notify(IEventParam param, KeyType key_type, params KeyCode[] key_codes)
+    {
+        Func<KeyCode, bool> check_key = Input.GetKey;
+        if (key_type == KeyType.KEY_DOWN)
+            check_key = Input.GetKeyDown;
+        else if (key_type == KeyType.KEY_UP)
+            check_key = Input.GetKeyUp;
+
+        foreach (KeyCode key_code in key_codes)
+        {
+            if (check_key(key_code)) {
+                Locator.event_manager.notify(param);
+                return;
+            }
+        }
     }
 }
