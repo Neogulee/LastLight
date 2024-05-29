@@ -74,6 +74,12 @@ public class EnemyDestroyedEvent: IEventParam
     }
 }
 
+class OnInputItemSelection: IEventParam
+{
+    public int idx;
+    public OnInputItemSelection(int idx) { this.idx = idx; }
+}
+
 public class GameOverEvent: IEventParam { }
 public class GameClearEvent: IEventParam { }
 

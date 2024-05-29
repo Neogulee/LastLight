@@ -17,11 +17,13 @@ public class ItemSelector : MonoBehaviour, IItemSelector
 {
     public List<ItemSelectionOption> options = new();
     private int current_cnt = 0;
+    private bool is_active = false;
     
     void Awake()
     {
         current_cnt = options.Count;
         set_active(false);
+        Locator.event_manager.register<OnInputItemSelection>(on_input_item_selection);
     }
 
     public void show_selection()
@@ -63,16 +65,25 @@ public class ItemSelector : MonoBehaviour, IItemSelector
         Locator.pause_controller.pause();
     }
 
+    public void on_input_item_selection(IEventParam param)
+    {
+        if (!is_active)
+            return;
+            
+        var args = (OnInputItemSelection)param;
+        on_selected(options[args.idx].info);
+    }
+
     public void on_selected(ItemInfo info)
     {
         set_active(false);
         Locator.pause_controller.unpause();
-
         Locator.item_manager.add_item(info);
     }
 
     public void set_active(bool value)
     {
+        is_active = value;
         for (int i = 0; i < current_cnt; i++)
         {
             var option = options[i];

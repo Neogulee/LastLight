@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
+
 public class HpDrain : PassiveItem
 {
     public VisualEffect drain_vfx = null;
@@ -15,7 +16,7 @@ public class HpDrain : PassiveItem
     public void on_hit(IEventParam param)
     {
         OnPlayerAttackMelee temp = param as OnPlayerAttackMelee;
-        Locator.player.heal((int)(temp.damage * (level / 5f + 1) / 20));
+        Locator.player.heal((int)(temp.damage * (level / 5f + 1) / 5));
 
         var vfx = Locator.vfx_factory.create(drain_vfx, Locator.player.transform);
         vfx.SetVector2("TargetPosition", temp.target.transform.position);

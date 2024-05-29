@@ -11,7 +11,7 @@ public class ItemSelectionOption : MonoBehaviour
     public IItemSelector item_selector;
     public Image image;
     public Text level, item_name, description;
-    private ItemInfo info;
+    public ItemInfo info { get; private set; }
 
     public void init(IItemSelector item_selector, ItemInfo info, int target_level)
     {

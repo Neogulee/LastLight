@@ -6,6 +6,7 @@ using UnityEngine;
 
 public interface IPauseController
 {
+    public bool is_paused { get; }
     public void pause();
     public void unpause();
 }
@@ -34,4 +35,6 @@ public class PauseController: IPauseController
                 Time.timeScale = 1.0f;
         }
     }
+    
+    public bool is_paused { get { return pause_cnt > 0; } }
 }
