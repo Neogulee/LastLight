@@ -141,6 +141,11 @@ public class AdvancedEnemyAI : EnemyAI
         current_move = Moves.IDLE;
     }
 
+    public void notify_attack()
+    {
+        SendMessage("on_start_attack", SendMessageOptions.DontRequireReceiver);
+    }
+
     void FixedUpdate()
     {
         lock (is_attacking_lock)
@@ -155,10 +160,10 @@ public class AdvancedEnemyAI : EnemyAI
 
         if (attacker.check()) {
             // TODO: check finished
-            SendMessage("on_start_attack", SendMessageOptions.DontRequireReceiver);
             lock (is_attacking_lock)
                 is_attacking = true;
             actor_controller.stop();
+            Invoke("notify_attack", 0.125f);
         }
         else if (current_move == Moves.LEFT)
             actor_controller.move_left();

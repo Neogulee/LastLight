@@ -9,8 +9,8 @@ public class EnemySpawner : MonoBehaviour
 {
     public StageSpawnInfo spawn_info = null;
     public PlatformDetector platform_detector = null;
-    public Vector2 min_spawn_range = new Vector2(7.11f, 4.0f);
-    public Vector2 max_spawn_range = new Vector2(21.33f, 12.0f);
+    public Vector2 min_spawn_range = new Vector2(10.66f, 6.0f);
+    public Vector2 max_spawn_range = new Vector2(32.0f, 18.0f);
     public float relocate_time = 10.0f;
     public LayerMask layer = 0;
 
@@ -46,8 +46,11 @@ public class EnemySpawner : MonoBehaviour
                 distance: 1.0f,
                 layerMask: layer
             );
-            is_hit |= hit;
-            y_pos = Mathf.Max(y_pos, hit.point.y + SKIN_WIDTH);
+
+            if (hit) {            
+                is_hit = true;
+                y_pos = Mathf.Max(y_pos, hit.point.y + SKIN_WIDTH);
+            }
         }
         if (!is_hit)
             return new Vector2(Mathf.Infinity, Mathf.Infinity);

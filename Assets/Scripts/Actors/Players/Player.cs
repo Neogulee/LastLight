@@ -71,7 +71,7 @@ public class Player : Actor
         regen_time += Time.deltaTime;
         if (regen_time > 1) {
             regen_time -= 1.0f;
-            base.heal(5);
+            base.heal(3);
             Locator.event_manager.notify(new OnHpChangeEvent{hp = this.hp});
         }
     }

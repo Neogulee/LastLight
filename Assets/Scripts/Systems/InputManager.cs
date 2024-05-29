@@ -15,6 +15,10 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
+        try_notify(new OnInputItemSelection(0), KeyType.KEY_DOWN, KeyCode.Alpha1);
+        try_notify(new OnInputItemSelection(1), KeyType.KEY_DOWN, KeyCode.Alpha2);
+        try_notify(new OnInputItemSelection(2), KeyType.KEY_DOWN, KeyCode.Alpha3);
+        
         if (Locator.pause_controller.is_paused)
             return;
 
@@ -32,9 +36,6 @@ public class InputManager : MonoBehaviour
         try_notify(new OnItemKeyPressed(1),     KeyType.KEY_DOWN, KeyCode.W, KeyCode.S);
         try_notify(new OnItemKeyPressed(2),     KeyType.KEY_DOWN, KeyCode.E, KeyCode.D);
         try_notify(new OptionEvent(),           KeyType.KEY_DOWN, KeyCode.Escape);
-        try_notify(new OnInputItemSelection(0), KeyType.KEY_DOWN, KeyCode.Alpha1);
-        try_notify(new OnInputItemSelection(1), KeyType.KEY_DOWN, KeyCode.Alpha2);
-        try_notify(new OnInputItemSelection(2), KeyType.KEY_DOWN, KeyCode.Alpha3);
     }
 
     private void try_notify(IEventParam param, KeyType key_type, params KeyCode[] key_codes)

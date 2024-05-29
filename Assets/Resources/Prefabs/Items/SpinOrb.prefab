@@ -185,9 +185,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   damage: 25
-  knockback_power: 15
+  knockback_power: 5
   up_power: 0
   knockback_dir: 0
+  multiple_hit: 0
 --- !u!212 &2623585837385285944
 SpriteRenderer:
   m_ObjectHideFlags: 0
