@@ -18,7 +18,7 @@ public class CsvInfo
 
 public class CsvParser
 {
-    const string DIR = "Assets/Resources/Definitions/";
+    const string DIR = "Definitions/";
 
     /// <summary>
     /// Read a csv file from "Resources/Definitions/<csv_name>.csv"
@@ -28,8 +28,8 @@ public class CsvParser
         if (!typeof(CsvInfo).IsAssignableFrom(typeof(info_type)))
             throw new Exception();
         
-        var stream = new StreamReader(DIR + csv_name + ".csv"); 
-        var data = new CsvReader(stream, CultureInfo.InvariantCulture);
+        var file = new StringReader(Resources.Load<TextAsset>(DIR + csv_name).text);
+        var data = new CsvReader(file, CultureInfo.InvariantCulture);
 
         data.Read();
         data.ReadHeader();
