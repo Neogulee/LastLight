@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9b0552c7ea20543b84b4bea3250a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <max_hp>k__BackingField: 250
+  <max_hp>k__BackingField: 200
   <power>k__BackingField: 30
   <exp>k__BackingField: 2
 --- !u!114 &7779994688543818082

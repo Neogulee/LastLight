@@ -208,7 +208,7 @@ MonoBehaviour:
   target_layer:
     serializedVersion: 2
     m_Bits: 128
-  damage: 50
+  damage: 40
   knockback_power: 10
   up_power: 0
   knockback_dir: 0
@@ -394,8 +394,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9b0552c7ea20543b84b4bea3250a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <max_hp>k__BackingField: 350
-  <power>k__BackingField: 50
+  <max_hp>k__BackingField: 300
+  <power>k__BackingField: 40
   <exp>k__BackingField: 3
 --- !u!114 &7779994688543818082
 MonoBehaviour:
