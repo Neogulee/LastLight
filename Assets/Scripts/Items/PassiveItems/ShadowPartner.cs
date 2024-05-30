@@ -52,11 +52,10 @@ public class ShadowPartner : PassiveItem
             damager.Add(d);
         }
 
-        for(int i=0;i<damager.Count;i++)
+        for(int i=0; i < damager.Count; i++)
         {
             damager[i] = transform.GetChild(0).Find(damager[i].gameObject.name).GetComponent<Damager>();
-            damager[i].damage /= 5;
-            damager[i].damage *= damage;
+            damager[i].damage = level * 10;
         }
     }
     void SummonAttacker(IEventParam param)
