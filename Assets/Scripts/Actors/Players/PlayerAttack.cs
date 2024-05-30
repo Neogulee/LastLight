@@ -15,6 +15,9 @@ public class PlayerAttack : MonoBehaviour
 
     public void OnAttack(IEventParam event_param)
     {
+        if (player.is_destroyed)
+            return;
+            
         if(player.GetAnimator().GetBool("isJump") || player.GetAnimator().GetBool("isDoubleJump"))
         {
             player.GetAnimator().SetBool("isAttack", true);

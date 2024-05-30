@@ -30,6 +30,18 @@ public class GameOverUi : MonoBehaviour
 
     private void on_game_over(IEventParam param)
     {
+        Locator.player.GetComponent<PhysicsPlatformer>().enabled = false;
+        Locator.player.GetComponent<PlayerAnimator>().enabled = false;
+        Locator.player.GetComponent<PlayerController>().enabled = false;
+        Locator.player.GetComponent<APlayerController>().enabled = false;
+        Locator.player.GetComponent<PlayerAttack>().enabled = false;
+        var player_animator = Locator.player.GetComponent<Animator>();
+        player_animator.Rebind();
+        // foreach (var parameter in player_animator.parameters)
+        // {
+        //     if (parameter.type
+        // }
+        Locator.player.GetComponent<Animator>().SetBool("isDeath", true);
         StartCoroutine(ChangeAlphaOverTime());
     }
 

@@ -14,6 +14,7 @@ public class Player : Actor
     private PlayerAttack playerAttack;
     private BoxCollider2D boxCollider;
     private float regen_time = 0.0f;
+    public bool is_destroyed { get; private set; } = false;
 
     public int defenceAttack;
 
@@ -36,6 +37,10 @@ public class Player : Actor
 
     public override void destroy()
     {
+        if (is_destroyed)
+            return;
+
+        is_destroyed = true;
         Locator.event_manager.notify(new GameOverEvent());
     }
     
@@ -48,6 +53,9 @@ public class Player : Actor
 
     public override void heal(int heal)
     {
+        if (is_destroyed)
+            return;
+
         base.heal(heal);
         Locator.event_manager.notify(new OnHpChangeEvent{hp = this.hp});
         Locator.damageManager.ShowHeal(transform, heal, Team.Player);
@@ -55,6 +63,9 @@ public class Player : Actor
 
     public override bool take_damage(int damage)
     {
+        if (is_destroyed)
+            return false;
+
         if(defenceAttack > 0)
         {
             defenceAttack -= 1;
@@ -68,6 +79,9 @@ public class Player : Actor
 
     void FixedUpdate()
     {
+        if (is_destroyed)
+            return;
+
         regen_time += Time.deltaTime;
         if (regen_time > 1) {
             regen_time -= 1.0f;
