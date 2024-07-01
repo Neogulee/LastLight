@@ -7,19 +7,19 @@ using UnityEngine.UI;
 
 public abstract class ActiveItem: Item
 {
-    protected float cooldown_timer = 0.0f;
+    public float remain_cooldown { get; protected set; } = 0.0f;
     public abstract void use();
     public void FixedUpdate()
     {
-        if (cooldown_timer > 0)
-            cooldown_timer -= Time.deltaTime;
+        if (remain_cooldown > 0)
+            remain_cooldown -= Time.deltaTime;
     }
 
     public bool check_cooldown()
     {
-        if (cooldown_timer > 0.0f)
+        if (remain_cooldown > 0.0f)
             return false;
-        cooldown_timer = cooldown;
+        remain_cooldown = cooldown;
         return true;
     }
 }

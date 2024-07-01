@@ -59,9 +59,23 @@ public class EnemySpawner : MonoBehaviour
         return spawn_pos;
     }
 
+    public Vector2 try_get_random_position(GameObject enemy)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            Vector2 spawn_pos = get_random_position(enemy);
+            if (float.IsInfinity(spawn_pos.x)) {
+                Debug.Log(string.Format("Spawn {} failed {}", enemy, i));
+                continue;
+            }
+            return spawn_pos;
+        }
+        return new Vector2(Mathf.Infinity, Mathf.Infinity);
+    }
+
     public bool spawn(GameObject enemy)
     {
-        Vector2 spawn_pos = get_random_position(enemy);
+        Vector2 spawn_pos = try_get_random_position(enemy);
         if (float.IsInfinity(spawn_pos.x))
             return false;
         GameObject new_enemy = Instantiate(enemy, spawn_pos, Quaternion.identity);
@@ -71,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
 
     public bool relocate(GameObject enemy)
     {
-        Vector2 spawn_pos = get_random_position(enemy);
+        Vector2 spawn_pos = try_get_random_position(enemy);
         if (float.IsInfinity(spawn_pos.x))
             return false;
         enemy.transform.position = spawn_pos;
