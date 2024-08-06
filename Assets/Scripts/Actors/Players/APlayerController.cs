@@ -51,7 +51,7 @@ public class APlayerController : ActorController
         Locator.event_manager.notify(new OnDashEvent());
         float speed = 40;
         Vector2 vec = getAimDir();
-        physics.velocity = vec.normalized * speed;
+        physics.fix_velocity(vec.normalized * speed);
         shadow = true;
         Invoke("shadow_off", 0.2f);
         Invoke("stop", 0.2f);
@@ -70,6 +70,7 @@ public class APlayerController : ActorController
     }
     public void shadow_off()
     {
+        physics.unfix_velocity();
         shadow = false;
     }
 

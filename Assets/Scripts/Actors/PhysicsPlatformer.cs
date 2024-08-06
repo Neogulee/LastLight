@@ -6,6 +6,8 @@ using UnityEngine;
 public interface IPhysicsPlatformer
 {
     public Vector2 velocity { get; set; }
+    public void fix_velocity(Vector2 velocity);
+    public void unfix_velocity();
 }
 
 
@@ -17,6 +19,7 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
         get { return _velocity; }
         set { _velocity = value; }
     }
+    public bool is_velocity_fixed { get; set; } = false;
     private Vector2 _velocity = Vector2.zero;
 
     public const float SKIN_WIDTH = 0.015f;
@@ -31,6 +34,8 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
     public int max_climb_angle = 45;
     public int max_descend_angle = 45;
 
+    private bool is_fixed = false;
+    private Vector2 fixed_velocity;
     private bool is_jumping_down = false;
 
     private float horizontal_ray_spacing;
@@ -49,6 +54,18 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
         update_pos();
     }
 
+    public void fix_velocity(Vector2 velocity)
+    {
+        fixed_velocity = velocity;
+        is_fixed = true;
+    }
+
+    public void unfix_velocity()
+    {
+        velocity = fixed_velocity;
+        is_fixed = false;
+    }
+
     private void update_pos()
     {
         update_raycast_origins();
@@ -56,7 +73,7 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
         collision_info.reset();
 
         _velocity.y -= gravity * Time.fixedDeltaTime;
-        Vector2 vec = _velocity * Time.fixedDeltaTime;
+        Vector2 vec = (is_fixed ? fixed_velocity : _velocity) * Time.fixedDeltaTime;
         // if (vec.y < 0)
         //     descend_slope(ref vec);
         if (vec.x != 0.0f && vec.y <= 0.0f)
