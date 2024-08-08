@@ -15,6 +15,8 @@ public class APlayerController : ActorController
     private bool shadow;
 
     private float velocityY = 0.0f;
+    private float last_dashed_time = 0.0f;
+    private float dash_cool_down = 0.5f;
 
     public Vector2 getAimDir()
     {
@@ -40,14 +42,15 @@ public class APlayerController : ActorController
     }
     public void Dash()
     {
-        if(dashCount > 0)
-        {
-            dashCount--;
-        }
-        else
-        {
+        if (check_on_platform())
+            dashCount = 1;
+
+        if (dashCount <= 0 || (Time.time - last_dashed_time) < dash_cool_down || getAimDir() == Vector2.zero)
             return;
-        }
+
+        dashCount--;
+        last_dashed_time = Time.time;
+        
         Locator.event_manager.notify(new OnDashEvent());
         float speed = 40;
         Vector2 vec = getAimDir();
@@ -57,17 +60,19 @@ public class APlayerController : ActorController
         Invoke("stop", 0.2f);
         //SendMessage("on_jump", current_jump_cnt, SendMessageOptions.DontRequireReceiver);
     }
+
     private void DownCheck()
     {
         if (physics.velocity.y < 0.0f)
         {
-            SendMessage("on_fall",true, SendMessageOptions.DontRequireReceiver);
+            SendMessage("on_fall", true, SendMessageOptions.DontRequireReceiver);
         }
         else
         {
-            SendMessage("on_fall",false, SendMessageOptions.DontRequireReceiver);
+            SendMessage("on_fall", false, SendMessageOptions.DontRequireReceiver);
         }
     }
+
     public void shadow_off()
     {
         physics.unfix_velocity();
@@ -78,11 +83,13 @@ public class APlayerController : ActorController
     {
         
     }
+
     void on_ground()
     {
         dashCount = dashMax;
         Locator.event_manager.notify(new OnGroundEvent(velocityY));
     }
+
     public void Update()
     {
         DownCheck();

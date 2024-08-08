@@ -110,9 +110,14 @@ public class ActorController : MonoBehaviour, IActorController
     
     public void jump(float jump_velocity)
     {
+        if (check_on_platform())
+            current_jump_cnt = 0;
+            
         if (current_jump_cnt >= max_jump_cnt)
             return;
 
+        if (!check_on_platform())
+            current_jump_cnt = Mathf.Max(current_jump_cnt, 1);
         current_jump_cnt++;
         physics.velocity = new Vector2(physics.velocity.x, jump_velocity * Mathf.Sqrt(physics.gravity / 10.0f));
         SendMessage("on_jump", current_jump_cnt, SendMessageOptions.DontRequireReceiver);
