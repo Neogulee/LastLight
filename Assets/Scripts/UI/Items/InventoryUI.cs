@@ -12,7 +12,7 @@ using UnityEngine.UI;
 public class InventoryUI : MonoBehaviour
 {
     public GameObject slot_prefab = null;
-    public float slot_size = 30.0f;
+    public Vector2 slot_size = new Vector2(30.0f, 30.0f);
     private List<RectTransform> active_items = new(), passive_items = new();
     private List<Material> active_materials = new(), passive_materials = new();
     
@@ -41,7 +41,7 @@ public class InventoryUI : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             RectTransform slot_transform = Instantiate(slot_prefab, transform).GetComponent<RectTransform>();
-            slot_transform.anchoredPosition = new Vector2(i * slot_size, -slot_size * row);
+            slot_transform.anchoredPosition = new Vector2(i * slot_size.x, -slot_size.y * row);
             
             Image image = slot_transform.GetComponentsInChildren<Image>()[1];
             Material new_material = new Material(image.material);
