@@ -109,7 +109,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   damage: 1
-  knockback_power: 0
+  knockback_power: 5
   up_power: 0
   knockback_dir: 0
   multiple_hit: 0
