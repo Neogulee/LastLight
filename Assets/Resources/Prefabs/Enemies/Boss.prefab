@@ -382,6 +382,7 @@ MonoBehaviour:
   <jump_velocity>k__BackingField: 10
   <max_jump_cnt>k__BackingField: 1
   <current_jump_cnt>k__BackingField: 1
+  knockback_resistance: 0.5
 --- !u!114 &6814807256917984772
 MonoBehaviour:
   m_ObjectHideFlags: 0

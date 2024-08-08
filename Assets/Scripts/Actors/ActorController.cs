@@ -33,6 +33,7 @@ public class ActorController : MonoBehaviour, IActorController
     public int max_jump_cnt { get; set; } = 2;
     [field: SerializeField]
     public int current_jump_cnt { get; private set; } = 2;
+    public float knockback_resistance = 0.0f;
 
     private const float KNOCKBACK_TIME = 0.35f;
     private Vector2 left_knockback_dir = new Vector2(Mathf.Cos(2.0f * Mathf.PI / 3.0f), Mathf.Sin(2.0f * Mathf.PI / 3.0f)).normalized;
@@ -57,7 +58,7 @@ public class ActorController : MonoBehaviour, IActorController
         
         if (knockback_time > 0.0f) {
             knockback_time = Mathf.Max(0.0f, knockback_time - Time.fixedDeltaTime);
-            float current_power = knockback_time / KNOCKBACK_TIME * knockback_power;
+            float current_power = knockback_time / (KNOCKBACK_TIME * (1.0f - knockback_resistance)) * knockback_power;
             if (physics.gravity == 0.0f)
                 physics.velocity = new Vector2(current_power, current_power);
             else
@@ -130,7 +131,8 @@ public class ActorController : MonoBehaviour, IActorController
 
     public void take_knockback(float amount, bool is_right, float upPower = 0)
     {
-        knockback_time = KNOCKBACK_TIME;
+        knockback_time = KNOCKBACK_TIME * (1.0f - knockback_resistance);
+        amount *= 1.0f - knockback_resistance;
         if (is_right) {
             physics.velocity = right_knockback_dir * amount;
             physics.velocity += new Vector2(0.0f, upPower);
