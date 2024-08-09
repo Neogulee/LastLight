@@ -11,6 +11,12 @@ public class Missile : MonoBehaviour
 
     public float spinSpeed = 400;
     public float speed = 5;
+    private ParticleSystem particle = null;
+    void Awake()
+    {
+        particle = GetComponentInChildren<ParticleSystem>();
+    }
+    
     void Update()
     {
         Move();
@@ -31,6 +37,8 @@ public class Missile : MonoBehaviour
     }
     void on_hit((int damage, Collider2D target) args)
     {
+        particle.transform.parent = transform.parent;
+        particle.Stop();
         Destroy(gameObject);
     }
 }
