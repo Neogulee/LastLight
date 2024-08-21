@@ -1,25 +1,36 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmashMove : MonoBehaviour {
 
-    int dir = 1;
-    public void Start() {
-        Invoke("Dead", 2.0f);
-        if(Locator.player.GetSpriteRenderer().flipX)
-            dir = -1;
-        else
-            dir = 1;
-        transform.localScale = new Vector3(dir,1,1);
+public class SmashMove : MonoBehaviour
+{
+    private Material material;
+    private new SpriteRenderer renderer;
+    private int dir = 1;
+    private float duration = 0.5f;
+    private float current_time = 0.0f;
+    void Awake()
+    {
+        renderer = GetComponent<SpriteRenderer>();
+        material = renderer.material;
     }
-    public void Update() {
-        transform.Translate(new Vector2(dir,0) * Time.deltaTime * 20);
 
-        
+    void Start()
+    {
+        Invoke("Destroy", duration);
+        dir = Locator.player.GetSpriteRenderer().flipX ? -1 : 1;
+        renderer.flipX = Locator.player.GetSpriteRenderer().flipX;
     }
-    private void Dead()
+
+    public void FixedUpdate()
+    {
+        current_time += Time.deltaTime;
+        transform.Translate(new Vector2(dir, 0) * Time.deltaTime * 30.0f);
+        material.SetFloat("_CurrentTime", current_time / duration);
+    }
+
+    private void Destroy()
     {
         Destroy(gameObject);
     }
