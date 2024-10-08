@@ -18,6 +18,8 @@ public class APlayerController : ActorController
     private float last_dashed_time = 0.0f;
     private float dash_cool_down = 0.5f;
     private float last_dir_x = 1.0f;
+    private float afterimage_time = 0.0f;
+    private float afterimage_interval_delay = 0.02f;
     new void Awake()
     {
         base.Awake();
@@ -40,7 +42,7 @@ public class APlayerController : ActorController
             vec.y = 1.0f;
         if(Input.GetKey(KeyCode.DownArrow))
             vec.y = -1.0f;
-        if (vec.x == 0.0f)
+        if (vec == Vector2.zero)
             vec.x = last_dir_x;
         return vec.normalized;
     }
@@ -59,6 +61,7 @@ public class APlayerController : ActorController
         float speed = 40;
         Vector2 vec = getAimDir();
         physics.fix_velocity(vec.normalized * speed);
+        afterimage_time = 0.0f;
         shadow = true;
         Invoke("shadow_off", 0.2f);
         Invoke("stop", 0.2f);
@@ -94,15 +97,21 @@ public class APlayerController : ActorController
         Locator.event_manager.notify(new OnGroundEvent(velocityY));
     }
 
-    public void Update()
+    new void FixedUpdate()
     {
+        base.FixedUpdate();
         DownCheck();
         velocityY = GetComponent<PhysicsPlatformer>().velocity.y;
-        if (shadow)
-        {
-            GameObject G = Instantiate(effect_shadow, transform.position, Quaternion.identity);
-            G.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
-            G.transform.localScale = transform.localScale;
+        if (shadow) {
+            afterimage_time += Time.deltaTime;
+            if (afterimage_time >= afterimage_interval_delay) {
+                afterimage_time -= afterimage_interval_delay;
+                GameObject image_object = Instantiate(effect_shadow, transform.position, Quaternion.identity);
+                SpriteRenderer renderer = image_object.GetComponent<SpriteRenderer>();
+                renderer.sprite = GetComponent<SpriteRenderer>().sprite;
+                renderer.flipX = GetComponent<SpriteRenderer>().flipX;
+                image_object.transform.localScale = transform.localScale;
+            }
         }
     }
 }

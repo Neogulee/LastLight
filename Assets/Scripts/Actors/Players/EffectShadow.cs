@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class EffectShadow : MonoBehaviour
 {
-
-    void Update()
+    private SpriteRenderer sprite_renderer;
+    private Material material;
+    private Color original_color;
+    private float age = 0.0f;
+    private float life = 0.5f;
+    void Awake()
     {
-        GetComponent<SpriteRenderer>().color = new Color(1,1,1,GetComponent<SpriteRenderer>().color.a - 1f*Time.deltaTime);
-        if(GetComponent<SpriteRenderer>().color.a <= 0)
-        {
+        sprite_renderer = GetComponent<SpriteRenderer>();
+        material = sprite_renderer.material;
+        original_color = material.color;
+    }
+
+    void FixedUpdate()
+    {
+        age += Time.deltaTime;
+        Color temp = original_color;
+        temp.a *= 1.0f - age / life;
+        material.color = temp;
+        if (age >= life)
             Destroy(gameObject);
-        }
     }
 }
