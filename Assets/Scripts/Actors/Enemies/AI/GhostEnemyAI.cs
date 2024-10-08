@@ -34,14 +34,18 @@ public class GhostEnemyAI : EnemyAI
     
     void FixedUpdate()
     {
-        if (is_attacking)
+        if (is_attacking) {
+            if (!attacker.is_stop_on_attack)
+                update_move();
             return;
+        }
 
         update_move();
         if (attacker.check()) {
             SendMessage("on_start_attack", SendMessageOptions.DontRequireReceiver);
             is_attacking = true;
-            actor_controller.move(Vector2.zero);
+            if (attacker.is_stop_on_attack)
+                actor_controller.move(Vector2.zero);
         }
     }
 }

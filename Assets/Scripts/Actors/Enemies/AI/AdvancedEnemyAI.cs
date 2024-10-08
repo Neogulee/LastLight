@@ -162,7 +162,8 @@ public class AdvancedEnemyAI : EnemyAI
             // TODO: check finished
             lock (is_attacking_lock)
                 is_attacking = true;
-            actor_controller.stop();
+            if (attacker.is_stop_on_attack)
+                actor_controller.stop();
             Invoke("notify_attack", 0.125f);
         }
         else if (current_move == Moves.LEFT)

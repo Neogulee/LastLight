@@ -10,4 +10,5 @@ public abstract class Attacker: MonoBehaviour
 {
     public abstract bool check();
     public abstract void attack(int idx);
+    public bool is_stop_on_attack { get; protected set; } = true;
 }

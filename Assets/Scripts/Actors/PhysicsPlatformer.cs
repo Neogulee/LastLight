@@ -86,6 +86,7 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
         transform.Translate(vec);
         if (collision_info.below || collision_info.above)
             _velocity.y = 0.0f;
+        _velocity.x = Mathf.Sign(_velocity.x) * Mathf.Max(0.0f, Mathf.Abs(_velocity.x) - 5.0f * Time.fixedDeltaTime);
     }
 
     Collider2D[] horizontal_collisions(ref Vector2 velocity, int layers_to_check_passing = 0)

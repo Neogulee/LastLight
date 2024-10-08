@@ -11,7 +11,7 @@ public class Rope : MonoBehaviour
 
     private float ing = 1;
     private Vector2 grapPos;
-    void Start()
+    void Awake()
     {
         grap = false;
         target = Locator.player.transform.position;
@@ -23,36 +23,34 @@ public class Rope : MonoBehaviour
         {
             grap = true;
             grapPos = Locator.player.transform.position;
+            Vector3 delta = grapPos - (Vector2)transform.position;
+            ing = delta.magnitude / 10.0f;
         }
     }
-    void Update()
+
+    void FixedUpdate()
     {
-        if(!grap)
-        {
-        target+= dir * Time.deltaTime * 60;
-        transform.position = target;
-        if(Vector2.Distance(transform.position, Locator.player.transform.position) * 0.5f > 20)
-            {
+        if (!grap) {
+            target += dir * Time.deltaTime * 60;
+            transform.position = target;
+            if(Vector2.Distance(transform.position, Locator.player.transform.position) * 0.5f > 20)
+                Destroy(gameObject);
+            transform.GetComponent<SpriteRenderer>().size =  new Vector3(Vector2.Distance(transform.position, Locator.player.transform.position)*0.5f, 0.5f, 1);
+            //target위치에서 player위치를 바라보게 회전
+            Vector2 dir2 = Locator.player.transform.position - transform.position;
+            float angle = Mathf.Atan2(dir2.y, dir2.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+        else {
+            //Locator.player.transform.position = transform.position +( (Vector3)grapPos -  transform.position) * ing; 
+            Locator.player.GetComponent<PhysicsPlatformer>().velocity = transform.position + ((Vector3)grapPos - transform.position) * ing - Locator.player.transform.position;
+            Locator.player.GetComponent<PhysicsPlatformer>().velocity *= 5;
+            transform.GetComponent<SpriteRenderer>().size =  new Vector3(Vector2.Distance(transform.position, Locator.player.transform.position)*0.5f, 0.5f, 1);
+            ing -= Time.deltaTime * 2;
+            if(ing < 0) {
+                Locator.player.GetRigidbody().velocity = Vector2.zero;
                 Destroy(gameObject);
             }
-        transform.GetComponent<SpriteRenderer>().size =  new Vector3(Vector2.Distance(transform.position, Locator.player.transform.position)*0.5f, 0.5f, 1);
-        //target위치에서 player위치를 바라보게 회전
-        Vector2 dir2 = Locator.player.transform.position - transform.position;
-        float angle = Mathf.Atan2(dir2.y, dir2.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    }
-    else
-    {
-        //Locator.player.transform.position = transform.position +( (Vector3)grapPos -  transform.position) * ing; 
-        Locator.player.GetComponent<PhysicsPlatformer>().velocity = transform.position + ((Vector3)grapPos - transform.position) * ing - Locator.player.transform.position;
-        Locator.player.GetComponent<PhysicsPlatformer>().velocity *= 5;
-        transform.GetComponent<SpriteRenderer>().size =  new Vector3(Vector2.Distance(transform.position, Locator.player.transform.position)*0.5f, 0.5f, 1);
-        ing -= Time.deltaTime * 2;
-        if(ing < 0)
-        {
-            Locator.player.GetRigidbody().velocity = Vector2.zero;
-            Destroy(gameObject);
         }
-    }
     }
 }
