@@ -17,6 +17,7 @@ public class OnJumpEvent: IEventParam{}
 
 public class OnLeftMoveEvent: IEventParam{}
 public class OnUpEvent: IEventParam{}
+public class OnDownEvent: IEventParam{}
 public class OnRightMoveEvent: IEventParam{}
 
 public class OnShiftEvent: IEventParam{}

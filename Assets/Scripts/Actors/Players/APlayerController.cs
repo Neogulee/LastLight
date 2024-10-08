@@ -17,27 +17,31 @@ public class APlayerController : ActorController
     private float velocityY = 0.0f;
     private float last_dashed_time = 0.0f;
     private float dash_cool_down = 0.5f;
+    private float last_dir_x = 1.0f;
+    new void Awake()
+    {
+        base.Awake();
+        IEventManager event_manager = Locator.event_manager;
+        event_manager.register<OnLeftMoveEvent>(on_move_left_event);
+        event_manager.register<OnRightMoveEvent>(on_move_right_event);
+    }
+    private void on_move_left_event(IEventParam event_param) { last_dir_x = -1.0f; }
+    private void on_move_right_event(IEventParam event_param) { last_dir_x = 1.0f; }
 
     public Vector2 getAimDir()
     {
         Vector2 vec = Vector2.zero;
 
         if(Input.GetKey(KeyCode.LeftArrow))
-        {
             vec.x = -1.0f;
-        }
         if(Input.GetKey(KeyCode.RightArrow))
-        {
             vec.x = 1.0f;
-        }
         if(Input.GetKey(KeyCode.UpArrow))
-        {
             vec.y = 1.0f;
-        }
         if(Input.GetKey(KeyCode.DownArrow))
-        {
             vec.y = -1.0f;
-        }
+        if (vec.x == 0.0f)
+            vec.x = last_dir_x;
         return vec.normalized;
     }
     public void Dash()

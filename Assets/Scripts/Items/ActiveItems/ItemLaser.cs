@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LazerSummon : ActiveItem
+public class ItemLaser : ActiveItem
 {
     [SerializeField] private GameObject laserPrefab;
     private Player player;
@@ -20,6 +20,6 @@ public class LazerSummon : ActiveItem
         GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
         laser.transform.position = player.transform.position;
         laser.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg + 180);
-        laser.GetComponent<Damager>().damage = damage;
+        laser.GetComponentInChildren<Damager>().damage = damage;
     }
 }
