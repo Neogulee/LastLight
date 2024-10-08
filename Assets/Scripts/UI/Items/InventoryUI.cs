@@ -28,7 +28,7 @@ public class InventoryUI : MonoBehaviour
     {
         List<ActiveItem> items = Locator.item_manager.get_active_items().ToList();
         for (int i = 0; i < items.Count; i++)
-            active_materials[i].SetFloat("_CurrentTime", 1.0f - items[i].remain_cooldown / items[i].cooldown);
+            active_materials[i].SetFloat("_CurrentTime", 1.0f - items[i].remain_cooldown / items[i].current_cooldown);
     }
 
     void FixedUpdate()
