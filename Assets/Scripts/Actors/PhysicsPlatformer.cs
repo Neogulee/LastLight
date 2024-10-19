@@ -14,7 +14,7 @@ public interface IPhysicsPlatformer
 [RequireComponent(typeof(BoxCollider2D))]
 public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
 {
-    public float gravity = 10.0f;
+    public float gravity = 5.0f;
     public Vector2 velocity {
         get { return _velocity; }
         set { _velocity = value; }
@@ -73,6 +73,7 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
         collision_info.reset();
 
         _velocity.y -= gravity * Time.fixedDeltaTime;
+        _velocity.y = Mathf.Max(-40.0f, _velocity.y);
         Vector2 vec = (is_fixed ? fixed_velocity : _velocity) * Time.fixedDeltaTime;
         // if (vec.y < 0)
         //     descend_slope(ref vec);
