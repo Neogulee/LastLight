@@ -48,7 +48,7 @@ public class Player : Actor
     {
         max_hp += amount;
         hp += amount;
-        Locator.event_manager.notify(new OnHpChangeEvent { hp = this.hp });
+        Locator.event_manager.notify(new OnHpChangedEvent { hp = this.hp });
     }
 
     public override void heal(int heal)
@@ -57,7 +57,7 @@ public class Player : Actor
             return;
 
         base.heal(heal);
-        Locator.event_manager.notify(new OnHpChangeEvent{hp = this.hp});
+        Locator.event_manager.notify(new OnHpChangedEvent{hp = this.hp});
         Locator.damageManager.ShowHeal(transform, heal, Team.Player);
     }
 
@@ -73,7 +73,7 @@ public class Player : Actor
             return false;
         }
         base.take_damage(damage);
-        Locator.event_manager.notify(new OnHpChangeEvent{hp = this.hp});
+        Locator.event_manager.notify(new OnHpChangedEvent{hp = this.hp});
         return true;
     }
 
@@ -86,7 +86,7 @@ public class Player : Actor
         if (regen_time > 1) {
             regen_time -= 1.0f;
             base.heal(5);
-            Locator.event_manager.notify(new OnHpChangeEvent{hp = this.hp});
+            Locator.event_manager.notify(new OnHpChangedEvent{hp = this.hp});
         }
     }
 

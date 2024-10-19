@@ -8,7 +8,7 @@ public class CameraShake : MonoBehaviour
     private float yspeed;
     private void Start()
     {
-        Locator.event_manager.register<OnHpChangeEvent>(OnChange);
+        Locator.event_manager.register<OnHpChangedEvent>(OnChange);
     }
     private void OnChange(IEventParam event_param)
     {

@@ -51,7 +51,7 @@ public class OnItemKeyPressed : IEventParam
     public OnItemKeyPressed(int num) { this.num = num; }
 }
 public class OnGuardDamageEvent: IEventParam{}
-public class OnHpChangeEvent: IEventParam
+public class OnHpChangedEvent: IEventParam
 {
     public int hp = 0;
 }
