@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
 
 
-public class BrithnessSlinder : MonoBehaviour
+public class BritnessSlinder : MonoBehaviour
 {
     public Slider slider;
     public Volume volume;
