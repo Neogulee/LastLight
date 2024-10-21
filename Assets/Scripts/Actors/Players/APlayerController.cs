@@ -91,10 +91,13 @@ public class APlayerController : ActorController
         
     }
 
-    void on_ground()
+    void on_collision((Vector2Int dir, Vector2 velocity) param)
     {
-        dashCount = dashMax;
-        Locator.event_manager.notify(new OnGroundEvent(velocityY));
+        (Vector2Int dir, Vector2 velocity) = param;
+        if (dir.y == -1) {
+            dashCount = dashMax;
+            Locator.event_manager.notify(new OnGroundEvent(velocity.y));
+        }
     }
 
     new void FixedUpdate()

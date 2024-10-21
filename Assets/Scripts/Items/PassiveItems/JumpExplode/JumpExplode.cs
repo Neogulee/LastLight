@@ -10,6 +10,7 @@ public class JumpExplode : PassiveItem
     {
         Locator.event_manager.register<OnGroundEvent>(OnExplode);
     }
+    
     public void OnExplode(IEventParam param)
     {
         if (param is OnGroundEvent)

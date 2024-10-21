@@ -65,7 +65,7 @@ public class EnemySpawner : MonoBehaviour
         {
             Vector2 spawn_pos = get_random_position(enemy);
             if (float.IsInfinity(spawn_pos.x)) {
-                Debug.Log(string.Format("Spawn {} failed {}", enemy, i));
+                Debug.Log(string.Format("Spawn {0} failed {1}", enemy, i));
                 continue;
             }
             return spawn_pos;

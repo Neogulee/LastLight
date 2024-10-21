@@ -11,6 +11,9 @@ public interface IPhysicsPlatformer
 }
 
 
+/// <summary>
+/// Callbacks: on_collision(Vector2Int dir, Vector2Int velocity)
+/// </summary>
 [RequireComponent(typeof(BoxCollider2D))]
 public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
 {
@@ -27,7 +30,7 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
     public LayerMask collision_mask;
     public LayerMask one_way_collision_mask;
     
-    public CollisionInfo collision_info;
+    public CollisionInfo collision_info, last_collision_info;
 
     public int horizontal_ray_count = 4;
     public int vertical_ray_count = 4;
@@ -66,10 +69,26 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
         is_fixed = false;
     }
 
+    private void notify_collision()
+    {
+        Vector2Int dir = Vector2Int.zero;
+        if (!last_collision_info.below && collision_info.below)
+            dir.y = -1;
+        if (!last_collision_info.above && collision_info.above)
+            dir.y = 1;
+        if (!last_collision_info.left && collision_info.left)
+            dir.x = -1;
+        if (!last_collision_info.right && collision_info.right)
+            dir.x = 1;
+
+        SendMessage("on_collision", (dir, (is_fixed ? fixed_velocity : _velocity)), SendMessageOptions.DontRequireReceiver);
+    }
+
     private void update_pos()
     {
         update_raycast_origins();
         
+        last_collision_info = collision_info;
         collision_info.reset();
 
         _velocity.y -= gravity * Time.fixedDeltaTime;
@@ -84,6 +103,7 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
         if (vec.y != 0.0f)
             vertical_collisions(ref vec);
 
+        notify_collision();
         transform.Translate(vec);
         if (collision_info.below || collision_info.above)
             _velocity.y = 0.0f;
