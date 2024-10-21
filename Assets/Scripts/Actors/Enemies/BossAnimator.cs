@@ -8,7 +8,7 @@ public class BossAnimator : EnemyAnimator
     private int current_idx = 0;
     private BossAttacker boss_attacker = null;
     private List<string> attack_triggers = new() { "attack_melee", "attack_range" };
-    protected override void Awake()
+    public override void Awake()
     {
         base.Awake();
         boss_attacker = GetComponent<BossAttacker>();

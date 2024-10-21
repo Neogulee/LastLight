@@ -16,7 +16,7 @@ public class JumpExplode : PassiveItem
         if (param is OnGroundEvent)
         {
             OnGroundEvent p = param as OnGroundEvent;
-            Debug.Log(p.power);
+            // Debug.Log(p.power);
             if (p.power < -10)
             {
                 GameObject G = Instantiate(explosion, Locator.player.transform.position, Quaternion.identity);

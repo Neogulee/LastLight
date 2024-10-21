@@ -77,8 +77,10 @@ public class Player : Actor
         return true;
     }
 
-    void FixedUpdate()
+    public new void FixedUpdate()
     {
+        base.FixedUpdate();
+
         if (is_destroyed)
             return;
 

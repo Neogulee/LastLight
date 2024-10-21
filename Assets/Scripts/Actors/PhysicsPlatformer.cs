@@ -6,6 +6,7 @@ using UnityEngine;
 public interface IPhysicsPlatformer
 {
     public Vector2 velocity { get; set; }
+    public bool is_fixed { get; } 
     public void fix_velocity(Vector2 velocity);
     public void unfix_velocity();
 }
@@ -22,7 +23,6 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
         get { return _velocity; }
         set { _velocity = value; }
     }
-    public bool is_velocity_fixed { get; set; } = false;
     private Vector2 _velocity = Vector2.zero;
 
     public const float SKIN_WIDTH = 0.015f;
@@ -37,7 +37,7 @@ public class PhysicsPlatformer : MonoBehaviour, IPhysicsPlatformer
     public int max_climb_angle = 45;
     public int max_descend_angle = 45;
 
-    private bool is_fixed = false;
+    public bool is_fixed { get; private set; } = false;
     private Vector2 fixed_velocity;
     private bool is_jumping_down = false;
 

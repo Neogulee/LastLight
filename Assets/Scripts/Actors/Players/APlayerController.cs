@@ -51,7 +51,7 @@ public class APlayerController : ActorController
         if (check_on_platform())
             dashCount = 1;
 
-        if (dashCount <= 0 || (Time.time - last_dashed_time) < dash_cool_down || getAimDir() == Vector2.zero)
+        if (dashCount <= 0 || (Time.time - last_dashed_time) < dash_cool_down || getAimDir() == Vector2.zero || physics.is_fixed)
             return;
 
         dashCount--;

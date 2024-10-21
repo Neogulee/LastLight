@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class EnemyAnimator : MonoBehaviour
+public class EnemyAnimator : ActorAnimator
 {
-    protected Animator animator;
     protected SpriteRenderer sprite_renderer;
     private Vector3 original_scale; 
-    protected virtual void Awake()
+    public virtual new void Awake()
     {
-        animator = GetComponent<Animator>();
+        base.Awake();
+        
         sprite_renderer = GetComponent<SpriteRenderer>();
         original_scale = transform.localScale;
     }
